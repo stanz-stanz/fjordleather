@@ -1,6 +1,73 @@
 
 ---
 
+## Build Progress & Handoff Notes
+
+> **Last updated:** 2026-03-12 — Session 1 complete. All 5 pages built and building cleanly.
+> Resume by cloning `https://github.com/stanz-stanz/fiordleather.git` and running `npm install && npm run dev`.
+
+### ✅ Completed
+
+**Design system** (`docs/design/`)
+- `design-system.md` — Brand principles, color, typography, spacing, motion, grid
+- `tokens.css` — Full Tailwind v4 `@theme inline` token system *(note: docs still reference Fjord blue accent — reconciled to Cognac in app/globals.css; update docs next session)*
+- `components.md` — Component specs for all 10 components
+
+**Foundation**
+- `next.config.ts` — `output: 'export'`, `images.unoptimized: true`, `trailingSlash: true`
+- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B` (NOT Fjord blue). No product card shadows.
+- `app/layout.tsx` — Cormorant Garamond + Jost fonts, brand metadata, Navigation + Footer wrappers
+
+**Data layer**
+- `data/types.ts` — `Product`, `ProductImage`, `ProductDimensions`, `ProductCategory`
+- `data/products.ts` — 10 sample products (2 bags, 2 duffles, 2 wallets, 2 coin pouches, 2 accessories). 3 featured, 2 new. EUR pricing. Editorial descriptions referencing Badalassi Carlo, Conceria Walpier.
+- `data/categories.ts` — Category labels and order
+- `data/utils.ts` — `getProductBySlug`, `getProductSlugs`, `getFeaturedProducts`, `getRelatedProducts`, etc.
+
+**Lib**
+- `lib/utils.ts` — `formatPrice()`, `cn()`, `slugify()`
+- `lib/constants.ts` — `BRAND_NAME`, `CONTACT_EMAIL`, `SITE_URL`, `NAV_LINKS`
+- `lib/seo.ts` — `generateProductMetadata()`
+
+**Components**
+- `components/nav/Navigation.tsx` — Sticky, scroll-aware bg, active underline animation, mobile slide-in drawer
+- `components/footer/Footer.tsx` — 3-column, Espresso background
+- `components/common/Button.tsx` — Primary/Secondary/Ghost, zero border-radius, renders as `<Link>` when `href` passed
+- `components/common/Container.tsx` — Max-width 1440px responsive wrapper
+- `components/common/AnimateOnScroll.tsx` — IntersectionObserver scroll-reveal for `[data-animate="fade-up"]` children
+- `components/product-card/ProductCard.tsx` — 3:4 image, category overline, Cormorant name, price, hover scale, New badge
+- `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav, mobile horizontal scroll
+
+**Pages** (all render statically — `npm run build` passes with 17 pages, 0 TypeScript errors)
+- `app/page.tsx` — Homepage: typography hero, asymmetric 3-product cascade grid, brand statement, material callout strip
+- `app/catalog/page.tsx` — Collection: sticky filter bar, client-side category filter, staggered product grid
+- `app/products/[slug]/page.tsx` — PDP: 60/40 gallery + info, sticky detail panel, related products, Inquire CTA → mailto
+- `app/about/page.tsx` — Craft: 4 sections including full-bleed Espresso maker's statement blockquote
+- `app/contact/page.tsx` — Contact: two-column, bottom-border-only form inputs, mailto submit
+
+---
+
+### ⏳ Pending — Resume Next Session
+
+**Priority 1 — Visual completeness**
+- [ ] **Product images**: All image paths are placeholders (`/images/products/[slug]-1.jpg`). Add real photography OR create CSS/SVG placeholder tiles in `public/images/products/`. Without images, product cards and galleries show broken image slots.
+- [ ] **Favicon**: Replace default Next.js favicon (`app/favicon.ico`) with a Fjordleather mark
+
+**Priority 2 — Polish & correctness**
+- [ ] **Responsive audit**: Test all 5 pages at 375px (mobile), 768px (tablet), 1024px, 1440px. Fix any layout breaks.
+- [ ] **Accessibility pass**: Keyboard nav through product grid, focus trap in mobile nav drawer, ARIA on ImageGallery carousel
+- [ ] **AnimateOnScroll wiring**: Verify `AnimateOnScroll` wrapper is correctly applied around product grids on Homepage and Catalog. Check that `.is-visible` CSS transition is defined in `globals.css`.
+- [ ] **Contact form**: Smoke-test mailto link generation in browser — confirm pre-filled subject/body encodes correctly
+- [ ] **Design system docs sync**: Update `docs/design/tokens.css` to replace Fjord blue accent with Cognac `#8B5A2B` (the app uses cognac but the docs still show the old palette)
+
+**Priority 3 — Deployment prep**
+- [ ] `public/robots.txt` — allow all crawlers
+- [ ] `public/sitemap.xml` — list all static routes for SEO
+- [ ] Configure hosting target (Vercel recommended — connects to GitHub repo, auto-deploys on push; set framework to Next.js, output dir to `out/`)
+- [ ] Update `SITE_URL` in `lib/constants.ts` from placeholder to real domain once known
+
+---
+
 ## Fjordleather: Handmade Leather Goods — Product Showcase Website
 
 **Project overview**
