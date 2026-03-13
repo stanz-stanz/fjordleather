@@ -1,6 +1,6 @@
-# Fiord Leather -- Component Specifications
+# Fjordleather — Component Specifications
 
-> All measurements reference tokens from `design-system.md`. All colors, fonts, and spacing must use design tokens -- never raw values.
+> All measurements reference tokens from `design-system.md`. All colors, fonts, and spacing must use design tokens — never raw values.
 
 ---
 
@@ -8,123 +8,95 @@
 
 ### Desktop Navigation Bar
 
-**Structure**: Full-width sticky bar. Logo left, navigation links center, utility icons right (search, account, cart with count badge).
+**Structure**: Full-width sticky bar. Logo left, navigation links right.
 
-| Property           | Value                                              |
-|--------------------|----------------------------------------------------|
-| Height             | 72px                                                |
-| Background         | `chalk` with `backdrop-filter: blur(12px)` on scroll |
-| Bottom border      | None at top. On scroll: `shadow-nav`                |
-| Padding horizontal | Container padding (`space-md` mobile, `space-xl` desktop) |
-| Z-index            | `z-sticky` (30)                                     |
-| Position           | `sticky`, `top: 0`                                  |
+| Property           | Value                                                        |
+|--------------------|--------------------------------------------------------------|
+| Height             | 64px                                                         |
+| Background         | `chalk` always. On scroll: `chalk/95` + `backdrop-blur(8px)` |
+| Bottom border      | 1px solid `stone/20` always                                  |
+| Padding horizontal | Container padding (`space-md` mobile, `space-xl` desktop)    |
+| Z-index            | `z-sticky` (30)                                              |
+| Position           | `fixed`, `top: 0`                                            |
 
 **Logo**:
 - Left-aligned
-- Wordmark: "FIORD" in Jost 500, 16px, `letter-spacing: 0.2em`, uppercase, color `obsidian`
-- Below wordmark: "LEATHER" in Jost 300, 10px, `letter-spacing: 0.3em`, uppercase, color `stone`
-- Total logo block height: approximately 32px
+- Wordmark: `FJORDLEATHER` in Cormorant Garamond 400, 18px, `letter-spacing: 0.08em`, color `obsidian`
 
-**Navigation Links** (centered):
-- Font: `text-overline` treatment (Jost 500, 11px, `letter-spacing: 0.15em`, uppercase)
-- Color: `obsidian`
-- Gap between links: `space-xl` (32px)
-- Items: Women, Men, Objects, Artisan, Stories
+**Navigation Links** (right-aligned, hidden below `lg`):
+- Font: Jost 300, 12px, `letter-spacing: 0.12em`, uppercase
+- Color: `stone` inactive → `obsidian` active/hover
+- Gap between links: `space-xl` (32px — Tailwind `gap-10`)
 
-**Link Hover State**:
-- Underline animation: a 1px `obsidian` line grows from left to right beneath the text
-- Width: 0 to 100% over `gentle` (300ms) with `ease-in-out`
-- Underline sits 4px below the baseline
-
-**Link Active State**:
-- Persistent 1px underline in `obsidian`
-- No additional color change (the underline alone signals active)
-
-**Utility Icons** (right-aligned):
-- Icon size: 20px
-- Color: `obsidian`
-- Gap between icons: `space-lg` (24px)
-- Cart badge: 14px circle (`radius-full`), background `obsidian`, text `chalk`, Jost 500, 9px
-- Hover: color transitions to `bark` over `gentle`
+**Active State**:
+- `text-obsidian` (stone links become obsidian when active)
 
 **Scroll Behavior**:
-- On scroll past 1px: background gains `backdrop-filter: blur(12px)`, `shadow-nav` appears
-- Transition: `gentle` (300ms) for background and shadow
+- On scroll past 1px: background `chalk/95`, `backdrop-filter: blur(8px)`
+- Transition: 300ms `ease-in-out`
 
 ### Mobile Navigation
 
-**Trigger**: Hamburger icon (three lines, 20px wide, 1px stroke, `obsidian`) replaces centered nav links below `lg` (1024px) breakpoint.
+**Trigger**: Hamburger icon (three lines, 20px wide, 1px stroke, `obsidian`) — visible below `lg` breakpoint.
 
 **Drawer**:
-- Slides in from left via `slideInLeft` animation (`drift`, 800ms)
-- Full viewport height, width: 85vw (max 400px)
+- Slides in from the **right** via CSS `translate-x-full → translate-x-0`
+- Duration: 700ms, `cubic-bezier(0.16, 1, 0.3, 1)`
+- Width: 80vw (max 360px)
+- Full viewport height
 - Background: `chalk`
 - Z-index: `z-max` (100)
-- Overlay behind drawer: `obsidian` at 40% opacity, `z-overlay` (40)
+- Overlay behind drawer: `obsidian/30` at `z-overlay` (40)
 
 **Drawer Content**:
-- Padding: `space-2xl` (48px) top, `space-lg` (24px) horizontal
-- Navigation links stacked vertically
-- Font: Cormorant Garamond 300, 28px (display treatment for mobile nav)
-- Color: `obsidian`
-- Gap between links: `space-lg` (24px)
-- Stagger animation: each link fades up with 75ms delay
-- Close button: top-right corner, X icon 20px, padding `space-md`
+- Close button top-right: `×` character, 28px, opacity 60% → 100% on hover
+- Navigation links: Cormorant Garamond 400, 28px, stacked with `gap-6`
+- Color: `obsidian/60` inactive → `obsidian` active/hover
+- Contact email at the bottom: Jost 300, 13px, `stone`
 
 ### Accessibility
 
 - `<nav>` landmark with `aria-label="Main navigation"`
-- Mobile drawer: `role="dialog"`, `aria-modal="true"`, focus trapped within
+- Mobile drawer: `role="dialog"`, `aria-modal="true"`, `aria-label="Navigation menu"`
 - Close on `Escape` key
 - Hamburger: `aria-expanded` toggles, `aria-controls` references drawer ID
-- Skip-to-content link as first focusable element (visible on focus only)
+- Body scroll locked while drawer open
+- Drawer closes on route change
+- Skip-to-content link as first focusable element (visible on focus only), targets `#main-content`
+- **Known gap**: Tab key can escape the drawer. Focus trap not yet implemented.
 
 ---
 
-## 2. Hero Section
+## 2. Hero Section (Homepage)
 
 ### Layout
 
-**Desktop** (>= `lg`):
-- Full-bleed section, no max-width constraint on the image
-- Image occupies the right 65% of the viewport (7 of 12 grid columns, bleeding right)
-- Text content positioned in the left 45%, overlapping the image by approximately 10%
-- This creates an asymmetric, editorial layout where text floats over the image edge
-- Vertical padding: `space-4xl` (96px) top and bottom
+Full-width section, no image. Typography carries the space until real photography arrives.
 
-**Mobile** (< `lg`):
-- Stacked: image on top (full width, `aspect-editorial` 4:5), text below
-- Text padding: `space-lg` (24px) horizontal, `space-xl` (32px) vertical
+| Property           | Value                                  |
+|--------------------|----------------------------------------|
+| Background         | `linen` (`#F0EBE3`) — warm, not chalk |
+| Padding top        | 160px                                  |
+| Padding bottom     | 120px                                  |
 
-### Image
+### Content (left-aligned, max-width 820px)
 
-| Property       | Value                                          |
-|----------------|------------------------------------------------|
-| Object fit     | `cover`                                        |
-| Min height     | 600px desktop, 400px mobile                    |
-| Max height     | 85vh desktop                                   |
-| Loading        | `priority` (Next.js Image with `priority` prop)|
+| Element    | Style                                                                                  |
+|------------|----------------------------------------------------------------------------------------|
+| Overline   | Jost 300, 13px, uppercase, `letter-spacing: 0.2em`, color `cognac`, mb 40px           |
+| Headline   | Cormorant Garamond 400, `clamp(60px, 9vw, 104px)`, `lineHeight: 0.95`, `letterSpacing: -0.03em`, color `obsidian`, mb 48px |
+| Body copy  | Jost 300, 17px, `lineHeight: 1.7`, color `obsidian`, `maxWidth: 380px`, mb 40px       |
+| CTA        | `.cta-primary` — stacked below body copy, not beside it                                |
 
-### Text Content
+### `.cta-primary` class
 
-| Element    | Style                                                                   |
-|------------|-------------------------------------------------------------------------|
-| Overline   | `text-overline` treatment, color `stone`, margin-bottom `space-md`       |
-| Headline   | Cormorant Garamond 300 italic, `text-hero` (72px desktop, 40px mobile), color `obsidian` (or `chalk` on dark images) |
-| Subhead    | Jost 300, `text-body-lg` (18px), color `bark`, max-width 480px, margin-top `space-lg` |
-| CTA Button | Primary button (see Button System), margin-top `space-xl`               |
-
-### Animation
-
-- Content enters via `fadeUp` animation (`drift`, 800ms, `ease-out`)
-- Stagger: overline at 0ms, headline at 150ms, subhead at 300ms, CTA at 450ms
-- Triggered on page load (hero is always above the fold)
+Defined in `globals.css`. Obsidian fill, chalk text, 14px Jost 400 uppercase, `letter-spacing: 0.14em`, `padding: 16px 40px`. Hover → `bark`. Zero border-radius.
 
 ### Accessibility
 
-- `<section>` with `aria-label` describing the campaign or collection
-- Hero image: decorative if text conveys the same message (`alt=""`), otherwise descriptive alt text
-- CTA button must have descriptive text (not "Shop Now" alone -- prefer "Shop the Fjord Collection")
+- `<section>` with `aria-label`
+- One `<h1>` per page — this is it
+- CTA must have descriptive text
 
 ---
 
@@ -132,64 +104,45 @@
 
 ### Dimensions
 
-| Property         | Value                              |
-|------------------|------------------------------------|
-| Width            | Fluid, determined by grid column   |
-| Image ratio      | 3:4 (`aspect-product`)             |
-| Internal padding | 0 (image flush to edges), `space-md` (16px) below image for text |
-| Gap below image  | `space-md` (16px)                  |
-| Text area height | Auto                               |
+| Property    | Value                              |
+|-------------|------------------------------------|
+| Width       | Fluid, determined by grid column   |
+| Image ratio | 3:4 (`aspect-product`)             |
 
 ### Image Area
 
-- `overflow: hidden` for hover scale effect
-- Background: `linen` (visible during image load)
-- Next.js `<Image>` with `sizes` attribute for responsive loading
-- Skeleton loader: `linen` background with a subtle shimmer animation (gradient moving left to right, `drift` duration, infinite loop)
+- `overflow: hidden` for hover scale
+- Background: `linen` (visible during load / placeholder)
+- Next.js `<Image>` with `fill` and `sizes` attribute
 
 ### Text Content
 
 | Element       | Style                                                             |
 |---------------|-------------------------------------------------------------------|
-| Category      | `text-overline` treatment, color `stone`, margin-bottom `space-xs` |
-| Product Name  | Cormorant Garamond 600, `text-title` (22px), color `obsidian`, margin-bottom `space-xs` |
-| Material      | Jost 300, `text-body-sm` (14px), color `stone`                    |
-| Price         | Jost 400, `text-body` (16px), color `obsidian`, margin-top `space-sm` |
+| Category      | `.text-style-overline`, color `stone`                            |
+| Product Name  | Cormorant Garamond 400, 22px, `leading-tight`, color `obsidian`  |
+| Price         | Jost 300, 16px, color `obsidian`                                 |
 
 ### States
 
-**Default**:
-- No shadow
-- Image at `scale(1)`
-- Cursor: `pointer` (entire card is a link)
+**Default**: No shadow. Image at `scale(1)`.
 
-**Hover**:
-- Image scales to `1.03` over `gentle` (300ms) with `ease-in-out`
-- Shadow transitions from none to `shadow-product`
-- Product name color remains `obsidian` (no color change)
-- No underline appears on hover
+**Hover**: Image scales to `1.03` over 500ms `cubic-bezier(0.16, 1, 0.3, 1)`. No shadow added.
 
-**Focus-visible**:
-- `outline: 2px solid fjord`, `outline-offset: 2px` on the card wrapper
-- No other visual change
+**Focus-visible**: `outline: 2px solid cognac`, `outline-offset: 2px` on the card link.
 
-**Loading (Skeleton)**:
-- Image area: `linen` background, shimmer gradient animation
-- Text lines: 3 rounded rectangles (`radius-sm`), `linen` background, shimmer
-- Line widths: 40% (category), 80% (name), 30% (price)
+### "New" Badge
+
+- Absolute top-left of image, `z-raised`
+- Jost 500, 9px, uppercase, `letter-spacing: 0.12em`
+- Background: `cognac`, text: `chalk`
+- Zero border-radius
 
 ### Accessibility
 
-- Entire card wrapped in a single `<a>` tag linking to the PDP
-- `aria-label` includes full product info: "Intrecciato Medium Tote, Espresso, $3,200"
-- Image `alt` describes the product visually: "Espresso brown woven leather tote bag"
-- Skeleton state: `aria-busy="true"`, `aria-label="Loading product"`
-
-### Implementation Notes
-
-- Use Next.js `<Link>` wrapping the card for client-side navigation
-- Image: `<Image>` component with `fill` and `sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"`
-- Card hover scale only applies to the image container, not the entire card
+- Entire card is a single `<Link>` wrapping image + text
+- `aria-label` on the link: `"${name} — ${formatPrice(price, currency)}"`
+- Image `alt` describes the product
 
 ---
 
@@ -197,78 +150,55 @@
 
 ### Shared Properties
 
-| Property         | Value                                   |
-|------------------|-----------------------------------------|
-| Font             | Jost 500, `letter-spacing: 0.1em`, uppercase |
-| Border radius    | `radius-none` (0px) -- sharp edges      |
-| Cursor           | `pointer`                                |
-| Transition       | All properties over `gentle` (300ms) with `ease-in-out` |
-| Focus ring       | 2px solid `fjord`, offset 2px            |
-| Disabled opacity | 0.4, `cursor: not-allowed`               |
+| Property      | Value                                                  |
+|---------------|--------------------------------------------------------|
+| Font          | Jost 400–500, `letter-spacing: 0.1em`, uppercase       |
+| Border radius | 0px — sharp edges, brand signature                     |
+| Cursor        | `pointer`                                              |
+| Transition    | All properties 300ms `cubic-bezier(0.76, 0, 0.24, 1)` |
+| Focus ring    | `2px solid cognac`, `outline-offset: 2px`              |
+| Disabled      | `opacity: 0.4`, `cursor: not-allowed`                  |
 
 ### Sizes
 
-| Size | Font Size | Padding (y / x)        | Min Width | Height |
-|------|-----------|------------------------|-----------|--------|
-| `sm` | 10px      | `space-sm` / `space-md` | 100px     | 36px   |
-| `md` | 11px      | `space-sm` / `space-lg` | 140px     | 44px   |
-| `lg` | 12px      | 14px / `space-xl`       | 180px     | 52px   |
+| Size | Font Size | Height | Padding (x) | Min Width |
+|------|-----------|--------|-------------|-----------|
+| `sm` | 12px      | 40px   | 20px        | 100px     |
+| `md` | 13px      | 48px   | 28px        | 140px     |
+| `lg` | 14px      | 56px   | 40px        | 200px     |
 
 ### Variants
 
 #### Primary
 
-| State    | Background  | Text    | Border |
-|----------|-------------|---------|--------|
-| Default  | `obsidian`  | `chalk` | None   |
-| Hover    | `bark`      | `chalk` | None   |
-| Active   | `espresso`  | `chalk` | None   |
-| Disabled | `obsidian` at 0.4 opacity | `chalk` | None |
-| Loading  | `obsidian`  | Hidden (spinner visible) | None |
+| State    | Background | Text    |
+|----------|------------|---------|
+| Default  | `cognac`   | `chalk` |
+| Hover    | `bark`     | `chalk` |
+| Active   | `espresso` | `chalk` |
+| Disabled | `cognac` at 0.4 opacity | `chalk` |
 
 #### Secondary
 
-| State    | Background    | Text       | Border                |
-|----------|---------------|------------|-----------------------|
-| Default  | Transparent   | `obsidian` | 1px solid `obsidian`  |
-| Hover    | `obsidian`    | `chalk`    | 1px solid `obsidian`  |
-| Active   | `espresso`    | `chalk`    | 1px solid `espresso`  |
-| Disabled | Transparent at 0.4 | `obsidian` at 0.4 | 1px solid `stone` |
+| State    | Background  | Text       | Border               |
+|----------|-------------|------------|----------------------|
+| Default  | Transparent | `obsidian` | 1px solid `obsidian` |
+| Hover    | `obsidian`  | `chalk`    | 1px solid `obsidian` |
+| Active   | `espresso`  | `chalk`    | 1px solid `espresso` |
+| Disabled | Transparent | `obsidian` at 0.4 | 1px solid `stone` |
 
 #### Ghost
 
-| State    | Background  | Text       | Decoration              |
-|----------|-------------|------------|--------------------------|
-| Default  | Transparent | `obsidian` | None                     |
-| Hover    | Transparent | `obsidian` | 1px underline, left-to-right animation |
-| Active   | Transparent | `bark`     | 1px underline            |
-| Disabled | Transparent | `stone`    | None                     |
+| State    | Background  | Text       | Decoration                          |
+|----------|-------------|------------|-------------------------------------|
+| Default  | Transparent | `obsidian` | Bottom border `obsidian`            |
+| Hover    | Transparent | `obsidian` | 60% opacity                         |
+| Active   | Transparent | `bark`     | Bottom border                       |
+| Disabled | Transparent | `stone`    | No border, `opacity: 1`             |
 
-#### Icon Button
+### Implementation Note
 
-| Property    | Value                                   |
-|-------------|-----------------------------------------|
-| Size        | 44px square (touch target minimum)       |
-| Icon size   | 20px                                     |
-| Background  | Transparent                              |
-| Hover       | Background `linen`                       |
-| Border      | None                                     |
-| Radius      | `radius-none`                            |
-
-### Loading State
-
-- Spinner: 16px circle, 2px stroke, `chalk` (primary) or `obsidian` (secondary)
-- Spinner animation: `rotate 1s linear infinite`
-- Button text hidden via `opacity: 0` (button maintains its size)
-- `aria-busy="true"`, `aria-disabled="true"` while loading
-
-### Accessibility
-
-- Minimum touch target: 44px on all interactive buttons
-- `<button>` element (never `<div>` or `<span>`)
-- Icon-only buttons require `aria-label`
-- Loading state: `aria-busy="true"`, visually hidden "Loading" text for screen readers
-- Disabled buttons remain in the tab order with `aria-disabled="true"` (not `disabled` attribute, which removes from tab order)
+`Button` renders as `<Link>` when `href` is passed, as `<button>` otherwise. The `.cta-primary` CSS class in `globals.css` is a simpler alternative safe for Server Components (no client-side interactivity needed).
 
 ---
 
@@ -276,289 +206,150 @@
 
 ### Text Input
 
-**Structure**: Label above, input below. No box border -- bottom border only.
+Bottom-border-only style — no box border.
 
-| Property             | Value                                       |
-|----------------------|---------------------------------------------|
-| Height               | 48px                                         |
-| Background           | Transparent                                  |
-| Border               | None except bottom: 1px solid `stone`        |
-| Border (focus)       | Bottom: 2px solid `fjord`                    |
-| Border (error)       | Bottom: 2px solid `error`                    |
-| Font                 | Jost 300, `text-body` (16px), color `obsidian` |
-| Padding              | 0 horizontal, `space-sm` (8px) bottom        |
-| Placeholder color    | `stone`                                      |
-| Caret color          | `fjord`                                      |
+| Property          | Value                                    |
+|-------------------|------------------------------------------|
+| Height            | 48px                                     |
+| Background        | Transparent                              |
+| Border            | Bottom only: 1px solid `stone`           |
+| Border (focus)    | Bottom: 2px solid `obsidian`             |
+| Border (error)    | Bottom: 2px solid `error`                |
+| Font              | Jost 300, 16px, color `obsidian`         |
+| Placeholder color | `stone`                                  |
 
-**Label**:
-- Default: Jost 400, `text-label` (12px), color `stone`, positioned above input
-- Animated float: when input is empty and unfocused, label sits at the input text baseline position (Jost 300, 16px, `stone`). On focus or when filled, label floats up to its position above with `text-label` size. Transition: `gentle` (300ms) with `ease-out`.
-- Color on focus: `fjord`
+**Label**: Jost 300, 13px, color `stone`, positioned above input.
 
-**Error State**:
-- Border bottom: 2px solid `error`
-- Error message: Jost 400, `text-caption` (13px), color `error`, margin-top `space-xs` (4px)
-- `aria-invalid="true"`, `aria-describedby` linking to error message ID
-
-**Helper Text**:
-- Jost 400, `text-caption` (13px), color `stone`, margin-top `space-xs`
-
-### Select
-
-- Same bottom-border-only style as text input
-- Custom chevron icon (12px, `stone`, rotates on open)
-- Dropdown: background `chalk`, `shadow-md`, `z-dropdown`
-- Option hover: background `linen`
-- Option font: Jost 300, `text-body` (16px)
+**Error State**: Border bottom 2px `error`. Error message: Jost 400, 13px, `error`, margin-top 4px. `aria-invalid="true"`, `aria-describedby` pointing to error message.
 
 ### Textarea
 
-- Same bottom-border style, extends to all four sides as a 1px `stone` border
-- Min-height: 120px
-- Resize: vertical only
-- Padding: `space-md` (16px)
-- Focus: full border changes to 1px solid `fjord`
+Same bottom-border style. Min-height 120px. Resize: vertical only. On focus: `border-color: obsidian`.
 
 ### Accessibility
 
-- Every input must have an associated `<label>` (visible or `sr-only`)
+- Every input has an associated `<label>`
 - Error messages linked via `aria-describedby`
-- Required fields: `aria-required="true"` and visible "(Required)" text in label
-- Inputs must not rely on placeholder text as the only label
-- Color is never the sole indicator of error state (border + icon + text message)
+- Color is never the sole indicator of error state
 
 ---
 
-## 6. Breadcrumb
-
-Reference: Matches the breadcrumb visible in reference images (`Homepage > Women > Bags`).
-
-### Structure
-
-Horizontal list: `Home` > `Category` > **`Current Page`**
-
-| Property            | Value                                            |
-|---------------------|--------------------------------------------------|
-| Font                | Jost 400, `text-label` (12px)                     |
-| Link color          | `stone`                                           |
-| Current page color  | `obsidian`, font-weight 500                       |
-| Separator           | `>` character, color `stone`, padding 0 `space-sm` (8px) each side |
-| Vertical position   | `space-lg` (24px) below nav, `space-lg` above page content |
-
-### States
-
-- Link hover: color transitions to `obsidian` over `swift` (150ms)
-- Focus-visible: standard `fjord` focus ring on individual links
-
-### Accessibility
-
-- `<nav>` with `aria-label="Breadcrumb"`
-- `<ol>` list structure for correct semantics
-- Current page: `aria-current="page"`
-- Separator is decorative: inserted via CSS (`::after`) or `aria-hidden="true"` on the character
-
----
-
-## 7. Image Gallery / Carousel
-
-Reference: Matches the PDP layout in reference image (`image.png`) -- large product image with dot navigation on the left side.
+## 6. Image Gallery (PDP)
 
 ### Layout
 
 **Desktop** (>= `lg`):
-- Main image: large, occupying approximately 60% of the PDP width
-- Thumbnail strip: vertical, positioned to the left of the main image
-- Thumbnails: 64px wide, `aspect-product` (3:4), gap `space-sm` (8px)
-- Active thumbnail: 1px border `obsidian`; inactive: 1px border `stone` at 30% opacity
+- Main image: ~60% of PDP width
+- Thumbnail strip: vertical, to the left of the main image
+- Thumbnails: 64px wide, `aspect-product` (3:4), gap 8px
+- Active thumbnail: 1px border `obsidian`; inactive: `stone/30`
 
 **Mobile** (< `lg`):
-- Full-width swipeable carousel
-- Dot indicators on the left side, vertically stacked (matching reference image exactly)
-- Active dot: 8px circle, `obsidian`
-- Inactive dots: 6px circle, `stone`
-- Dot gap: `space-sm` (8px)
-- Dots positioned: left side, vertically centered against the image
-
-### Image
-
-| Property       | Value                                  |
-|----------------|----------------------------------------|
-| Background     | `linen` (loading placeholder)          |
-| Aspect ratio   | `aspect-product` (3:4)                 |
-| Object fit     | `contain` on white/light background    |
-| Transition     | `fadeIn` on image load                 |
+- Full-width horizontal scroll
+- Thumbnail strip scrolls horizontally below the main image
 
 ### Interaction
 
-- **Swipe**: Touch gesture on mobile, drag on desktop (optional)
-- **Thumbnail click**: Main image crossfades (`fadeIn`, `slow`)
-- **Keyboard**: Arrow keys navigate between images when gallery is focused
-- **Zoom**: On desktop, click main image to open fullscreen lightbox (`z-overlay`)
+- Thumbnail click: sets active image
+- Keyboard: Arrow keys navigate when `tabIndex={0}` gallery region has focus — scoped to `onKeyDown` on the region element (not a global `window` listener)
 
 ### Accessibility
 
-- Gallery: `role="region"`, `aria-label="Product images"`
+- `role="region"`, `aria-label="Product images"`
 - `aria-roledescription="carousel"` on the container
-- Each image: `role="tabpanel"`, `aria-label="Product image [n] of [total]"`
-- Dots/thumbnails: `role="tablist"`, each is `role="tab"` with `aria-selected`
-- Previous/Next (if visible): `aria-label="Previous image"` / `aria-label="Next image"`
+- Each image: descriptive `alt` text
+- Focus ring: `outline: 2px solid cognac`
 
 ---
 
-## 8. Price Display
+## 7. AnimateOnScroll
 
-### Regular Price
+Wrapper component using `IntersectionObserver`. Adds `.is-visible` class to child elements with `[data-animate="fade-up"]` when they enter the viewport.
 
-| Property    | Value                                  |
-|-------------|----------------------------------------|
-| Font        | Jost 400, `text-body-lg` (18px)        |
-| Color       | `obsidian`                              |
-| Format      | Currency symbol, no space, comma-separated thousands: `$3,200` |
+CSS (in `globals.css`):
+```css
+[data-animate="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-animate="fade-up"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+```
 
-### Sale Price
+Use `style={{ transitionDelay: `${i * 80}ms` }}` on each staggered child.
 
-| Element         | Style                                                    |
-|-----------------|----------------------------------------------------------|
-| Sale price      | Jost 400, `text-body-lg` (18px), color `error`           |
-| Original price  | Jost 300, `text-body-sm` (14px), color `stone`, `line-through` decoration |
-| Layout          | Sale price left, original price right with `space-sm` (8px) gap |
-
-### PDP Price (larger)
-
-| Property    | Value                                  |
-|-------------|----------------------------------------|
-| Font        | Jost 400, 24px                         |
-| Color       | `obsidian`                              |
-
-### Accessibility
-
-- Prices wrapped in `<span>` with `aria-label` providing full price context: `aria-label="Price: $3,200"` or `aria-label="Sale price: $2,400, was $3,200"`
-- Currency always visible (never icon-only)
-- Sale: visually hidden text "Original price" and "Sale price" for screen readers
+Respects `prefers-reduced-motion` via the global rule in `globals.css`.
 
 ---
 
-## 9. Badge / Tag
-
-### Visual Style
-
-| Property         | Value                                       |
-|------------------|---------------------------------------------|
-| Font             | Jost 400, 10px, `letter-spacing: 0.1em`, uppercase |
-| Padding          | `space-xs` (4px) vertical, `space-sm` (8px) horizontal |
-| Border radius    | `radius-none` (0px) -- sharp edges           |
-| Display          | Inline-flex, center-aligned                   |
-
-### Variants
-
-| Variant     | Background  | Text        |
-|-------------|-------------|-------------|
-| New         | `obsidian`  | `chalk`     |
-| Sale        | `error`     | `chalk`     |
-| Bestseller  | Transparent | `obsidian`, border: 1px solid `stone` |
-| Limited     | `fjord`     | `chalk`     |
-
-### Positioning on Product Cards
-
-- Absolute positioned: top-left corner of the image area
-- Offset: `space-md` (16px) from top and left edges
-- Z-index: `z-raised` (10)
-
-### Accessibility
-
-- Badges are informational: include in the card's `aria-label`
-- If badge conveys critical info (e.g., "Sale"), it must not rely on color alone (text content carries the meaning)
-
----
-
-## 10. Page Layouts
+## 8. Page Layouts
 
 ### Homepage
 
-**Structure** (top to bottom):
-1. **Navigation** (sticky)
-2. **Hero Section** -- full-bleed editorial image with campaign text
-3. **Category Row** -- 3 columns desktop, horizontal scroll mobile. Large editorial images (4:5) with category name overlay. Gap: `space-xl` (32px)
-4. **Featured Products** -- Heading (Cormorant Garamond 300, `text-display`) + 4-column product grid. Section padding: `space-4xl` (96px) vertical
-5. **Editorial Band** -- Full-bleed image with text overlay (alternating left/right alignment on successive bands). Background: `espresso` or editorial photograph
-6. **New Arrivals Carousel** -- Horizontally scrolling product cards with peek (shows edge of next card). Heading + "View All" ghost link
-7. **Brand Story** -- Two-column (text left, image right), padded within `container-fiord`. Text: Cormorant Garamond 300 italic pull quote + Jost body paragraph
-8. **Footer** -- Background `espresso`, text `stone`/`chalk`
+Top to bottom:
+1. **Navigation** (fixed)
+2. **Hero** — linen background, left-aligned large Cormorant heading, cognac overline, body copy, `.cta-primary`
+3. **Selected Works** — chalk background, 3-column product grid with `AnimateOnScroll`
+4. **Pull Quote** — linen background, large italic Cormorant blockquote, left-aligned
+5. **Materials** — chalk background, 3-column text grid with cognac overlines
+6. **Footer**
 
-**Section Vertical Spacing**: `space-3xl` (64px) mobile, `space-4xl` (96px) desktop.
+### Catalog
 
-### Product Listing Page (PLP)
-
-**Structure**:
-1. **Navigation** (sticky)
-2. **Breadcrumb** -- `space-lg` below nav
-3. **Page Title** -- Cormorant Garamond 400, `text-headline` (40px), `space-lg` below breadcrumb
-4. **Filter/Sort Bar** -- Height 48px, bottom border 1px `stone`. Filter triggers on left (Category, Color, Material, Size, Price), Sort dropdown on right. Font: `text-overline` treatment
-5. **Product Grid** -- `container-fiord`, responsive columns:
-   - Mobile: 2 columns, gap `space-md` (16px)
-   - Tablet (`md`): 2 columns, gap `space-lg` (24px)
-   - Desktop (`lg`): 3 columns, gap `space-xl` (32px)
-   - Large (`xl`): 4 columns, gap `space-xl` (32px)
-6. **Pagination** -- Centered, ghost-style page numbers. Active page: `obsidian` with underline. Prev/Next as ghost buttons.
-7. **Footer**
-
-**Product Count**: Jost 400, `text-body-sm`, color `stone`, positioned top-right of grid.
+1. **Navigation** (fixed)
+2. **Sticky filter bar** — category filter pills, client-side filter (no reload)
+3. **Product grid** — 1 col mobile, 2 col tablet, 3 col desktop
 
 ### Product Detail Page (PDP)
 
-**Structure**:
-1. **Navigation** (sticky)
-2. **Breadcrumb** -- `space-lg` below nav
-3. **Product Section** -- Two-column layout within `container-fiord`:
-   - **Left column (55%)**: Image gallery (see Image Gallery component)
-   - **Right column (45%)**: Product information, padding-left `space-2xl` (48px)
-4. **Product Information** (right column, top to bottom):
-   - Category: `text-overline`, color `stone`
-   - Product Name: Cormorant Garamond 400, `text-headline` (40px on desktop, 28px mobile)
-   - Price: Jost 400, 24px, margin-top `space-md`
-   - Short Description: Jost 300, `text-body` (16px), color `bark`, margin-top `space-lg`, max-width 480px
-   - Color Selector: Color swatches (24px circles with 1px border, gap `space-sm`), margin-top `space-xl`
-   - Add to Cart: Primary button `lg`, full width, margin-top `space-xl`
-   - Accordion sections below (Details, Materials, Shipping): border-top 1px `stone`, padding `space-md` vertical. Toggle icon rotates. Font: Jost 400, `text-body-sm` for headers; Jost 300, `text-body-sm` for content.
-5. **Related Products** -- Section below, heading `text-subhead`, 4-column product card grid
-6. **Footer**
+1. **Navigation** (fixed)
+2. **Two-column layout** (60/40):
+   - Left: `ImageGallery`
+   - Right: sticky detail panel — category overline, name, price, description, materials, dimensions, Inquire CTA (mailto link)
+3. **Related products** — 4-column grid below
+4. **Footer**
 
-**Mobile PDP**: Single column. Image gallery becomes swipeable carousel with dot indicators. Product info below.
+### About
 
-### Accessibility (All Layouts)
+4 sections: hero statement, craft process, materials (full-bleed espresso maker's blockquote), values.
 
-- Semantic HTML: `<header>`, `<main>`, `<footer>`, `<section>`, `<article>`, `<nav>`
-- Heading hierarchy: exactly one `<h1>` per page, no skipped levels
-- Landmark regions for all major page sections
-- Skip-to-content link as first focusable element
-- All interactive elements reachable by keyboard in logical order
-- Images: meaningful alt text on product images, `alt=""` on decorative images
-- Pagination: `<nav>` with `aria-label="Pagination"`, current page `aria-current="page"`
-- Filter panel on mobile: opens as a dialog with focus trap
+### Contact
+
+Two-column on desktop: contact info left, form right. Form fields: bottom-border-only. Submit: mailto link.
 
 ---
 
-## Implementation Notes (General)
+## 9. Footer
+
+**Background**: `espresso`
+**Text**: `stone` / `chalk`
+**Layout**: 3 columns on desktop, stacked mobile
+**Content**: Brand name + tagline, nav links, contact email
+
+---
+
+## Implementation Notes
 
 ### Next.js Conventions
 
-- Use the App Router (`/app` directory)
-- Image optimization via `next/image` -- always specify `sizes` and use `fill` with parent positioning
-- Hero images: `priority` prop for LCP optimization
-- Product images: `loading="lazy"` (default)
-- Metadata: use `generateMetadata` for SEO per page
+- App Router (`/app` directory), Server Components by default
+- Event handlers and hooks require `'use client'` directive
+- `next/image` with `fill` + `sizes` for all product images
+- Hero images: `priority` prop
+- `generateMetadata` for per-page SEO
 
-### Tailwind CSS v4 Usage
+### Tailwind CSS v4
 
-- All design tokens are available via `@theme` in `tokens.css`
-- Use token-based utilities: `text-obsidian`, `bg-chalk`, `font-display`, `shadow-product`
-- Typography compound classes (`.text-style-hero`, `.text-style-overline`, etc.) are defined in `tokens.css` for convenience but can also be composed from atomic utilities
-- Responsive prefixes: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
-- Container: use `.container-fiord` class or compose with `mx-auto max-w-[1440px] px-4 md:px-8`
+- Tokens via `@theme inline` in `globals.css`
+- Custom utilities: `.container-fiord`, `.cta-primary`, `.text-style-overline`, `.aspect-product`, `.scrollbar-hide`
+- Responsive prefixes: `sm:`, `md:`, `lg:`, `xl:`
 
 ### Performance
 
-- Fonts: loaded via Google Fonts with `display=swap`. Cormorant Garamond and Jost subsets should be preloaded for above-the-fold content.
-- Critical CSS: hero section styles should be inlined or in the initial CSS chunk
+- Fonts loaded via `next/font/google` — no `@import url()` in CSS
+- GPU-accelerated animations only: `transform`, `opacity`. Never animate `width`, `height`, `margin`, or `padding`.
 - Product grid images: use `sizes` to prevent oversized downloads on mobile
-- Animations: GPU-accelerated properties only (`transform`, `opacity`). Never animate `width`, `height`, `top`, `left`, `margin`, or `padding`.

@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fjordleather
 
-## Getting Started
+Static product showcase website for a handmade leather goods brand based in Oslo. Built with Next.js (static export), Tailwind v4, and no external UI libraries.
 
-First, run the development server:
+## Stack
+
+- **Framework**: Next.js 16 App Router, `output: 'export'` (static HTML)
+- **Styling**: Tailwind CSS v4 with `@theme inline` design token system
+- **Fonts**: Cormorant Garamond (display) + Jost (body) via `next/font/google`
+- **Language**: TypeScript
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev       # development server at localhost:3000
+npm run build     # static export to /out
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Adding a product
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run add-product -- path/to/product.json
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See `data/product-intake.example.json` for the expected format. The script validates fields, copies images to `public/images/products/`, and appends the product entry to `data/products.ts`.
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/                    # Next.js App Router pages
+  page.tsx              # Homepage
+  catalog/              # Collection / filter page
+  products/[slug]/      # Product detail page
+  about/                # Craft / brand story
+  contact/              # Contact form
+components/
+  nav/                  # Navigation (sticky, mobile drawer)
+  footer/               # Footer
+  common/               # Button, Container, AnimateOnScroll
+  product-card/         # ProductCard
+  image-gallery/        # ImageGallery (PDP)
+data/
+  products.ts           # All product data
+  categories.ts         # Category definitions
+  types.ts              # TypeScript types
+  utils.ts              # Data access helpers
+lib/
+  constants.ts          # BRAND_NAME, NAV_LINKS, SITE_URL, CONTACT_EMAIL
+  utils.ts              # formatPrice, cn, slugify
+  seo.ts                # generateProductMetadata
+docs/design/            # Design system documentation
+public/
+  images/products/      # Product images (SVG placeholders until real photography)
+  robots.txt
+  sitemap.xml
+scripts/
+  add-product.mjs       # Product intake CLI
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The brand is Nordic minimalist — warm neutrals, generous whitespace, Cormorant Garamond editorial type, no rounded corners, no drop shadows. Full design system documented in `docs/design/design-system.md`.
 
-## Deploy on Vercel
+**Color accent**: Cognac `#8B5A2B` (not Fjord blue — docs updated accordingly).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Recommended: Vercel connected to the GitHub repo (`https://github.com/stanz-stanz/fjordleather`). Framework: Next.js. Output directory: `out`. Auto-deploys on push to `main`.
+
+Update `SITE_URL` in `lib/constants.ts` once the real domain is confirmed. Update `public/sitemap.xml` URLs to match.
+
+## Repository
+
+`https://github.com/stanz-stanz/fjordleather`
