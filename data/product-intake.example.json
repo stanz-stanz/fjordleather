@@ -1,0 +1,23 @@
+{
+  "name": "Varg Belt",
+  "category": "accessories",
+  "price": 165,
+  "currency": "EUR",
+  "shortDescription": "One sentence that captures the object and its material.",
+  "featured": false,
+  "isNew": true,
+  "description": "Full editorial description. Write as many paragraphs as needed.\n\nSeparate paragraphs with \\n\\n. Mention the tannery, the hide, the construction method, and anything distinctive about how this piece is made or how it will age.",
+  "material": "Full-grain vegetable-tanned leather, Badalassi Carlo Pueblo, cognac",
+  "construction": "Hand saddle-stitched with waxed linen thread. Solid brass buckle, unsealed. Edges hand-bevelled and burnished with beeswax.",
+  "dimensions": {
+    "height": "3.5",
+    "width": "110",
+    "unit": "cm"
+  },
+  "patina": "Notes on how the leather ages — colour shifts, patina development, what the owner can expect after months or years of wear.",
+  "images": [
+    { "file": "photo1.jpg", "alt": "Varg Belt in cognac Badalassi Carlo Pueblo leather, flat view" },
+    { "file": "photo2.jpg", "alt": "Varg Belt solid brass buckle detail" },
+    { "file": "photo3.jpg", "alt": "Varg Belt edge and hand-burnished finish detail" }
+  ]
+}

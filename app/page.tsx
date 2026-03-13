@@ -1,341 +1,242 @@
-import Link from 'next/link'
-import Navigation from '@/components/nav/Navigation'
-import Footer from '@/components/footer/Footer'
 import Container from '@/components/common/Container'
 import ProductCard from '@/components/product-card/ProductCard'
 import AnimateOnScroll from '@/components/common/AnimateOnScroll'
+import Link from 'next/link'
 import { getFeaturedProducts } from '@/data/utils'
 
 export default function HomePage() {
   const featured = getFeaturedProducts().slice(0, 3)
 
   return (
-    <>
-      <Navigation />
+    <main id="main-content">
 
-      <main id="main-content">
+      {/* ── HERO ──────────────────────────────────────────────────────
+          Linen background — warm, not a whiteboard.
+          Enormous left-aligned Cormorant. Editorial.
+      ────────────────────────────────────────────────────────────── */}
+      <section
+        aria-label="Fjordleather"
+        style={{
+          backgroundColor: 'var(--color-linen)',
+          paddingTop: '160px',
+          paddingBottom: '120px',
+        }}
+      >
+        <Container>
+          <div style={{ maxWidth: '820px' }}>
 
-        {/* ════════════════════════════════════════════
-            SECTION 1 — Hero
-            Full-viewport height. Typography-led.
-            Left 60% text, right 40% image placeholder.
-        ════════════════════════════════════════════ */}
-        <section
-          aria-label="Fjordleather — handmade leather goods"
-          className="min-h-screen bg-chalk flex flex-col lg:flex-row pt-[72px]"
-        >
-          {/* On mobile: image first, text below */}
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontWeight: 300,
+              fontSize: '13px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.2em',
+              color: 'var(--color-cognac)',
+              marginBottom: '40px',
+            }}>
+              Handmade leather goods — Oslo
+            </p>
 
-          {/* ── Right: Image (mobile: order 1) ─── */}
-          <div
-            className="
-              order-first lg:order-last
-              w-full h-[50vw]
-              lg:w-[40%] lg:h-auto lg:min-h-screen
-              flex-shrink-0
-            "
-          >
-            <div
-              className="
-                w-full h-full
-                bg-linen
-                flex items-center justify-center
-              "
-            >
-              <span
-                className="
-                  font-display italic font-light text-[15px]
-                  text-stone/60
-                  tracking-wide
-                  select-none
-                "
-                aria-hidden="true"
-              >
-                [ Product photography ]
-              </span>
-            </div>
+            <h1 style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 400,
+              fontSize: 'clamp(60px, 9vw, 104px)',
+              lineHeight: '0.95',
+              letterSpacing: '-0.03em',
+              color: 'var(--color-obsidian)',
+              marginBottom: '48px',
+            }}>
+              Objects<br />
+              that <em style={{ fontStyle: 'italic' }}>outlast</em><br />
+              their owners.
+            </h1>
+
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontWeight: 300,
+              fontSize: '17px',
+              lineHeight: '1.7',
+              color: 'var(--color-obsidian)',
+              maxWidth: '380px',
+              marginBottom: '40px',
+            }}>
+              Full-grain Italian leather, cut and stitched
+              entirely by hand. No shortcuts.
+            </p>
+
+            <Link href="/catalog" className="cta-primary">
+              View the Collection
+            </Link>
+
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ── FEATURED PRODUCTS ─────────────────────────────────────────
+          White section — contrast with warm linen above.
+      ────────────────────────────────────────────────────────────── */}
+      <section
+        aria-label="Selected works"
+        style={{
+          backgroundColor: 'var(--color-chalk)',
+          borderTop: '1px solid var(--color-stone)',
+          paddingTop: '80px',
+          paddingBottom: '80px',
+        }}
+      >
+        <Container>
+          <div style={{
+            display: 'flex',
+            alignItems: 'baseline',
+            justifyContent: 'space-between',
+            marginBottom: '48px',
+            gap: '24px',
+            flexWrap: 'wrap',
+          }}>
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 400,
+              fontSize: 'clamp(28px, 3vw, 40px)',
+              lineHeight: '1.1',
+              letterSpacing: '-0.01em',
+              color: 'var(--color-obsidian)',
+              margin: 0,
+            }}>
+              Selected Works
+            </h2>
+
+            <Link href="/catalog" style={{
+              fontFamily: 'var(--font-body)',
+              fontWeight: 300,
+              fontSize: '13px',
+              color: 'var(--color-stone)',
+              textDecoration: 'none',
+              borderBottom: '1px solid var(--color-stone)',
+              paddingBottom: '2px',
+              whiteSpace: 'nowrap',
+              letterSpacing: '0.04em',
+            }}>
+              View all pieces
+            </Link>
           </div>
 
-          {/* ── Left: Text content ─────────────── */}
-          <div
-            className="
-              order-last lg:order-first
-              w-full lg:w-[60%]
-              flex items-center
-              px-6 py-16
-              lg:px-16 lg:py-0
-              xl:px-24
-            "
-          >
-            <div className="max-w-[560px]">
-
-              {/* Overline */}
-              <p
-                className="
-                  text-style-overline text-stone
-                  mb-8
-                "
-                style={{ animationDelay: '0ms' }}
-              >
-                Full-grain Italian leather. Made by hand.
-              </p>
-
-              {/* Hero headline */}
-              <h1
-                className="
-                  font-display font-light text-obsidian
-                  mb-10
-                "
-                style={{
-                  fontSize: 'clamp(52px, 7vw, 96px)',
-                  lineHeight: '0.95',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                Objects that
-                <br />
-                <em style={{ fontStyle: 'italic' }}>outlast</em>
-                <br />
-                their owners.
-              </h1>
-
-              {/* Body copy */}
-              <p
-                className="
-                  font-body font-light text-stone
-                  mb-10
-                "
-                style={{
-                  fontSize: '17px',
-                  lineHeight: '1.7',
-                  maxWidth: '440px',
-                }}
-              >
-                Every piece is cut, stitched, and burnished by hand in our
-                workshop. Full-grain Italian leather. No compromises.
-              </p>
-
-              {/* CTA — ghost link */}
-              <Link
-                href="/catalog"
-                className="
-                  inline-block
-                  font-body font-normal text-obsidian uppercase
-                  border-b border-obsidian
-                  pb-px
-                  hover:opacity-60
-                  transition-opacity duration-300
-                "
-                style={{
-                  fontSize: '12px',
-                  letterSpacing: '0.1em',
-                }}
-              >
-                View the Collection →
-              </Link>
-
-            </div>
-          </div>
-        </section>
-
-
-        {/* ════════════════════════════════════════════
-            SECTION 2 — Featured Products
-            Asymmetric cascade grid. Editorial, not retail.
-        ════════════════════════════════════════════ */}
-        <AnimateOnScroll>
-          <section
-            aria-label="Selected works"
-            className="bg-chalk"
-            style={{ paddingTop: 'var(--space-5xl)', paddingBottom: 'var(--space-5xl)' }}
-          >
-            <Container>
-
-              {/* Section header */}
-              <div className="mb-16">
-                <p className="text-style-overline text-stone mb-4">
-                  The Collection
-                </p>
-                <h2 className="text-style-headline text-obsidian">
-                  Selected Works
-                </h2>
-              </div>
-
-              {/* Asymmetric grid — desktop cascade, mobile stack */}
-              {featured.length > 0 && (
+          <AnimateOnScroll>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: '32px' }}>
+              {featured.map((product, i) => (
                 <div
-                  className="
-                    grid grid-cols-1 gap-4
-                    lg:grid-cols-3 lg:gap-8
-                    lg:items-start
-                  "
+                  key={product.id}
+                  data-animate="fade-up"
+                  style={{ transitionDelay: `${i * 80}ms` }}
                 >
-                  {featured.map((product, i) => {
-                    const marginTops = ['0px', '48px', '96px']
-                    return (
-                      <div
-                        key={product.id}
-                        data-animate="fade-up"
-                        style={{
-                          marginTop: i > 0 ? marginTops[i] : undefined,
-                          transitionDelay: `${i * 120}ms`,
-                        }}
-                      >
-                        <ProductCard product={product} priority={i === 0} />
-                      </div>
-                    )
-                  })}
+                  <ProductCard product={product} priority={i === 0} />
                 </div>
-              )}
-
-              {/* See all link */}
-              <div className="mt-20 flex justify-center">
-                <Link
-                  href="/catalog"
-                  className="
-                    inline-block
-                    font-body font-normal text-obsidian uppercase
-                    border-b border-obsidian
-                    pb-px
-                    hover:opacity-60
-                    transition-opacity duration-300
-                  "
-                  style={{
-                    fontSize: '12px',
-                    letterSpacing: '0.1em',
-                  }}
-                >
-                  See all pieces →
-                </Link>
-              </div>
-
-            </Container>
-          </section>
-        </AnimateOnScroll>
-
-
-        {/* ════════════════════════════════════════════
-            SECTION 3 — Brand Statement
-            Full-width linen band. Italic Cormorant pull quote.
-        ════════════════════════════════════════════ */}
-        <AnimateOnScroll>
-          <section
-            aria-label="Brand philosophy"
-            className="bg-linen"
-            style={{
-              paddingTop: '120px',
-              paddingBottom: '120px',
-            }}
-          >
-            <div
-              className="
-                mx-auto px-6 md:px-8
-                flex flex-col items-center text-center
-              "
-              style={{ maxWidth: '680px' }}
-            >
-              <blockquote
-                data-animate="fade-up"
-                className="font-display font-normal italic text-obsidian"
-                style={{
-                  fontSize: '26px',
-                  lineHeight: '1.5',
-                }}
-              >
-                Leather is a living material. It marks time, absorbs habit,
-                tells the story of its use. We make objects that are meant to
-                age — that look better at forty years than at four days.
-              </blockquote>
-
-              <p
-                data-animate="fade-up"
-                className="font-body font-light text-stone mt-8"
-                style={{
-                  fontSize: '12px',
-                  letterSpacing: '0.05em',
-                  transitionDelay: '160ms',
-                }}
-              >
-                — Fjordleather, Oslo
-              </p>
+              ))}
             </div>
-          </section>
-        </AnimateOnScroll>
+          </AnimateOnScroll>
+
+        </Container>
+      </section>
 
 
-        {/* ════════════════════════════════════════════
-            SECTION 4 — Material callout strip
-            3-column. No background. Border-top dividers.
-        ════════════════════════════════════════════ */}
-        <section
-          aria-label="Materials and construction"
-          className="bg-chalk"
-          style={{ paddingTop: 'var(--space-5xl)', paddingBottom: 'var(--space-5xl)' }}
-        >
-          <Container>
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
+      {/* ── PULL QUOTE ────────────────────────────────────────────────
+          Linen again — warm, editorial, large italic type.
+      ────────────────────────────────────────────────────────────── */}
+      <section
+        aria-label="Brand philosophy"
+        style={{
+          backgroundColor: 'var(--color-linen)',
+          borderTop: '1px solid var(--color-stone)',
+          borderBottom: '1px solid var(--color-stone)',
+          paddingTop: '100px',
+          paddingBottom: '100px',
+        }}
+      >
+        <Container>
+          <blockquote style={{
+            fontFamily: 'var(--font-display)',
+            fontWeight: 400,
+            fontStyle: 'italic',
+            fontSize: 'clamp(30px, 4vw, 52px)',
+            lineHeight: '1.35',
+            letterSpacing: '-0.015em',
+            color: 'var(--color-obsidian)',
+            maxWidth: '820px',
+            margin: '0 0 28px',
+          }}>
+            &ldquo;Leather is a living material. It marks time,
+            absorbs habit, tells the story of its use. We make
+            objects meant to age &mdash; that look better at forty
+            years than at four days.&rdquo;
+          </blockquote>
 
-              {/* Column 1 */}
-              <div
-                className="border-t border-stone pt-6"
-              >
-                <p
-                  className="font-body font-medium uppercase text-cognac mb-2"
-                  style={{ fontSize: '11px', letterSpacing: '0.15em' }}
-                >
-                  Full-Grain Italian Leather
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontWeight: 300,
+            fontSize: '13px',
+            letterSpacing: '0.1em',
+            color: 'var(--color-stone)',
+          }}>
+            Fjordleather &mdash; Oslo
+          </p>
+        </Container>
+      </section>
+
+
+      {/* ── MATERIALS ─────────────────────────────────────────────────
+          White section, three columns, cognac overlines.
+      ────────────────────────────────────────────────────────────── */}
+      <section
+        aria-label="Materials and construction"
+        style={{
+          backgroundColor: 'var(--color-chalk)',
+          paddingTop: '80px',
+          paddingBottom: '80px',
+        }}
+      >
+        <Container>
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: '48px' }}>
+            {[
+              {
+                label: 'Full-Grain Italian Leather',
+                body: 'Vegetable-tanned at Badalassi Carlo and Conceria Walpier. Selected for character, grain, and aging quality.',
+              },
+              {
+                label: 'Hand-Stitched',
+                body: 'Waxed linen thread throughout. Saddle-stitched for strength that outlasts machine sewing by decades.',
+              },
+              {
+                label: 'Brass Hardware',
+                body: 'Aged and unlacquered. Every buckle and clasp develops a unique patina alongside the leather.',
+              },
+            ].map(({ label, body }) => (
+              <div key={label} style={{ borderTop: '1px solid var(--color-stone)', paddingTop: '24px' }}>
+                <p style={{
+                  fontFamily: 'var(--font-body)',
+                  fontWeight: 400,
+                  fontSize: '11px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.15em',
+                  color: 'var(--color-cognac)',
+                  marginBottom: '14px',
+                }}>
+                  {label}
                 </p>
-                <p
-                  className="font-body font-light text-stone"
-                  style={{ fontSize: '14px', lineHeight: '1.6' }}
-                >
-                  Vegetable-tanned at Badalassi Carlo
+                <p style={{
+                  fontFamily: 'var(--font-body)',
+                  fontWeight: 300,
+                  fontSize: '16px',
+                  lineHeight: '1.75',
+                  color: 'var(--color-obsidian)',
+                }}>
+                  {body}
                 </p>
               </div>
+            ))}
+          </div>
+        </Container>
+      </section>
 
-              {/* Column 2 */}
-              <div
-                className="border-t border-stone pt-6"
-              >
-                <p
-                  className="font-body font-medium uppercase text-cognac mb-2"
-                  style={{ fontSize: '11px', letterSpacing: '0.15em' }}
-                >
-                  Hand-Stitched
-                </p>
-                <p
-                  className="font-body font-light text-stone"
-                  style={{ fontSize: '14px', lineHeight: '1.6' }}
-                >
-                  Waxed linen thread throughout
-                </p>
-              </div>
-
-              {/* Column 3 */}
-              <div
-                className="border-t border-stone pt-6"
-              >
-                <p
-                  className="font-body font-medium uppercase text-cognac mb-2"
-                  style={{ fontSize: '11px', letterSpacing: '0.15em' }}
-                >
-                  Brass Hardware
-                </p>
-                <p
-                  className="font-body font-light text-stone"
-                  style={{ fontSize: '14px', lineHeight: '1.6' }}
-                >
-                  Aged and unlacquered
-                </p>
-              </div>
-
-            </div>
-          </Container>
-        </section>
-
-      </main>
-
-      <Footer />
-    </>
+    </main>
   )
 }

@@ -18,7 +18,7 @@ const processSteps = [
 
 export default function AboutPage() {
   return (
-    <main>
+    <main id="main-content">
 
       {/* ════════════════════════════════════════════════════════════
           SECTION 1 — Opening

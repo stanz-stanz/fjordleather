@@ -3,14 +3,14 @@
 
 ## Build Progress & Handoff Notes
 
-> **Last updated:** 2026-03-12 — Session 1 complete. All 5 pages built and building cleanly.
+> **Last updated:** 2026-03-13 — Session 2 complete. All priority 1–3 tasks done; accessibility pass complete.
 > Resume by cloning `https://github.com/stanz-stanz/fiordleather.git` and running `npm install && npm run dev`.
 
 ### ✅ Completed
 
 **Design system** (`docs/design/`)
 - `design-system.md` — Brand principles, color, typography, spacing, motion, grid
-- `tokens.css` — Full Tailwind v4 `@theme inline` token system *(note: docs still reference Fjord blue accent — reconciled to Cognac in app/globals.css; update docs next session)*
+- `tokens.css` — Full Tailwind v4 `@theme inline` token system. Accent updated to Cognac `#8B5A2B` (synced with app).
 - `components.md` — Component specs for all 10 components
 
 **Foundation**
@@ -47,24 +47,30 @@
 
 ---
 
+**Session 2 additions**
+- `public/images/products/` — 26 SVG placeholder images for all 10 products (styled per leather/color)
+- `app/icon.svg` — minimal brand favicon (F on obsidian, cognac-light)
+- `public/robots.txt` — allow all, sitemap pointer
+- `public/sitemap.xml` — 14 routes listed
+- `app/globals.css` — added `.is-visible` + `[data-animate]` CSS for AnimateOnScroll; added `.scrollbar-hide`
+- Fixed `--color-fjord` undefined variable in `contact/page.tsx` (both inputs), `Button.tsx`, `ProductCard.tsx`, `ImageGallery.tsx` → replaced with `--color-cognac`
+- Fixed duplicate `<Navigation /><Footer />` in `page.tsx` and `catalog/page.tsx` (layout.tsx is authoritative)
+- Fixed nested `<main>` — removed `<main>` wrapper from `layout.tsx`; added `id="main-content"` to all 5 pages
+- Scoped `ImageGallery` keyboard nav from global `window` listener to gallery element (`tabIndex={0}` + `onKeyDown`); updated ARIA label and `aria-roledescription="carousel"`
+- `docs/design/tokens.css` — synced to Cognac palette, removed Fjord blue
+
 ### ⏳ Pending — Resume Next Session
 
-**Priority 1 — Visual completeness**
-- [ ] **Product images**: All image paths are placeholders (`/images/products/[slug]-1.jpg`). Add real photography OR create CSS/SVG placeholder tiles in `public/images/products/`. Without images, product cards and galleries show broken image slots.
-- [ ] **Favicon**: Replace default Next.js favicon (`app/favicon.ico`) with a Fjordleather mark
-
-**Priority 2 — Polish & correctness**
-- [ ] **Responsive audit**: Test all 5 pages at 375px (mobile), 768px (tablet), 1024px, 1440px. Fix any layout breaks.
-- [ ] **Accessibility pass**: Keyboard nav through product grid, focus trap in mobile nav drawer, ARIA on ImageGallery carousel
-- [ ] **AnimateOnScroll wiring**: Verify `AnimateOnScroll` wrapper is correctly applied around product grids on Homepage and Catalog. Check that `.is-visible` CSS transition is defined in `globals.css`.
-- [ ] **Contact form**: Smoke-test mailto link generation in browser — confirm pre-filled subject/body encodes correctly
-- [ ] **Design system docs sync**: Update `docs/design/tokens.css` to replace Fjord blue accent with Cognac `#8B5A2B` (the app uses cognac but the docs still show the old palette)
-
-**Priority 3 — Deployment prep**
-- [ ] `public/robots.txt` — allow all crawlers
-- [ ] `public/sitemap.xml` — list all static routes for SEO
-- [ ] Configure hosting target (Vercel recommended — connects to GitHub repo, auto-deploys on push; set framework to Next.js, output dir to `out/`)
+**Deployment**
+- [ ] Configure hosting target (Vercel recommended — connect GitHub repo `stanz-stanz/fiordleather`, output dir `out/`)
 - [ ] Update `SITE_URL` in `lib/constants.ts` from placeholder to real domain once known
+- [ ] Update `public/sitemap.xml` URLs once real domain is known
+
+**Remaining polish**
+- [ ] Replace SVG placeholders with real product photography (drop files into `public/images/products/` — filenames already set)
+- [ ] Implement focus trap in mobile nav drawer (`components/nav/Navigation.tsx` — drawer has `role="dialog"` but no focus trap on Tab key)
+- [ ] `lib/constants.ts` — `CONTACT_EMAIL` currently hardcoded in `contact/page.tsx:14` as local const; consider unifying with constants
+- [ ] Responsive audit at real device sizes (375px / 768px / 1024px / 1440px) — no known breakage but untested
 
 ---
 

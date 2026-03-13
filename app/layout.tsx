@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${cormorant.variable} ${jost.variable} antialiased`}>
         <Navigation />
-        <main>{children}</main>
+        {children}
         <Footer />
       </body>
     </html>

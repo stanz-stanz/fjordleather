@@ -47,7 +47,7 @@ export default function ProductDetailPage({
   )}`;
 
   return (
-    <main>
+    <main id="main-content">
       {/* ── Product section ──────────────────────────────────────── */}
       <section
         aria-label={`${product.name} product detail`}

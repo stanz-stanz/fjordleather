@@ -21,9 +21,9 @@ The handles are formed from doubled leather, bonded with contact cement and burn
     dimensions: { height: '38', width: '34', depth: '14', unit: 'cm' },
     patina: 'Pueblo leather is a pull-up hide: it lightens at stress points on first flex and deepens with oil and handling over time. Within six months of daily use, the surface develops a complex two-tone patina that no two bags share.',
     images: [
-      { src: '/images/products/nordfjord-tote-1.jpg', alt: 'Nordfjord Tote in natural tan Badalassi Carlo Pueblo leather, front view', priority: true },
-      { src: '/images/products/nordfjord-tote-2.jpg', alt: 'Nordfjord Tote handle detail showing burnished edges and saddle stitching', priority: false },
-      { src: '/images/products/nordfjord-tote-3.jpg', alt: 'Nordfjord Tote base showing solid brass feet and single-piece construction', priority: false },
+      { src: '/images/products/nordfjord-tote-1.svg', alt: 'Nordfjord Tote in natural tan Badalassi Carlo Pueblo leather, front view', priority: true },
+      { src: '/images/products/nordfjord-tote-2.svg', alt: 'Nordfjord Tote handle detail showing burnished edges and saddle stitching', priority: false },
+      { src: '/images/products/nordfjord-tote-3.svg', alt: 'Nordfjord Tote base showing solid brass feet and single-piece construction', priority: false },
     ],
   },
   {
@@ -46,9 +46,9 @@ A single interior organisation pocket in natural canvas sits flat against the re
     dimensions: { height: '29', width: '37', depth: '9', unit: 'cm' },
     patina: 'Buttero leather develops a burnished, slightly waxy patina. The dark espresso colour lightens at wear points — the flap edge, the strap anchor points — creating a natural highlight that deepens the apparent texture of the hide.',
     images: [
-      { src: '/images/products/stillhet-messenger-1.jpg', alt: 'Stillhet Messenger in dark espresso Conceria Walpier Buttero leather', priority: true },
-      { src: '/images/products/stillhet-messenger-2.jpg', alt: 'Stillhet Messenger strap and brass slider detail', priority: false },
-      { src: '/images/products/stillhet-messenger-3.jpg', alt: 'Stillhet Messenger front pocket with brass turn-clasp', priority: false },
+      { src: '/images/products/stillhet-messenger-1.svg', alt: 'Stillhet Messenger in dark espresso Conceria Walpier Buttero leather', priority: true },
+      { src: '/images/products/stillhet-messenger-2.svg', alt: 'Stillhet Messenger strap and brass slider detail', priority: false },
+      { src: '/images/products/stillhet-messenger-3.svg', alt: 'Stillhet Messenger front pocket with brass turn-clasp', priority: false },
     ],
   },
   {
@@ -71,9 +71,9 @@ The handles are hand-stitched from doubled 3.5mm leather with twelve stitches pe
     dimensions: { height: '30', width: '50', depth: '24', unit: 'cm' },
     patina: 'Minerva Box develops a burnished, waxy patina from handling. The natural colour darkens at contact points — handles, base, and the area beneath the zip — to a warm honey-tan within the first year of regular use.',
     images: [
-      { src: '/images/products/oslo-weekend-duffle-1.jpg', alt: 'Oslo Weekend Duffle in natural Badalassi Carlo Minerva Box leather', priority: true },
-      { src: '/images/products/oslo-weekend-duffle-2.jpg', alt: 'Oslo Weekend Duffle showing brass feet and base reinforcement', priority: false },
-      { src: '/images/products/oslo-weekend-duffle-3.jpg', alt: 'Oslo Weekend Duffle end pocket with solid brass snap hardware', priority: false },
+      { src: '/images/products/oslo-weekend-duffle-1.svg', alt: 'Oslo Weekend Duffle in natural Badalassi Carlo Minerva Box leather', priority: true },
+      { src: '/images/products/oslo-weekend-duffle-2.svg', alt: 'Oslo Weekend Duffle showing brass feet and base reinforcement', priority: false },
+      { src: '/images/products/oslo-weekend-duffle-3.svg', alt: 'Oslo Weekend Duffle end pocket with solid brass snap hardware', priority: false },
     ],
   },
   {
@@ -96,9 +96,9 @@ The grab handles at each end are formed from a single piece of 4mm leather folde
     dimensions: { height: '34', width: '64', depth: '28', unit: 'cm' },
     patina: 'Vachetta Naturale is undyed and untreated — a blank canvas. It darkens rapidly on first exposure to light and handling, then stabilises into an even, rich tan over the following months. Oils and water will leave marks that fade or deepen depending on the source.',
     images: [
-      { src: '/images/products/arktis-long-duffle-1.jpg', alt: 'Arktis Long Duffle in natural Conceria Walpier Vachetta Naturale leather', priority: true },
-      { src: '/images/products/arktis-long-duffle-2.jpg', alt: 'Arktis Long Duffle top handle detail showing single-piece construction', priority: false },
-      { src: '/images/products/arktis-long-duffle-3.jpg', alt: 'Arktis Long Duffle open showing canvas lining and internal organisation', priority: false },
+      { src: '/images/products/arktis-long-duffle-1.svg', alt: 'Arktis Long Duffle in natural Conceria Walpier Vachetta Naturale leather', priority: true },
+      { src: '/images/products/arktis-long-duffle-2.svg', alt: 'Arktis Long Duffle top handle detail showing single-piece construction', priority: false },
+      { src: '/images/products/arktis-long-duffle-3.svg', alt: 'Arktis Long Duffle open showing canvas lining and internal organisation', priority: false },
     ],
   },
   {
@@ -121,9 +121,9 @@ All stitching is waxed linen, twelve stitches per inch, run through with a hand 
     dimensions: { height: '9.5', width: '11', unit: 'cm' },
     patina: 'Minerva Box in dark bark develops a deep, burnished patina at contact points — the card slot mouths, the exterior face, and the fold line. The colour warms over time, developing a mahogany depth from the original bark tone.',
     images: [
-      { src: '/images/products/fjell-bifold-1.jpg', alt: 'Fjell Bifold wallet in dark bark Badalassi Carlo Minerva Box leather', priority: true },
-      { src: '/images/products/fjell-bifold-2.jpg', alt: 'Fjell Bifold open showing three card slots per side', priority: false },
-      { src: '/images/products/fjell-bifold-3.jpg', alt: 'Fjell Bifold edge detail showing burnished beeswax finish', priority: false },
+      { src: '/images/products/fjell-bifold-1.svg', alt: 'Fjell Bifold wallet in dark bark Badalassi Carlo Minerva Box leather', priority: true },
+      { src: '/images/products/fjell-bifold-2.svg', alt: 'Fjell Bifold open showing three card slots per side', priority: false },
+      { src: '/images/products/fjell-bifold-3.svg', alt: 'Fjell Bifold edge detail showing burnished beeswax finish', priority: false },
     ],
   },
   {
@@ -146,8 +146,8 @@ The sleeve is cut from a single piece, folded at the base and edge-stitched on t
     dimensions: { height: '9.2', width: '6.8', unit: 'cm' },
     patina: 'Bark-tanned leather develops the slowest, most even patina of any tanning method. Expect the dark natural to deepen into an almost black tone at contact points — the face, the opening edge — over two to three years of daily carry.',
     images: [
-      { src: '/images/products/bark-card-sleeve-1.jpg', alt: 'Bark Card Sleeve in natural dark Conceria Walpier Dollaro leather', priority: true },
-      { src: '/images/products/bark-card-sleeve-2.jpg', alt: 'Bark Card Sleeve showing card slots and single-piece construction', priority: false },
+      { src: '/images/products/bark-card-sleeve-1.svg', alt: 'Bark Card Sleeve in natural dark Conceria Walpier Dollaro leather', priority: true },
+      { src: '/images/products/bark-card-sleeve-2.svg', alt: 'Bark Card Sleeve showing card slots and single-piece construction', priority: false },
     ],
   },
   {
@@ -170,8 +170,8 @@ The interior is left raw — the flesh side of the hide, slightly textured, hone
     dimensions: { height: '9', width: '12.5', unit: 'cm' },
     patina: 'Pueblo pull-up leather develops a two-tone patina — the raised grain lightens with flex, the recessed areas deepen with oil. The cognac colour will warm towards a dark amber over time.',
     images: [
-      { src: '/images/products/krone-coin-pouch-1.jpg', alt: 'Krone Coin Pouch in cognac Badalassi Carlo Pueblo leather with brass snap', priority: true },
-      { src: '/images/products/krone-coin-pouch-2.jpg', alt: 'Krone Coin Pouch open showing raw interior and coin capacity', priority: false },
+      { src: '/images/products/krone-coin-pouch-1.svg', alt: 'Krone Coin Pouch in cognac Badalassi Carlo Pueblo leather with brass snap', priority: true },
+      { src: '/images/products/krone-coin-pouch-2.svg', alt: 'Krone Coin Pouch open showing raw interior and coin capacity', priority: false },
     ],
   },
   {
@@ -194,8 +194,8 @@ Every edge is hand-burnished. The stitching on the gusset is the most demanding 
     dimensions: { height: '8', width: '14', depth: '3', unit: 'cm' },
     patina: 'Vachetta Naturale is entirely undyed. It will develop a warm tan from handling within the first weeks, then deepen gradually. No two pieces age identically — the patina is a record of the specific hands that carry it.',
     images: [
-      { src: '/images/products/lyng-coin-pouch-1.jpg', alt: 'Lyng Coin Pouch in natural cream Conceria Walpier Vachetta leather', priority: true },
-      { src: '/images/products/lyng-coin-pouch-2.jpg', alt: 'Lyng Coin Pouch open showing YKK brass zip and gusseted interior', priority: false },
+      { src: '/images/products/lyng-coin-pouch-1.svg', alt: 'Lyng Coin Pouch in natural cream Conceria Walpier Vachetta leather', priority: true },
+      { src: '/images/products/lyng-coin-pouch-2.svg', alt: 'Lyng Coin Pouch open showing YKK brass zip and gusseted interior', priority: false },
     ],
   },
   {
@@ -218,8 +218,8 @@ The edges are burnished, not painted. The loop end is stitched through once with
     dimensions: { height: '10', width: '2.5', unit: 'cm' },
     patina: 'Each key fob is cut from a different offcut and will age according to its source leather. The brass ring oxidises naturally over months of pocket carry, developing a warm antique tone without polishing.',
     images: [
-      { src: '/images/products/stein-key-fob-1.jpg', alt: 'Stein Key Fob in natural leather with solid brass ring, front view', priority: true },
-      { src: '/images/products/stein-key-fob-2.jpg', alt: 'Stein Key Fob showing burnished edges and loop construction detail', priority: false },
+      { src: '/images/products/stein-key-fob-1.svg', alt: 'Stein Key Fob in natural leather with solid brass ring, front view', priority: true },
+      { src: '/images/products/stein-key-fob-2.svg', alt: 'Stein Key Fob showing burnished edges and loop construction detail', priority: false },
     ],
   },
   {
@@ -242,9 +242,9 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
     dimensions: { height: '12', width: '2', unit: 'cm' },
     patina: 'Minerva Box bridle leather develops a deep, burnished sheen with wrist contact. The wax content in the leather surfaces gradually as the hide is worn, creating a self-polishing effect over months of daily use.',
     images: [
-      { src: '/images/products/vann-watch-strap-1.jpg', alt: 'Vann Watch Strap in Badalassi Carlo Minerva Box leather with brass buckle', priority: true },
-      { src: '/images/products/vann-watch-strap-2.jpg', alt: 'Vann Watch Strap showing tapered profile and hand-burnished edges', priority: false },
-      { src: '/images/products/vann-watch-strap-3.jpg', alt: 'Vann Watch Strap fitted on a wristwatch, showing natural drape', priority: false },
+      { src: '/images/products/vann-watch-strap-1.svg', alt: 'Vann Watch Strap in Badalassi Carlo Minerva Box leather with brass buckle', priority: true },
+      { src: '/images/products/vann-watch-strap-2.svg', alt: 'Vann Watch Strap showing tapered profile and hand-burnished edges', priority: false },
+      { src: '/images/products/vann-watch-strap-3.svg', alt: 'Vann Watch Strap fitted on a wristwatch, showing natural drape', priority: false },
     ],
   },
 ];

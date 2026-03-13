@@ -2,8 +2,6 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import Navigation from '@/components/nav/Navigation'
-import Footer from '@/components/footer/Footer'
 import Container from '@/components/common/Container'
 import ProductCard from '@/components/product-card/ProductCard'
 import AnimateOnScroll from '@/components/common/AnimateOnScroll'
@@ -31,8 +29,6 @@ export default function CatalogPage() {
 
   return (
     <>
-      <Navigation />
-
       <main id="main-content" className="bg-chalk">
 
         {/* ══════════════════════════════════════
@@ -237,8 +233,6 @@ export default function CatalogPage() {
         </Container>
 
       </main>
-
-      <Footer />
     </>
   )
 }

@@ -33,7 +33,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       <Link
         href={`/products/${slug}`}
         aria-label={`${name} — ${formatPrice(price, currency)}`}
-        className="block focus-visible:outline-2 focus-visible:outline-fjord focus-visible:outline-offset-2"
+        className="block focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2"
       >
         {/* ── Image container ───────────────────── */}
         <div className="relative aspect-product overflow-hidden bg-linen">
@@ -96,7 +96,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             </h3>
 
             <span
-              className="font-body font-light text-[16px] text-stone shrink-0 whitespace-nowrap"
+              className="font-body font-light text-[16px] text-obsidian shrink-0 whitespace-nowrap"
               aria-label={`Price: ${formatPrice(price, currency)}`}
             >
               {formatPrice(price, currency)}

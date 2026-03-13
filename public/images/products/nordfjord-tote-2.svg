@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="0.8" y2="1"><stop offset="0%" stop-color="#CDB9A8"/><stop offset="100%" stop-color="#B8A490"/></linearGradient></defs>
+  <rect width="300" height="400" fill="url(#bg)"/>
+  <line x1="0" y1="133" x2="300" y2="133" stroke="#8B5A2B" stroke-width="0.5" opacity="0.2"/>
+  <line x1="0" y1="267" x2="300" y2="267" stroke="#8B5A2B" stroke-width="0.5" opacity="0.2"/>
+  <rect x="130" y="192" width="40" height="0.8" fill="#8B5A2B" opacity="0.65"/>
+  <text x="150" y="178" font-family="Georgia,serif" font-size="9" fill="#8B5A2B" text-anchor="middle" letter-spacing="3" opacity="0.9">BAGS</text>
+  <text x="150" y="213" font-family="Georgia,serif" font-size="14" fill="#3D2B1F" text-anchor="middle">Nordfjord Tote</text>
+  <text x="150" y="232" font-family="Arial,sans-serif" font-size="9" fill="#3D2B1F" text-anchor="middle" opacity="0.55">Handle detail</text>
+  <text x="150" y="383" font-family="Arial,sans-serif" font-size="7" fill="#3D2B1F" text-anchor="middle" letter-spacing="2.5" opacity="0.35">FJORDLEATHER</text>
+</svg>

@@ -20,13 +20,15 @@ export type ButtonProps = ButtonBaseProps &
   )
 
 const variantClasses: Record<ButtonVariant, string> = {
+  // Cognac fill — works on both dark and light backgrounds
   primary: [
-    'bg-obsidian text-chalk border-transparent',
+    'bg-cognac text-chalk border-transparent',
     'hover:bg-bark',
     'active:bg-espresso',
-    'disabled:bg-obsidian disabled:opacity-40 disabled:cursor-not-allowed',
+    'disabled:opacity-40 disabled:cursor-not-allowed',
   ].join(' '),
 
+  // Obsidian outline — for light backgrounds only
   secondary: [
     'bg-transparent text-obsidian border border-obsidian',
     'hover:bg-obsidian hover:text-chalk',
@@ -43,9 +45,9 @@ const variantClasses: Record<ButtonVariant, string> = {
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'h-9 px-4 text-[10px] min-w-[100px]',
-  md: 'h-12 px-6 text-[11px] min-w-[140px]',
-  lg: 'h-14 px-8 text-[12px] min-w-[180px]',
+  sm: 'h-10 px-5 text-[12px] min-w-[100px]',
+  md: 'h-12 px-7 text-[13px] min-w-[140px]',
+  lg: 'h-14 px-10 text-[14px] min-w-[200px]',
 }
 
 const baseClasses = [
@@ -59,7 +61,7 @@ const baseClasses = [
   'transition-[background-color,color,border-color,opacity] duration-300',
   '[transition-timing-function:cubic-bezier(0.76,0,0.24,1)]',
   // Focus
-  'focus-visible:outline-2 focus-visible:outline-fjord focus-visible:outline-offset-2',
+  'focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2',
   // Whitespace
   'whitespace-nowrap',
 ].join(' ')

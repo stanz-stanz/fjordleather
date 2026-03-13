@@ -43,7 +43,7 @@ const inputStyle: React.CSSProperties = {
   color: 'var(--color-obsidian)',
   outline: 'none',
   transition: 'border-color var(--duration-gentle) var(--ease-in-out)',
-  caretColor: 'var(--color-fjord)',
+  caretColor: 'var(--color-cognac)',
 };
 
 /* ── Page ──────────────────────────────────────────────────────── */
@@ -88,7 +88,7 @@ export default function ContactPage() {
   });
 
   return (
-    <main>
+    <main id="main-content">
       <section
         aria-label="Contact"
         style={{
@@ -374,7 +374,7 @@ export default function ContactPage() {
                           outline: 'none',
                           resize: 'vertical',
                           transition: 'border-color var(--duration-gentle) var(--ease-in-out)',
-                          caretColor: 'var(--color-fjord)',
+                          caretColor: 'var(--color-cognac)',
                           minHeight: '120px',
                         }}
                       />

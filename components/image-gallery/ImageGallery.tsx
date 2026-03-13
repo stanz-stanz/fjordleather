@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import type { ProductImage } from '@/data/types'
 
@@ -17,18 +17,15 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
   const safeImages = images.length > 0 ? images : []
   const activeImage = safeImages[activeIndex]
 
-  // Keyboard navigation
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        setActiveIndex((i) => (i === 0 ? safeImages.length - 1 : i - 1))
-      } else if (e.key === 'ArrowRight') {
-        setActiveIndex((i) => (i === safeImages.length - 1 ? 0 : i + 1))
-      }
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      setActiveIndex((i) => (i === 0 ? safeImages.length - 1 : i - 1))
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      setActiveIndex((i) => (i === safeImages.length - 1 ? 0 : i + 1))
     }
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [safeImages.length])
+  }
 
   if (safeImages.length === 0) {
     return (
@@ -41,9 +38,11 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
       {/* ── Primary image ─────────────────────── */}
       <div
         role="region"
-        aria-label={`${productName} — product images`}
-        aria-roledescription="Image gallery"
-        className="relative aspect-product w-full overflow-hidden bg-linen"
+        aria-label={`${productName} gallery — use arrow keys to navigate images`}
+        aria-roledescription="carousel"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        className="relative aspect-product w-full overflow-hidden bg-linen focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2"
       >
         <Image
           key={activeIndex}
@@ -83,7 +82,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
                 onClick={() => setActiveIndex(i)}
                 className={cn(
                   'relative shrink-0 w-[72px] h-[72px] overflow-hidden',
-                  'cursor-pointer focus-visible:outline-2 focus-visible:outline-fjord focus-visible:outline-offset-2',
+                  'cursor-pointer focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2',
                   'transition-opacity duration-300',
                   isActive
                     ? 'ring-1 ring-obsidian opacity-100'
