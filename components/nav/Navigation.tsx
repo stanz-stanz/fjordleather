@@ -91,9 +91,10 @@ export default function Navigation() {
         className={cn(
           'sticky top-0 left-0 right-0 z-[30] h-[56px]',
           'transition-[background-color,border-color,backdrop-filter] duration-300',
+          '[background-color:#0F0D0C]',
           scrolled
-            ? 'bg-linen/95 border-b border-stone/20 backdrop-blur-[8px]'
-            : 'bg-linen border-b border-transparent',
+            ? 'border-b border-stone/20 backdrop-blur-[8px]'
+            : 'border-b border-transparent',
         )}
       >
         <div className="container-fiord h-full flex items-center justify-end">
@@ -105,10 +106,8 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={cn(
-                    'font-body text-[14px] uppercase tracking-[0.12em] transition-colors duration-200',
-                    isActive ? 'text-obsidian' : 'text-stone hover:text-obsidian',
-                  )}
+                  className="font-body font-normal text-[14px] uppercase tracking-[0.14em] transition-colors duration-200"
+                  style={{ color: '#FAF9F7' }}
                 >
                   {link.label}
                 </Link>
@@ -125,9 +124,9 @@ export default function Navigation() {
             onClick={() => setMobileOpen(true)}
             className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]"
           >
-            <span className="block w-5 h-px bg-obsidian" />
-            <span className="block w-5 h-px bg-obsidian" />
-            <span className="block w-5 h-px bg-obsidian" />
+            <span className="block w-5 h-px bg-chalk" />
+            <span className="block w-5 h-px bg-chalk" />
+            <span className="block w-5 h-px bg-chalk" />
           </button>
         </div>
       </header>
@@ -148,7 +147,7 @@ export default function Navigation() {
         aria-label="Navigation menu"
         className={cn(
           'fixed top-0 right-0 bottom-0 z-[100] w-[80vw] max-w-[360px]',
-          'bg-linen flex flex-col border-l border-stone/20',
+          'bg-obsidian flex flex-col border-l border-stone/20',
           'transition-transform duration-700',
           'lg:hidden',
           mobileOpen ? 'translate-x-0' : 'translate-x-full',
