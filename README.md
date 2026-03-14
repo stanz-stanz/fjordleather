@@ -68,7 +68,10 @@ The brand is Nordic minimalist — warm neutrals, generous whitespace, Cormorant
 
 Recommended: Vercel connected to the GitHub repo (`https://github.com/stanz-stanz/fjordleather`). Framework: Next.js. Output directory: `out`. Auto-deploys on push to `main`.
 
-Update `SITE_URL` in `lib/constants.ts` once the real domain is confirmed. Update `public/sitemap.xml` URLs to match.
+Once a domain is confirmed:
+1. Update `SITE_URL` and `CONTACT_EMAIL` in `lib/constants.ts`
+2. Replace the hardcoded email in `contact/page.tsx:14` with the `CONTACT_EMAIL` import
+3. Update `public/sitemap.xml` URLs to the real domain
 
 ## Repository
 

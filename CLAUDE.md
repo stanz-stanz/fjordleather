@@ -1,7 +1,7 @@
 
 ## Build Progress & Handoff Notes
 
-> **Last updated:** 2026-03-13 — Session 2 complete.
+> **Last updated:** 2026-03-14 — Session 3 complete.
 > Repository: `https://github.com/stanz-stanz/fjordleather`
 > Git remote name: `fjordleather`
 > Resume: clone the repo, `npm install && npm run dev`.
@@ -33,7 +33,7 @@
 - `lib/seo.ts` — `generateProductMetadata()`
 
 **Components**
-- `components/nav/Navigation.tsx` — Sticky 64px, always chalk/obsidian (no color flip — hero is light). Scroll-aware backdrop-blur. Mobile slide-in drawer from right. Escape key closes. Body scroll lock while open. Close on route change.
+- `components/nav/Navigation.tsx` — Sticky 64px, always chalk/obsidian (no color flip — hero is light). Scroll-aware backdrop-blur. Mobile slide-in drawer from right. Escape key closes. Body scroll lock while open. Close on route change. Full focus trap implemented.
 - `components/footer/Footer.tsx` — 3-column, espresso background
 - `components/common/Button.tsx` — Primary (cognac fill) / Secondary (obsidian outline) / Ghost. Sizes: sm=12px, md=13px, lg=14px. Zero border-radius. Renders as `<Link>` when `href` passed.
 - `components/common/Container.tsx` — Max-width 1440px responsive wrapper
@@ -66,16 +66,13 @@
 - [ ] **Product images**: All image paths are `.svg` placeholders. Replace with real photography when available. Import via `npm run add-product`.
 - [ ] **Favicon**: `app/icon.svg` is a simple "F" mark — replace with a proper Fjordleather mark if one exists.
 
-**Priority 2 — Polish & correctness**
-- [ ] **Responsive audit**: Test all 5 pages at 375px (mobile), 768px (tablet), 1024px, 1440px. Fix layout breaks.
-- [ ] **Focus trap in mobile nav drawer**: Nav has `role="dialog"` and `aria-modal="true"` but Tab key can still escape the drawer. Needs a proper focus trap implementation.
-- [ ] **Contact form**: Smoke-test mailto link generation in browser — confirm pre-filled subject/body encodes correctly.
-- [ ] **`CONTACT_EMAIL`**: Currently hardcoded in `contact/page.tsx:14` as a local variable. Should be imported from `lib/constants.ts`.
-- [ ] **Sitemap URLs**: Currently use placeholder domain. Update once real domain is known — also update `SITE_URL` in `lib/constants.ts`.
+**Priority 2 — Awaiting domain**
+- [ ] **`CONTACT_EMAIL`** and **`SITE_URL`**: Once domain is confirmed, update both in `lib/constants.ts`. `CONTACT_EMAIL` is also currently hardcoded as a local variable in `contact/page.tsx:14` — replace with the import.
+- [ ] **Sitemap URLs**: Update `public/sitemap.xml` with real domain to match.
+- [ ] **Deployment**: Connect `https://github.com/stanz-stanz/fjordleather` to Vercel. Framework: Next.js. Output dir: `out`. Auto-deploys on push to `main`.
 
-**Priority 3 — Deployment**
-- [ ] Connect GitHub repo `https://github.com/stanz-stanz/fjordleather` to Vercel. Framework: Next.js. Output dir: `out`. Auto-deploys on push to `main`.
-- [ ] Update `SITE_URL` in `lib/constants.ts` from placeholder to real domain.
+**Priority 3 — Polish**
+- [ ] **Contact form**: Smoke-test mailto link in browser — confirm pre-filled subject/body encodes correctly.
 
 ---
 
