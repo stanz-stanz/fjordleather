@@ -106,10 +106,10 @@ export default function Navigation() {
             <Image
               src="/images/logo.png"
               alt="Fjordleather — Crafted by Hand"
-              width={180}
-              height={44}
+              width={700}
+              height={380}
               priority
-              className="h-[40px] w-auto object-contain"
+              className="h-[44px] w-auto"
             />
           </Link>
 
