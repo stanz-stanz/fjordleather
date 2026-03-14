@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
@@ -92,18 +93,24 @@ export default function Navigation() {
           'fixed top-0 left-0 right-0 z-[30] h-[64px]',
           'transition-[background-color,border-color,backdrop-filter] duration-300',
           scrolled
-            ? 'bg-chalk/95 border-b border-stone/20 backdrop-blur-[8px]'
-            : 'bg-chalk border-b border-stone/20',
+            ? 'bg-linen/95 border-b border-stone/20 backdrop-blur-[8px]'
+            : 'bg-linen border-b border-transparent',
         )}
       >
         <div className="container-fiord h-full flex items-center justify-between">
 
           <Link
             href="/"
-            className="font-display font-normal text-[18px] tracking-[0.08em] text-obsidian whitespace-nowrap"
             aria-label={`${BRAND_NAME} — return to homepage`}
           >
-            {BRAND_NAME}
+            <Image
+              src="/images/logo.png"
+              alt="Fjordleather — Crafted by Hand"
+              width={180}
+              height={44}
+              priority
+              className="h-[40px] w-auto object-contain"
+            />
           </Link>
 
           <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-10">
@@ -156,7 +163,7 @@ export default function Navigation() {
         aria-label="Navigation menu"
         className={cn(
           'fixed top-0 right-0 bottom-0 z-[100] w-[80vw] max-w-[360px]',
-          'bg-chalk flex flex-col border-l border-stone/20',
+          'bg-linen flex flex-col border-l border-stone/20',
           'transition-transform duration-700',
           'lg:hidden',
           mobileOpen ? 'translate-x-0' : 'translate-x-full',
