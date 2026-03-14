@@ -27,14 +27,17 @@ Reference sites like Loake inform the *spirit* of this design — confidence wit
 
 ### Primary Palette
 
-| Token       | Name     | Hex       | Usage                                        |
-|-------------|----------|-----------|----------------------------------------------|
-| `obsidian`  | Obsidian | `#0F0D0C` | Primary text, button fills, headers          |
-| `espresso`  | Espresso | `#1E160F` | Footer backgrounds, dark overlays, CTA hover |
-| `bark`      | Bark     | `#3D2B1F` | Hover states on dark elements, CTA hover     |
-| `stone`     | Stone    | `#C4B5A8` | Secondary text, borders, dividers, metadata  |
-| `linen`     | Linen    | `#F0EBE3` | Hero background, section alternation, cards  |
-| `chalk`     | Chalk    | `#FAF9F7` | Page background, nav bar, input backgrounds  |
+| Token       | Name        | Hex       | Usage                                              |
+|-------------|-------------|-----------|-----------------------------------------------------|
+| `obsidian`  | Obsidian    | `#0F0D0C` | Primary text, nav background, button fills          |
+| `espresso`  | Espresso    | `#1E160F` | Footer backgrounds, dark overlays                   |
+| `bark`      | Bark        | `#3D2B1F` | Hover states on dark elements, `.cta-primary` hover |
+| `stone`     | Stone       | `#C4B5A8` | Secondary text, borders, dividers, metadata         |
+| `linen`     | Linen       | `#FEEBCF` | Site header / logo background (sampled from logo)   |
+| `ivory`     | Ivory hero  | `#F0E6D0` | Hero section background — warm, not chalk           |
+| `chalk`     | Chalk       | `#FAF9F7` | **Input backgrounds only.** NEVER a section background. |
+
+> **Rule**: White (`#FFFFFF`), chalk (`#FAF9F7`), or anything that reads as a whiteboard is **forbidden** as a section background. Always use warm tones — linen, ivory, parchment. This applies to every page section without exception.
 
 ### Accent Palette
 
@@ -62,8 +65,9 @@ Reference sites like Loake inform the *spirit* of this design — confidence wit
 
 1. **Cognac is the sole accent.** It is used for overlines, focus rings, the "New" badge, and hover hints. Never as a background for body text.
 2. **Stone is for metadata and decorative text only.** It must never carry essential information without an accompanying Obsidian label.
-3. **Dark backgrounds** (Obsidian, Espresso) are reserved for the footer, mobile navigation drawer, and the `.cta-primary` button. The primary page surface is always Chalk or Linen.
-4. **Linen (`#F0EBE3`) is warmer than Chalk** — use it for the hero and alternating editorial sections to avoid a "whiteboard" feeling.
+3. **Dark backgrounds** (Obsidian, Espresso) are reserved for the sticky nav bar, footer, mobile navigation drawer, and the `.cta-primary` button.
+4. **No white section backgrounds — ever.** Use ivory (`#F0E6D0`) for warm editorial sections, linen (`#FEEBCF`) for the header zone. Chalk is only permitted for input backgrounds within forms.
+5. **Contrast transitions between sections** must feel deliberate: either a clear warm-to-dark shift, or a subtle ivory-to-linen variation. Two sections of almost-the-same-warm-color look like a mistake.
 
 ---
 
@@ -71,12 +75,15 @@ Reference sites like Loake inform the *spirit* of this design — confidence wit
 
 ### Font Families
 
-| Token          | Family             | Role                                  | Fallback Stack                                         |
-|----------------|--------------------|---------------------------------------|--------------------------------------------------------|
-| `font-display` | Cormorant Garamond | Headlines, heroes, editorial display  | `'Cormorant Garamond', 'Georgia', 'Times New Roman', serif` |
-| `font-body`    | Jost               | Body copy, UI, navigation, forms      | `'Jost', 'Helvetica Neue', 'Arial', sans-serif`        |
+| Token                   | Family             | Role                                      | Fallback Stack                                              |
+|-------------------------|--------------------|-------------------------------------------|-------------------------------------------------------------|
+| `font-display`          | EB Garamond        | Headlines, heroes, editorial display      | `'EB Garamond', 'Georgia', 'Times New Roman', serif`        |
+| `font-display-fallback` | Cormorant Garamond | Fallback display (kept for flexibility)   | `'Cormorant Garamond', 'Georgia', serif`                    |
+| `font-body`             | Jost               | Body copy, UI, navigation, forms          | `'Jost', 'Helvetica Neue', 'Arial', sans-serif`             |
 
-Both loaded via `next/font/google` in `app/layout.tsx`. Do not add a Google Fonts `@import url()` in CSS — it is redundant and breaks Turbopack.
+All three loaded via `next/font/google` in `app/layout.tsx`. Do not add a Google Fonts `@import url()` in CSS — it is redundant and breaks Turbopack.
+
+EB Garamond was chosen to match the serif letterforms of the brand logo. Cormorant Garamond is retained as `--font-display-fallback` for compatibility.
 
 ### Type Scale
 

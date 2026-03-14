@@ -4,53 +4,75 @@
 
 ---
 
-## 1. Navigation
+## 1. Site Header
+
+**Component**: `components/nav/SiteHeader.tsx` — Static Server Component. Renders above the sticky nav, in normal document flow.
+
+| Property         | Value                                                                      |
+|------------------|----------------------------------------------------------------------------|
+| Background       | `linen` — `#FEEBCF` (sampled from logo background)                        |
+| `marginBottom`   | `-48px` — pulls the nav upward to overlap the gradient zone               |
+| Position         | Normal flow (not sticky, not fixed)                                        |
+
+**Logo image**:
+- File: `public/images/logo.png`
+- Tag: plain `<img>` (not `next/image` — static export, `images.unoptimized: true`)
+- Width: `80%` of container, max-width `1085px`
+- Left offset: `marginLeft: '1%'`
+- Height: `auto` — no cropping of left/right edges
+- Wraps in a `<Link href="/">` for homepage navigation
+
+**Gradient**:
+- A 48px `<div>` placed as a block element *below* the image (not absolutely positioned over it)
+- `background: linear-gradient(to bottom, #FEEBCF, rgba(254,235,207,0.6) 60%, transparent)`
+- Fades the linen header color into transparency, overlapping the obsidian nav below
+- `pointer-events: none`, `aria-hidden="true"`
+
+> **Do not** use absolute positioning for the gradient — it would overlay the bottom of the logo artwork.
+
+---
+
+## 2. Navigation
 
 ### Desktop Navigation Bar
 
-**Structure**: Full-width sticky bar. Logo left, navigation links right.
+**Component**: `components/nav/Navigation.tsx` — Client Component (`'use client'`).
 
-| Property           | Value                                                        |
-|--------------------|--------------------------------------------------------------|
-| Height             | 64px                                                         |
-| Background         | `chalk` always. On scroll: `chalk/95` + `backdrop-blur(8px)` |
-| Bottom border      | 1px solid `stone/20` always                                  |
-| Padding horizontal | Container padding (`space-md` mobile, `space-xl` desktop)    |
-| Z-index            | `z-sticky` (30)                                              |
-| Position           | `fixed`, `top: 0`                                            |
-
-**Logo**:
-- Left-aligned
-- Wordmark: `FJORDLEATHER` in Cormorant Garamond 400, 18px, `letter-spacing: 0.08em`, color `obsidian`
+| Property           | Value                                                             |
+|--------------------|-------------------------------------------------------------------|
+| Height             | 56px                                                              |
+| Background         | Obsidian (`#0F0D0C`) — always. Never chalk or white.             |
+| Bottom border      | 1px solid `stone/20` on scroll; `transparent` at top             |
+| Backdrop blur      | `backdrop-blur-[8px]` on scroll                                   |
+| Padding horizontal | Container padding (`space-md` mobile, `space-xl` desktop)         |
+| Z-index            | `z-sticky` (30)                                                   |
+| Position           | `sticky`, `top: 0`                                                |
 
 **Navigation Links** (right-aligned, hidden below `lg`):
-- Font: Jost 300, 12px, `letter-spacing: 0.12em`, uppercase
-- Color: `stone` inactive → `obsidian` active/hover
-- Gap between links: `space-xl` (32px — Tailwind `gap-10`)
-
-**Active State**:
-- `text-obsidian` (stone links become obsidian when active)
+- Font: Jost 400, 14px, `letter-spacing: 0.14em`, uppercase
+- Color: chalk (`#FAF9F7`) — applied via inline `style` (Tailwind token resolution unreliable here)
+- Gap between links: `gap-10` (Tailwind)
 
 **Scroll Behavior**:
-- On scroll past 1px: background `chalk/95`, `backdrop-filter: blur(8px)`
-- Transition: 300ms `ease-in-out`
+- On scroll past 1px: `border-b border-stone/20`, `backdrop-blur-[8px]`
+- Transition: 300ms
 
 ### Mobile Navigation
 
-**Trigger**: Hamburger icon (three lines, 20px wide, 1px stroke, `obsidian`) — visible below `lg` breakpoint.
+**Trigger**: Hamburger icon (three chalk lines, 20px wide, 1px stroke) — visible below `lg` breakpoint.
 
 **Drawer**:
 - Slides in from the **right** via CSS `translate-x-full → translate-x-0`
 - Duration: 700ms, `cubic-bezier(0.16, 1, 0.3, 1)`
 - Width: 80vw (max 360px)
 - Full viewport height
-- Background: `chalk`
+- Background: `obsidian`
 - Z-index: `z-max` (100)
 - Overlay behind drawer: `obsidian/30` at `z-overlay` (40)
 
 **Drawer Content**:
 - Close button top-right: `×` character, 28px, opacity 60% → 100% on hover
-- Navigation links: Cormorant Garamond 400, 28px, stacked with `gap-6`
+- Navigation links: EB Garamond 400, 28px, stacked with `gap-6`
 - Color: `obsidian/60` inactive → `obsidian` active/hover
 - Contact email at the bottom: Jost 300, 13px, `stone`
 
@@ -63,21 +85,21 @@
 - Body scroll locked while drawer open
 - Drawer closes on route change
 - Skip-to-content link as first focusable element (visible on focus only), targets `#main-content`
-- **Known gap**: Tab key can escape the drawer. Focus trap not yet implemented.
+- **Focus trap implemented**: Tab/Shift+Tab cycles within drawer only. Focus moves to first focusable element on open; returns to hamburger button on close.
 
 ---
 
-## 2. Hero Section (Homepage)
+## 3. Hero Section (Homepage)
 
 ### Layout
 
 Full-width section, no image. Typography carries the space until real photography arrives.
 
-| Property           | Value                                  |
-|--------------------|----------------------------------------|
-| Background         | `linen` (`#F0EBE3`) — warm, not chalk |
-| Padding top        | 160px                                  |
-| Padding bottom     | 120px                                  |
+| Property           | Value                                          |
+|--------------------|------------------------------------------------|
+| Background         | Warm ivory `#F0E6D0` — never white, never chalk |
+| Padding top        | 96px                                           |
+| Padding bottom     | 120px                                          |
 
 ### Content (left-aligned, max-width 820px)
 
@@ -100,7 +122,7 @@ Defined in `globals.css`. Obsidian fill, chalk text, 14px Jost 400 uppercase, `l
 
 ---
 
-## 3. Product Card
+## 4. Product Card
 
 ### Dimensions
 
@@ -146,7 +168,7 @@ Defined in `globals.css`. Obsidian fill, chalk text, 14px Jost 400 uppercase, `l
 
 ---
 
-## 4. Button System
+## 5. Button System
 
 ### Shared Properties
 
@@ -202,7 +224,7 @@ Defined in `globals.css`. Obsidian fill, chalk text, 14px Jost 400 uppercase, `l
 
 ---
 
-## 5. Form Elements
+## 6. Form Elements
 
 ### Text Input
 
@@ -234,7 +256,7 @@ Same bottom-border style. Min-height 120px. Resize: vertical only. On focus: `bo
 
 ---
 
-## 6. Image Gallery (PDP)
+## 7. Image Gallery (PDP)
 
 ### Layout
 
@@ -262,7 +284,7 @@ Same bottom-border style. Min-height 120px. Resize: vertical only. On focus: `bo
 
 ---
 
-## 7. AnimateOnScroll
+## 8. AnimateOnScroll
 
 Wrapper component using `IntersectionObserver`. Adds `.is-visible` class to child elements with `[data-animate="fade-up"]` when they enter the viewport.
 
@@ -286,27 +308,28 @@ Respects `prefers-reduced-motion` via the global rule in `globals.css`.
 
 ---
 
-## 8. Page Layouts
+## 9. Page Layouts
 
 ### Homepage
 
 Top to bottom:
-1. **Navigation** (fixed)
-2. **Hero** — linen background, left-aligned large Cormorant heading, cognac overline, body copy, `.cta-primary`
-3. **Selected Works** — chalk background, 3-column product grid with `AnimateOnScroll`
-4. **Pull Quote** — linen background, large italic Cormorant blockquote, left-aligned
-5. **Materials** — chalk background, 3-column text grid with cognac overlines
-6. **Footer**
+1. **SiteHeader** — linen logo zone, static in document flow
+2. **Navigation** — obsidian sticky bar, 56px
+3. **Hero** — warm ivory (`#F0E6D0`) background, left-aligned large EB Garamond heading, cognac overline, body copy, `.cta-primary` stacked below copy
+4. **Selected Works** — warm section (non-white), 3-column product grid with `AnimateOnScroll`
+5. **Pull Quote** — linen background, large italic EB Garamond blockquote, left-aligned
+6. **Materials** — warm section, 3-column text grid with cognac overlines
+7. **Footer**
 
 ### Catalog
 
-1. **Navigation** (fixed)
-2. **Sticky filter bar** — category filter pills, client-side filter (no reload)
-3. **Product grid** — 1 col mobile, 2 col tablet, 3 col desktop
+1. **SiteHeader** + **Navigation** (sticky, `top: 0`)
+2. **Sticky filter bar** — `top-[56px]`, category filter pills, client-side filter (no reload)
+3. **Product grid** — 1 col mobile, `sm:grid-cols-2` tablet, `lg:grid-cols-3` desktop
 
 ### Product Detail Page (PDP)
 
-1. **Navigation** (fixed)
+1. **SiteHeader** + **Navigation** (sticky)
 2. **Two-column layout** (60/40):
    - Left: `ImageGallery`
    - Right: sticky detail panel — category overline, name, price, description, materials, dimensions, Inquire CTA (mailto link)

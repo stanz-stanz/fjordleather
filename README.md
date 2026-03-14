@@ -6,7 +6,7 @@ Static product showcase website for a handmade leather goods brand based in Oslo
 
 - **Framework**: Next.js 16 App Router, `output: 'export'` (static HTML)
 - **Styling**: Tailwind CSS v4 with `@theme inline` design token system
-- **Fonts**: Cormorant Garamond (display) + Jost (body) via `next/font/google`
+- **Fonts**: EB Garamond (display, matched to logo letterforms) + Cormorant Garamond (fallback display) + Jost (body/UI) via `next/font/google`
 - **Language**: TypeScript
 
 ## Getting started
@@ -35,7 +35,7 @@ app/                    # Next.js App Router pages
   about/                # Craft / brand story
   contact/              # Contact form
 components/
-  nav/                  # Navigation (sticky, mobile drawer)
+  nav/                  # SiteHeader (logo, static) + Navigation (sticky, obsidian, mobile drawer)
   footer/               # Footer
   common/               # Button, Container, AnimateOnScroll
   product-card/         # ProductCard
@@ -60,9 +60,11 @@ scripts/
 
 ## Design
 
-The brand is Nordic minimalist — warm neutrals, generous whitespace, Cormorant Garamond editorial type, no rounded corners, no drop shadows. Full design system documented in `docs/design/design-system.md`.
+Nordic minimalist — warm neutrals, generous whitespace, EB Garamond editorial type, no rounded corners, no drop shadows. Full design system in `docs/design/design-system.md`.
 
-**Color accent**: Cognac `#8B5A2B` (not Fjord blue — docs updated accordingly).
+**Color accent**: Cognac `#8B5A2B`. **Logo zone**: Linen `#FEEBCF`. **Hero**: Warm ivory `#F0E6D0`. White backgrounds are forbidden.
+
+The site header (`SiteHeader`) is a static, in-flow component that displays the brand logo at natural scale. The sticky navigation (`Navigation`) sits below it with an obsidian background and chalk text.
 
 ## Deployment
 

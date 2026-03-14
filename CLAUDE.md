@@ -11,14 +11,14 @@
 ### ✅ Completed
 
 **Design system** (`docs/design/`)
-- `design-system.md` — Brand principles, color, typography, spacing, motion, grid. Accent is Cognac `#8B5A2B` throughout (Fjord blue removed).
+- `design-system.md` — Brand principles, color, typography, spacing, motion, grid. Accent is Cognac `#8B5A2B`. Display font: EB Garamond. No white/chalk backgrounds ever.
 - `tokens.css` — Full Tailwind v4 `@theme inline` token system, aligned with globals.css
-- `components.md` — Component specs, updated to reflect actual implementation (nav height 64px, button sizes 12/13/14px, focus rings cognac)
+- `components.md` — Component specs: SiteHeader + Navigation (56px obsidian, chalk links), focus trap implemented, hero background warm ivory
 
 **Foundation**
 - `next.config.ts` — `output: 'export'`, `images.unoptimized: true`, `trailingSlash: true`
-- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `.cta-primary` class (obsidian fill, 14px, hover → bark). `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. No Google Fonts `@import` (redundant with next/font, causes Turbopack error).
-- `app/layout.tsx` — Cormorant Garamond + Jost fonts, brand metadata, Navigation + Footer. No `<main>` wrapper — individual pages provide their own `<main id="main-content">`.
+- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `--color-linen: #FEEBCF` (sampled from logo). `.cta-primary` class (obsidian fill, 14px Jost uppercase, hover → bark). `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. No Google Fonts `@import`.
+- `app/layout.tsx` — EB Garamond (`--font-display`) + Cormorant Garamond (`--font-display-fallback`) + Jost. Renders `SiteHeader` then `Navigation` then `{children}` then `Footer`. No `<main>` wrapper.
 
 **Data layer**
 - `data/types.ts` — `Product`, `ProductImage`, `ProductDimensions`, `ProductCategory`
@@ -33,22 +33,24 @@
 - `lib/seo.ts` — `generateProductMetadata()`
 
 **Components**
-- `components/nav/Navigation.tsx` — Sticky 64px, always chalk/obsidian (no color flip — hero is light). Scroll-aware backdrop-blur. Mobile slide-in drawer from right. Escape key closes. Body scroll lock while open. Close on route change. Full focus trap implemented.
+- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo.png`) as plain `<img>`, 80% width, 1% left margin, max 1085px. Linen background (`#FEEBCF`). 48px gradient block below image fades to transparent, overlapping the nav. `marginBottom: '-48px'` pulls nav up into gradient zone.
+- `components/nav/Navigation.tsx` — Sticky 56px. Obsidian background always. Chalk nav links (14px Jost uppercase, `letter-spacing: 0.14em`). Scroll-aware `backdrop-blur`. Mobile slide-in drawer (obsidian bg). Escape key closes. Body scroll lock. Close on route change. **Full focus trap**: Tab/Shift+Tab cycles within drawer only; focus returns to hamburger on close.
 - `components/footer/Footer.tsx` — 3-column, espresso background
 - `components/common/Button.tsx` — Primary (cognac fill) / Secondary (obsidian outline) / Ghost. Sizes: sm=12px, md=13px, lg=14px. Zero border-radius. Renders as `<Link>` when `href` passed.
 - `components/common/Container.tsx` — Max-width 1440px responsive wrapper
 - `components/common/AnimateOnScroll.tsx` — IntersectionObserver scroll-reveal for `[data-animate="fade-up"]` children
-- `components/product-card/ProductCard.tsx` — 3:4 image, category overline, Cormorant name, price in obsidian, hover scale, New badge. Focus ring: cognac.
-- `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region (tabIndex + onKeyDown, not global window listener). `aria-roledescription="carousel"`. Focus ring: cognac.
+- `components/product-card/ProductCard.tsx` — 3:4 image, category overline, EB Garamond name, price in obsidian, hover scale, New badge. Focus ring: cognac.
+- `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac.
 
 **Pages** (all render statically — `npm run build` passes with 18 pages, 0 TypeScript errors)
-- `app/page.tsx` — Homepage: linen hero with 104px Cormorant heading left-aligned, cognac overline, 17px body copy, stacked CTA below body text, chalk products section, linen pull quote, chalk materials strip
-- `app/catalog/page.tsx` — Collection: sticky filter bar, client-side category filter, staggered product grid
+- `app/page.tsx` — Homepage: warm ivory hero (`#F0E6D0`) with 104px EB Garamond heading left-aligned, cognac overline, 17px body copy, stacked CTA below body text. Products section, linen pull quote, materials strip.
+- `app/catalog/page.tsx` — Collection: sticky filter bar (`top-[56px]`), client-side category filter, `sm:grid-cols-2` staggered product grid
 - `app/products/[slug]/page.tsx` — PDP: 60/40 gallery + info, sticky detail panel, related products, Inquire CTA → mailto
 - `app/about/page.tsx` — Craft: 4 sections including full-bleed espresso maker's statement blockquote
 - `app/contact/page.tsx` — Contact: two-column, bottom-border-only form inputs, mailto submit
 
 **Assets & SEO**
+- `public/images/logo.png` — Brand logo (from `docs/design/references/img/header-logo.png`). 2176×480px natural size. Do not crop left/right.
 - `public/images/products/` — 26 SVG placeholder files (warm leather-toned, one per product image)
 - `public/robots.txt` — allow all crawlers
 - `public/sitemap.xml` — 14 static routes
@@ -100,9 +102,9 @@ Design inspiration: the *spirit* of sites like Loake — confidence without shou
 **Design direction**
 
 - **Color palette**: Warm neutrals — off-whites, stone, sand, warm grays, deep charcoal. Accent: Cognac `#8B5A2B` used sparingly (overlines, badges, focus rings, CTA hover)
-- **Typography**: Cormorant Garamond (display, editorial) + Jost (body, UI). Hero heading up to 104px, tight line-height, left-aligned. Not centered.
+- **Typography**: EB Garamond (`--font-display`, primary) + Cormorant Garamond (`--font-display-fallback`) + Jost (body, UI). Hero heading up to 104px, tight line-height, left-aligned. Not centered.
 - **Layout**: Generous whitespace. Editorial grid — asymmetric where appropriate, never cluttered.
-- **Hero background**: Linen (`#F0EBE3`) — warm, not chalk/white. Gives character without darkness.
+- **Hero background**: Warm ivory (`#F0E6D0`) — never white, never chalk. Linen (`#FEEBCF`) for the site header / logo zone.
 - **Motion**: Subtle only — fade-ins on scroll, gentle hover states on product cards.
 - **No decorative gimmicks**: No gradients, no drop shadows on product cards, no rounded corners. Clean edges, intentional spacing.
 
