@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
@@ -103,13 +102,11 @@ export default function Navigation() {
             href="/"
             aria-label={`${BRAND_NAME} — return to homepage`}
           >
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/images/logo.png"
               alt="Fjordleather — Crafted by Hand"
-              width={700}
-              height={380}
-              priority
-              className="h-[44px] w-auto"
+              style={{ height: '44px', width: 'auto', display: 'block' }}
             />
           </Link>
 
