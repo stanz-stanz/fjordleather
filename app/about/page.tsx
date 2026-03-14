@@ -142,7 +142,7 @@ export default function AboutPage() {
                       style={{
                         fontFamily: 'var(--font-display)',
                         fontWeight: 300,
-                        fontSize: '11px',
+                        fontSize: '13px',
                         letterSpacing: '0.15em',
                         color: 'var(--color-stone)',
                         flexShrink: 0,
@@ -155,7 +155,7 @@ export default function AboutPage() {
                       style={{
                         fontFamily: 'var(--font-body)',
                         fontWeight: 500,
-                        fontSize: '11px',
+                        fontSize: '13px',
                         textTransform: 'uppercase',
                         letterSpacing: '0.12em',
                         color: 'var(--color-obsidian)',
@@ -435,7 +435,7 @@ export default function AboutPage() {
               style={{
                 fontFamily: 'var(--font-body)',
                 fontWeight: 300,
-                fontSize: '12px',
+                fontSize: '15px',
                 letterSpacing: '0.08em',
                 color: 'var(--color-stone)',
                 margin: 0,

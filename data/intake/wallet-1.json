@@ -1,0 +1,23 @@
+{
+  "name": "Vaskebjornen-1",
+  "category": "wallets",
+  "price": 699,
+  "currency": "DKK",
+  "description": "This handmade bifold wallet is crafted entirely from premium Italian leather sourced from the renowned Conceria Puccini tannery. The interior features the natural flesh side of the leather, carefully hand-burnished to achieve a smooth, refined finish. Each edge is meticulously skived, hand-sanded, and burnished to create a silky, durable feel. The wallet is hand-stitched using heavy-duty threaded nylon from Crimson Hides, ensuring exceptional strength and longevity. Every detail reflects the care, precision, and character that only true hand craftsmanship can provide.",
+  "construction": "Hand sitched",
+  "dimensions": {
+    "height": "10.5",
+    "width": "8.5",
+    "unit": "cm"
+  },
+  "images": [
+    {
+      "file": "../../public/images/products/products-wallets-#1_1.png",
+      "alt": "Bifold wallet exterior"
+    },
+    {
+      "file": "../../public/images/products/products-wallets-#1_2.png",
+      "alt": "Bifold wallet interior"
+    }
+  ]
+}

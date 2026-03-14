@@ -42,7 +42,8 @@ function escapeBacktick(str) {
 function buildProductEntry(data, slug, id) {
   const images = data.images
     .map((img, i) => {
-      const src = `/images/products/${slug}-${i + 1}.jpg`;
+      const ext = path.extname(img.file).toLowerCase() || '.jpg';
+      const src = `/images/products/${slug}-${i + 1}${ext}`;
       return `      { src: '${src}', alt: '${img.alt.replace(/'/g, "\\'")}', priority: ${i === 0} }`;
     })
     .join(',\n');
@@ -54,14 +55,10 @@ function buildProductEntry(data, slug, id) {
     category: '${data.category}',
     price: ${data.price},
     currency: '${data.currency}',
-    shortDescription: '${data.shortDescription.replace(/'/g, "\\'")}',
-    featured: ${data.featured},
-    isNew: ${data.isNew},
     description: \`${escapeBacktick(data.description)}\`,
-    material: '${data.material.replace(/'/g, "\\'")}',
+    material: '${(data.material || 'Full-grain Italian leather').replace(/'/g, "\\'")}',
     construction: '${data.construction.replace(/'/g, "\\'")}',
     dimensions: ${formatDimensions(data.dimensions)},
-    patina: '${data.patina.replace(/'/g, "\\'")}',
     images: [
 ${images}
     ],
@@ -73,8 +70,8 @@ ${images}
 const VALID_CATEGORIES = ['bags', 'travel-duffles', 'wallets', 'coin-pouches', 'accessories'];
 
 function validate(data, jsonPath) {
-  const required = ['name', 'category', 'price', 'currency', 'shortDescription',
-    'featured', 'isNew', 'description', 'material', 'construction', 'dimensions', 'patina', 'images'];
+  const required = ['name', 'category', 'price', 'currency',
+    'description', 'construction', 'dimensions', 'images'];
   const missing = required.filter((k) => data[k] === undefined);
   if (missing.length) {
     console.error(`\n❌  Missing required fields: ${missing.join(', ')}\n`);

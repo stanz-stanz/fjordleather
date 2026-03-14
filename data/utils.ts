@@ -18,7 +18,7 @@ export function getProductsByCategory(category: ProductCategory): Product[] {
 }
 
 export function getFeaturedProducts(): Product[] {
-  return products.filter(p => p.featured);
+  return products.slice(0, 3);
 }
 
 export function getRelatedProducts(product: Product, limit = 3): Product[] {

@@ -18,24 +18,26 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const product = getProductBySlug(params.slug);
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
   if (!product) return {};
   return {
     title: `${product.name} — Fjordleather`,
-    description: product.shortDescription,
+    description: product.description,
   };
 }
 
 /* ── Page ──────────────────────────────────────────────────────── */
 
-export default function ProductDetailPage({
+export default async function ProductDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const product = getProductBySlug(params.slug);
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
   if (!product) notFound();
 
   const related = getRelatedProducts(product, 3);
@@ -90,7 +92,7 @@ export default function ProductDetailPage({
                       margin: 0,
                       fontFamily: 'var(--font-body)',
                       fontWeight: 300,
-                      fontSize: '12px',
+                      fontSize: '15px',
                       letterSpacing: '0.03em',
                       color: 'var(--color-stone)',
                     }}
@@ -157,21 +159,6 @@ export default function ProductDetailPage({
                   {product.name}
                 </h1>
 
-                {/* Short description */}
-                <p
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontWeight: 300,
-                    fontSize: '16px',
-                    lineHeight: 1.6,
-                    color: 'var(--color-obsidian)',
-                    marginTop: '8px',
-                    maxWidth: '420px',
-                  }}
-                >
-                  {product.shortDescription}
-                </p>
-
                 {/* Price */}
                 <p
                   aria-label={`Price: ${formatPrice(product.price)}`}
@@ -209,7 +196,7 @@ export default function ProductDetailPage({
                     style={{
                       fontFamily: 'var(--font-body)',
                       fontWeight: 500,
-                      fontSize: '11px',
+                      fontSize: '15px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.12em',
                       color: 'var(--color-stone)',
@@ -236,7 +223,7 @@ export default function ProductDetailPage({
                     style={{
                       fontFamily: 'var(--font-body)',
                       fontWeight: 500,
-                      fontSize: '11px',
+                      fontSize: '15px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.12em',
                       color: 'var(--color-stone)',
@@ -265,7 +252,7 @@ export default function ProductDetailPage({
                         style={{
                           fontFamily: 'var(--font-body)',
                           fontWeight: 500,
-                          fontSize: '11px',
+                          fontSize: '15px',
                           textTransform: 'uppercase',
                           letterSpacing: '0.12em',
                           color: 'var(--color-stone)',
@@ -307,32 +294,6 @@ export default function ProductDetailPage({
                   {product.description}
                 </p>
 
-                {/* Patina note */}
-                {product.patina && (
-                  <div style={{ marginTop: '28px' }}>
-                    <p
-                      className="text-style-overline"
-                      style={{ color: 'var(--color-cognac)', marginBottom: '8px' }}
-                    >
-                      On Aging
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-display)',
-                        fontStyle: 'italic',
-                        fontWeight: 400,
-                        fontSize: '17px',
-                        lineHeight: 1.6,
-                        color: 'var(--color-stone)',
-                        margin: 0,
-                        maxWidth: '400px',
-                      }}
-                    >
-                      {product.patina}
-                    </p>
-                  </div>
-                )}
-
                 {/* CTA */}
                 <div style={{ marginTop: '40px' }}>
                   <Button
@@ -347,7 +308,7 @@ export default function ProductDetailPage({
                     style={{
                       fontFamily: 'var(--font-body)',
                       fontWeight: 300,
-                      fontSize: '13px',
+                      fontSize: '15px',
                       color: 'var(--color-stone)',
                       marginTop: '16px',
                     }}

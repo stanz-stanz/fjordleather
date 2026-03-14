@@ -25,13 +25,9 @@ export interface Product {
   category: ProductCategory;
   price: number;
   currency: string;
-  shortDescription: string;
-  featured: boolean;
-  isNew: boolean;
   description: string;
   material: string;
   construction: string;
   dimensions: ProductDimensions;
-  patina: string;
   images: ProductImage[];
 }

@@ -17,9 +17,11 @@
 **Logo image**:
 - File: `public/images/logo.png`
 - Tag: plain `<img>` (not `next/image` — static export, `images.unoptimized: true`)
-- Width: `80%` of container, max-width `1085px`
-- Left offset: `marginLeft: '1%'`
-- Height: `auto` — no cropping of left/right edges
+- Class: `site-header-logo` (defined in `globals.css`)
+- Width: `96%` on mobile, `80%` at `min-width: 768px` — no max-width cap
+- Left offset: `margin-left: 1%`
+- Height: `auto` — preserves native aspect ratio (4.53:1), no cropping
+- Link wrapper: `<Link href="/">` with `paddingTop: 12px` for breathing room
 - Wraps in a `<Link href="/">` for homepage navigation
 
 **Gradient**:

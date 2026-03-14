@@ -8,7 +8,7 @@
 
 ---
 
-### ✅ Completed
+### Completed
 
 **Design system** (`docs/design/`)
 - `design-system.md` — Brand principles, color, typography, spacing, motion, grid. Accent is Cognac `#8B5A2B`. Display font: EB Garamond. No white/chalk backgrounds ever.
@@ -17,64 +17,68 @@
 
 **Foundation**
 - `next.config.ts` — `output: 'export'`, `images.unoptimized: true`, `trailingSlash: true`
-- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `--color-linen: #FEEBCF` (sampled from logo). `.cta-primary` class (obsidian fill, 14px Jost uppercase, hover → bark). `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. No Google Fonts `@import`.
+- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `--color-linen: #FEEBCF` (sampled from logo). `.cta-primary` class. `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. `.site-header-logo` responsive class (96% mobile, 80% at 768px+). No Google Fonts `@import`.
 - `app/layout.tsx` — EB Garamond (`--font-display`) + Cormorant Garamond (`--font-display-fallback`) + Jost. Renders `SiteHeader` then `Navigation` then `{children}` then `Footer`. No `<main>` wrapper.
 
 **Data layer**
-- `data/types.ts` — `Product`, `ProductImage`, `ProductDimensions`, `ProductCategory`
-- `data/products.ts` — 10 sample products (2 bags, 2 duffles, 2 wallets, 2 coin pouches, 2 accessories). 3 featured, 2 new. EUR pricing. Image paths use `.svg` extension.
+- `data/types.ts` — `Product`, `ProductImage`, `ProductDimensions`, `ProductCategory`. Fields: `id`, `slug`, `name`, `category`, `price`, `currency`, `description`, `material`, `construction`, `dimensions`, `images`. No `featured`, `isNew`, `patina`, or `shortDescription`.
+- `data/products.ts` — 11 products (2 bags, 2 duffles, 2 wallets, 2 coin pouches, 2 accessories, 1 real wallet). EUR pricing for originals, DKK for Vaskebjornen-1. SVG placeholders for original 10; real PNGs for Vaskebjornen-1.
 - `data/categories.ts` — Category labels and order
-- `data/utils.ts` — `getProductBySlug`, `getProductSlugs`, `getFeaturedProducts`, `getRelatedProducts`, etc.
-- `data/product-intake.example.json` — Template for product import script
+- `data/utils.ts` — `getProductBySlug`, `getProductSlugs`, `getFeaturedProducts` (returns `slice(0,3)`), `getRelatedProducts`, etc.
+- `data/product-intake.example.json` — Template for product import script. Fields: `name`, `category`, `price`, `currency`, `description`, `construction`, `dimensions`, `images`.
+- `data/intake/` — 10 wallet JSON files (`wallet-1.json` through `wallet-10.json`) ready for filling and importing via `npm run add-product`
 
 **Lib**
 - `lib/utils.ts` — `formatPrice()`, `cn()`, `slugify()`
 - `lib/constants.ts` — `BRAND_NAME`, `CONTACT_EMAIL`, `SITE_URL`, `NAV_LINKS`
-- `lib/seo.ts` — `generateProductMetadata()`
+- `lib/seo.ts` — `generateProductMetadata()` — uses `product.description` (not shortDescription)
 
 **Components**
-- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo.png`) as plain `<img>`, 80% width, 1% left margin, max 1085px. Linen background (`#FEEBCF`). 48px gradient block below image fades to transparent, overlapping the nav. `marginBottom: '-48px'` pulls nav up into gradient zone.
-- `components/nav/Navigation.tsx` — Sticky 56px. Obsidian background always. Chalk nav links (14px Jost uppercase, `letter-spacing: 0.14em`). Scroll-aware `backdrop-blur`. Mobile slide-in drawer (obsidian bg). Escape key closes. Body scroll lock. Close on route change. **Full focus trap**: Tab/Shift+Tab cycles within drawer only; focus returns to hamburger on close.
+- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo.png`, 2176x480px) as plain `<img>` with `.site-header-logo` class (96% width mobile, 80% at 768px+, no max-width cap). 1% left margin. Linen background (`#FEEBCF`). 12px top padding on link wrapper. 48px gradient block below fades to transparent. `marginBottom: '-48px'` pulls nav up into gradient zone.
+- `components/nav/Navigation.tsx` — Sticky 56px. Obsidian background always. Chalk nav links via inline styles (Tailwind color classes unreliable). Mobile slide-in drawer (obsidian bg, chalk links via inline styles). Escape key closes. Body scroll lock. Close on route change. Full focus trap: Tab/Shift+Tab cycles within drawer only; focus returns to hamburger on close.
 - `components/footer/Footer.tsx` — 3-column, espresso background
 - `components/common/Button.tsx` — Primary (cognac fill) / Secondary (obsidian outline) / Ghost. Sizes: sm=12px, md=13px, lg=14px. Zero border-radius. Renders as `<Link>` when `href` passed.
 - `components/common/Container.tsx` — Max-width 1440px responsive wrapper
 - `components/common/AnimateOnScroll.tsx` — IntersectionObserver scroll-reveal for `[data-animate="fade-up"]` children
-- `components/product-card/ProductCard.tsx` — 3:4 image, category overline, EB Garamond name, price in obsidian, hover scale, New badge. Focus ring: cognac.
-- `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac.
+- `components/product-card/ProductCard.tsx` — `'use client'` (required for mouse event handlers). 4:5 aspect ratio. Wallet cards: dark brown gradient background (`linear-gradient(to bottom right, #2A1A10, #1A0E08)`). All other cards: `bg-linen`. FJORDLEATHER text overlay (14px, `#C4B5A8`, opacity 0.4) at bottom of wallet cards, rendered after image div so it sits on top. Image at `scale(1.0)`, hover `scale(1.03)`, `object-contain`. No New badge. No featured badge.
+- `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac. Aspect ratio 4:5, `object-contain`.
 
-**Pages** (all render statically — `npm run build` passes with 18 pages, 0 TypeScript errors)
-- `app/page.tsx` — Homepage: warm ivory hero (`#F0E6D0`) with 104px EB Garamond heading left-aligned, cognac overline, 17px body copy, stacked CTA below body text. Products section, linen pull quote, materials strip.
-- `app/catalog/page.tsx` — Collection: sticky filter bar (`top-[56px]`), client-side category filter, `sm:grid-cols-2` staggered product grid
-- `app/products/[slug]/page.tsx` — PDP: 60/40 gallery + info, sticky detail panel, related products, Inquire CTA → mailto
+**Pages** (all render statically — `npm run build` passes, 0 TypeScript errors)
+- `app/page.tsx` — Homepage: warm ivory hero (`#F0E6D0`) with 104px EB Garamond heading left-aligned, cognac overline, 17px body copy, stacked CTA. Products section, linen pull quote, materials strip.
+- `app/catalog/page.tsx` — Collection: sticky filter bar (`top-[56px]`), URL-based category filter via `useSearchParams` + `router.replace` (persists on back navigation). Wrapped in `Suspense` for static export. Grid: `grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 lg:gap-8`.
+- `app/products/[slug]/page.tsx` — PDP: async params (`await params` — Next.js 16 requirement). 60/40 gallery + info, sticky detail panel, related products, Inquire CTA via mailto.
 - `app/about/page.tsx` — Craft: 4 sections including full-bleed espresso maker's statement blockquote
 - `app/contact/page.tsx` — Contact: two-column, bottom-border-only form inputs, mailto submit
 
 **Assets & SEO**
-- `public/images/logo.png` — Brand logo (from `docs/design/references/img/header-logo.png`). 2176×480px natural size. Do not crop left/right.
-- `public/images/products/` — 26 SVG placeholder files (warm leather-toned, one per product image)
+- `public/images/logo.png` — Brand logo. 2176x480px. Do not crop. Rendered via `.site-header-logo` CSS class.
+- `public/images/products/` — SVG placeholders for original 10 products + real PNGs for Vaskebjornen-1 (`vaskebjornen-1-1.png`, `vaskebjornen-1-2.png`). Also `bifold-1-1.svg` and `bifold-1-2.svg` (unused placeholder SVGs).
 - `public/robots.txt` — allow all crawlers
-- `public/sitemap.xml` — 14 static routes
+- `public/sitemap.xml` — static routes (domain placeholder — update when live)
 - `app/icon.svg` — "F" lettermark on obsidian background
 
 **Tooling**
-- `scripts/add-product.mjs` — Node ESM product intake CLI. Usage: `npm run add-product -- path/to/product.json`. Validates, generates slug, copies/renames images, appends product entry to `data/products.ts`.
+- `scripts/add-product.mjs` — Node ESM product intake CLI. Usage: `npm run add-product -- path/to/product.json`. Validates, generates slug, copies/renames images (extension inferred from source file), appends product entry to `data/products.ts`. `material` field optional (defaults to "Full-grain Italian leather"). Does not require `shortDescription`, `featured`, `isNew`, or `patina`.
 - `package.json` — `"add-product": "node scripts/add-product.mjs"` script added
 
 ---
 
-### ⏳ Pending — Resume Next Session
+### Pending — Resume Next Session
 
-**Priority 1 — Visual completeness**
-- [ ] **Product images**: All image paths are `.svg` placeholders. Replace with real photography when available. Import via `npm run add-product`.
-- [ ] **Favicon**: `app/icon.svg` is a simple "F" mark — replace with a proper Fjordleather mark if one exists.
+**Priority 1 — Product data**
+- [ ] Fill in `data/intake/wallet-2.json` through `wallet-10.json` with real names, descriptions, prices, and construction details. Then run `npm run add-product -- data/intake/wallet-N.json` for each.
+- [ ] Replace SVG placeholders for original 10 products with real photography when available.
+- [ ] Favicon: `app/icon.svg` is a simple "F" mark — replace with a proper Fjordleather mark if one exists.
 
 **Priority 2 — Awaiting domain**
-- [ ] **`CONTACT_EMAIL`** and **`SITE_URL`**: Once domain is confirmed, update both in `lib/constants.ts`. `CONTACT_EMAIL` is also currently hardcoded as a local variable in `contact/page.tsx:14` — replace with the import.
-- [ ] **Sitemap URLs**: Update `public/sitemap.xml` with real domain to match.
-- [ ] **Deployment**: Connect `https://github.com/stanz-stanz/fjordleather` to Vercel. Framework: Next.js. Output dir: `out`. Auto-deploys on push to `main`.
+- [ ] Update `CONTACT_EMAIL` and `SITE_URL` in `lib/constants.ts` once domain is confirmed.
+- [ ] `CONTACT_EMAIL` is also hardcoded as a local variable in `contact/page.tsx:14` — replace with the import.
+- [ ] Update `public/sitemap.xml` with real domain.
+- [ ] Connect `https://github.com/stanz-stanz/fjordleather` to Vercel. Framework: Next.js. Output dir: `out`. Auto-deploys on push to `main`.
 
 **Priority 3 — Polish**
-- [ ] **Contact form**: Smoke-test mailto link in browser — confirm pre-filled subject/body encodes correctly.
+- [ ] Responsive audit: test all pages at 375px, 768px, 1024px, 1440px.
+- [ ] Contact form: smoke-test mailto link in browser.
 
 ---
 
@@ -82,41 +86,28 @@
 
 **Project overview**
 
-Build a static product showcase website for a handmade leather goods brand. The site functions as a hybrid catalog and shop window — products are displayed with full descriptions and pricing, but there is no shopping cart, checkout, or payment flow of any kind. Visitors browse and discover; they do not transact.
+Static product showcase website for a handmade leather goods brand. Hybrid catalog and shop window — products displayed with full descriptions and pricing, no shopping cart, checkout, or payment flow.
 
 ---
 
 **Brand identity & tone**
 
-The brand's core pillars are:
-- **Craftsmanship** — every item is made entirely by hand, with obsessive attention to detail and finishing
-- **Materials** — exclusively full-grain Italian leather, sourced for its character, durability, and aging quality
-- **Restraint** — the work speaks for itself; the brand does not shout
+- **Craftsmanship** — every item made entirely by hand
+- **Materials** — exclusively full-grain Italian leather
+- **Restraint** — the work speaks for itself
 
-The visual and editorial tone should be **nordic minimalist, yet quietly sophisticated** — think long silences, honest materials, precise proportions. Not cold or sterile, but warm in a muted, natural way. The brand does not explain itself. It assumes you already understand.
-
-Design inspiration: the *spirit* of sites like Loake — confidence without shouting, authority earned through restraint, typography that feels chosen by someone who reads books — translated into a Nordic idiom rather than copied literally.
+Nordic minimalist, quietly sophisticated. Not cold or sterile — warm in a muted, natural way.
 
 ---
 
 **Design direction**
 
-- **Color palette**: Warm neutrals — off-whites, stone, sand, warm grays, deep charcoal. Accent: Cognac `#8B5A2B` used sparingly (overlines, badges, focus rings, CTA hover)
-- **Typography**: EB Garamond (`--font-display`, primary) + Cormorant Garamond (`--font-display-fallback`) + Jost (body, UI). Hero heading up to 104px, tight line-height, left-aligned. Not centered.
-- **Layout**: Generous whitespace. Editorial grid — asymmetric where appropriate, never cluttered.
-- **Hero background**: Warm ivory (`#F0E6D0`) — never white, never chalk. Linen (`#FEEBCF`) for the site header / logo zone.
-- **Motion**: Subtle only — fade-ins on scroll, gentle hover states on product cards.
-- **No decorative gimmicks**: No gradients, no drop shadows on product cards, no rounded corners. Clean edges, intentional spacing.
-
----
-
-**Site structure**
-
-1. **Homepage** — Linen hero (brand statement, heading, CTA), featured products, pull quote, materials strip
-2. **Catalog / Collection page** — Full product grid, filterable by category
-3. **Product detail page** — Image gallery, editorial description, Inquire CTA
-4. **About / Craft page** — Brand story focused on process and materials
-5. **Contact page** — Minimal form with mailto action
+- **Color palette**: Warm neutrals. Accent: Cognac `#8B5A2B` used sparingly.
+- **Typography**: EB Garamond (display) + Jost (body/UI). Hero heading up to 104px, left-aligned.
+- **Layout**: Generous whitespace. Editorial grid, never cluttered.
+- **Backgrounds**: Warm ivory (`#F0E6D0`) for hero. Linen (`#FEEBCF`) for site header/logo zone. Dark brown gradient for wallet product cards.
+- **Motion**: Subtle only — fade-ins on scroll, gentle hover states.
+- **No decorative gimmicks**: No drop shadows on cards, no rounded corners.
 
 ---
 
@@ -139,4 +130,4 @@ Design inspiration: the *spirit* of sites like Loake — confidence without shou
 - Generic sans-serif fonts or blue/purple palettes
 - Animations that feel playful or tech-startup-like
 - Anything that makes the site feel like a Shopify template
-- Copying reference sites literally — draw from their *spirit*, not their layout
+- White or chalk backgrounds — always warm ivory/linen tones

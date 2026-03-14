@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
@@ -16,7 +18,6 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
     category,
     price,
     currency,
-    isNew,
     images,
   } = product
 
@@ -36,43 +37,43 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         className="block focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2"
       >
         {/* ── Image container ───────────────────── */}
-        <div className="relative aspect-product overflow-hidden bg-linen">
+        <div
+          className={cn('relative aspect-[4/5] overflow-hidden', category !== 'wallets' && 'bg-linen')}
+          style={category === 'wallets' ? { background: 'linear-gradient(to bottom right, #2A1A10, #1A0E08)' } : undefined}
+        >
 
-          {/* "New" badge */}
-          {isNew && (
-            <span
-              aria-label="New arrival"
-              className={cn(
-                'absolute top-4 left-4 z-[10]',
-                'font-body font-medium text-[9px] uppercase tracking-[0.12em]',
-                'text-chalk bg-cognac',
-                'px-2 py-1',
-                // No border-radius — brand signature sharp edge
-              )}
-            >
-              New
-            </span>
-          )}
-
-          {/* Product image */}
+          {/* Product image — object-contain so the full product is visible
+              with breathing room, not cropped edge-to-edge */}
           {primaryImage ? (
-            <Image
-              src={primaryImage.src}
-              alt={primaryImage.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className={cn(
-                'object-cover',
-                // Scale on card hover — slow and deliberate
-                'transition-transform duration-500',
-                'group-hover:scale-[1.03]',
-                '[transition-timing-function:cubic-bezier(0.16,1,0.3,1)]',
-              )}
-              priority={priority || primaryImage.priority}
-            />
+            <div
+              className="absolute inset-0 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)]"
+              style={{ transform: 'scale(1.0)' }}
+              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.03)')}
+              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1.0)')}
+            >
+              <Image
+                src={primaryImage.src}
+                alt={primaryImage.alt}
+                fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className="object-contain"
+                priority={priority || primaryImage.priority}
+              />
+            </div>
           ) : (
             // Placeholder when no image is available
-            <div className="absolute inset-0 bg-linen" aria-hidden="true" />
+            <div className={cn('absolute inset-0', category !== 'wallets' && 'bg-linen')} aria-hidden="true" />
+          )}
+
+          {/* FJORDLEATHER branding overlay — rendered after image so it sits on top */}
+          {category === 'wallets' && (
+            <span
+              aria-hidden="true"
+              className="absolute bottom-3 left-0 right-0 text-center font-body pointer-events-none"
+              style={{ fontSize: '14px', letterSpacing: '2.5px', color: '#C4B5A8', opacity: 0.4, zIndex: 10 }}
+            >
+              FJORDLEATHER
+            </span>
           )}
         </div>
 

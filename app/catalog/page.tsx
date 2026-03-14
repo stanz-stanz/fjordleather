@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useMemo, Suspense } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Container from '@/components/common/Container'
 import ProductCard from '@/components/product-card/ProductCard'
@@ -13,9 +14,21 @@ type FilterValue = 'all' | ProductCategory
 
 const ALL_FILTER: FilterValue = 'all'
 
-export default function CatalogPage() {
+function CatalogContent() {
   const allProducts = getAllProducts()
-  const [activeCategory, setActiveCategory] = useState<FilterValue>(ALL_FILTER)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const activeCategory = (searchParams.get('category') ?? ALL_FILTER) as FilterValue
+
+  function setActiveCategory(value: FilterValue) {
+    const params = new URLSearchParams(searchParams.toString())
+    if (value === ALL_FILTER) {
+      params.delete('category')
+    } else {
+      params.set('category', value)
+    }
+    router.replace(`/catalog?${params.toString()}`, { scroll: false })
+  }
 
   const filteredProducts = useMemo(() => {
     if (activeCategory === ALL_FILTER) return allProducts
@@ -51,21 +64,21 @@ export default function CatalogPage() {
                     font-body font-light text-stone
                     hover:text-obsidian transition-colors duration-150
                   "
-                  style={{ fontSize: '12px' }}
+                  style={{ fontSize: '15px' }}
                 >
                   Homepage
                 </Link>
               </li>
               <li
                 className="font-body font-light text-stone mx-2"
-                style={{ fontSize: '12px' }}
+                style={{ fontSize: '15px' }}
                 aria-hidden="true"
               >
                 /
               </li>
               <li
                 className="font-body font-light text-obsidian"
-                style={{ fontSize: '12px' }}
+                style={{ fontSize: '15px' }}
                 aria-current="page"
               >
                 Collection
@@ -122,8 +135,8 @@ export default function CatalogPage() {
                       whitespace-nowrap
                     "
                     style={{
-                      fontSize: '11px',
-                      letterSpacing: '0.1em',
+                      fontSize: '13px',
+                      letterSpacing: '0.08em',
                       padding: '18px 20px',
                       backgroundColor: isActive
                         ? 'var(--color-obsidian)'
@@ -165,7 +178,7 @@ export default function CatalogPage() {
           {/* Product count */}
           <p
             className="font-body font-light text-stone mb-10"
-            style={{ fontSize: '13px' }}
+            style={{ fontSize: '15px' }}
             aria-live="polite"
             aria-atomic="true"
           >
@@ -202,7 +215,7 @@ export default function CatalogPage() {
                   transition-opacity duration-300
                   bg-transparent cursor-pointer
                 "
-                style={{ fontSize: '12px', letterSpacing: '0.1em' }}
+                style={{ fontSize: '14px', letterSpacing: '0.08em' }}
               >
                 View all pieces →
               </button>
@@ -212,7 +225,7 @@ export default function CatalogPage() {
               <div
                 className="
                   grid
-                  grid-cols-1 gap-4
+                  grid-cols-2 gap-4
                   sm:grid-cols-2 sm:gap-6
                   lg:grid-cols-3 lg:gap-8
                 "
@@ -234,5 +247,13 @@ export default function CatalogPage() {
 
       </main>
     </>
+  )
+}
+
+export default function CatalogPage() {
+  return (
+    <Suspense>
+      <CatalogContent />
+    </Suspense>
   )
 }

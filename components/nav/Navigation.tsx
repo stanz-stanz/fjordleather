@@ -159,9 +159,12 @@ export default function Navigation() {
             type="button"
             aria-label="Close navigation menu"
             onClick={() => setMobileOpen(false)}
-            className="text-obsidian text-[28px] leading-none w-10 h-10 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+            className="text-[28px] leading-none w-10 h-10 flex items-center justify-center transition-opacity"
+            style={{ color: '#FAF9F7', opacity: 0.6 }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '0.6')}
           >
-            ×
+            x
           </button>
         </div>
 
@@ -172,11 +175,8 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  'font-display font-normal text-[28px] leading-tight',
-                  isActive ? 'text-obsidian' : 'text-obsidian/60 hover:text-obsidian',
-                  'transition-colors duration-200',
-                )}
+                className="font-display font-normal text-[28px] leading-tight transition-colors duration-200"
+                style={{ color: isActive ? '#FAF9F7' : 'rgba(250,249,247,0.6)' }}
               >
                 {link.label}
               </Link>
@@ -185,7 +185,7 @@ export default function Navigation() {
         </nav>
 
         <div className="mt-auto px-8 pb-10 border-t border-stone/20 pt-6">
-          <p className="font-body font-light text-[13px] text-stone tracking-wide">
+          <p className="font-body font-light text-[13px] tracking-wide" style={{ color: '#C4B5A8' }}>
             hello@fjordleather.com
           </p>
         </div>

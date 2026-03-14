@@ -29,7 +29,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
 
   if (safeImages.length === 0) {
     return (
-      <div className="relative aspect-product w-full bg-linen" aria-label={productName} />
+      <div className="relative aspect-[4/5] w-full bg-linen" aria-label={productName} />
     )
   }
 
@@ -42,18 +42,21 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
         aria-roledescription="carousel"
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        className="relative aspect-product w-full overflow-hidden bg-linen focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2"
+        className="relative aspect-[4/5] w-full overflow-hidden bg-linen focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2"
       >
-        <Image
-          key={activeIndex}
-          src={activeImage.src}
-          alt={activeImage.alt}
-          fill
-          sizes="(max-width: 768px) 100vw, 600px"
-          className="object-cover animate-fade-in"
-          priority={activeIndex === 0 && (activeImage.priority ?? false)}
-          aria-label={`${productName}, image ${activeIndex + 1} of ${safeImages.length}`}
-        />
+        {/* Inner padding so the product photo breathes within the container */}
+        <div className="absolute inset-0 p-[8%]">
+          <Image
+            key={activeIndex}
+            src={activeImage.src}
+            alt={activeImage.alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 600px"
+            className="object-contain animate-fade-in"
+            priority={activeIndex === 0 && (activeImage.priority ?? false)}
+            aria-label={`${productName}, image ${activeIndex + 1} of ${safeImages.length}`}
+          />
+        </div>
       </div>
 
       {/* ── Thumbnail strip ───────────────────── */}
@@ -81,7 +84,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
                 aria-label={`View image ${i + 1} of ${safeImages.length}${image.alt ? `: ${image.alt}` : ''}`}
                 onClick={() => setActiveIndex(i)}
                 className={cn(
-                  'relative shrink-0 w-[72px] h-[72px] overflow-hidden',
+                  'relative shrink-0 w-[72px] h-[72px] overflow-hidden bg-linen',
                   'cursor-pointer focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2',
                   'transition-opacity duration-300',
                   isActive
@@ -94,7 +97,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
                   alt={image.alt}
                   fill
                   sizes="72px"
-                  className="object-cover"
+                  className="object-contain p-1"
                 />
               </button>
             )
