@@ -19,7 +19,7 @@ const labelStyle: React.CSSProperties = {
   display: 'block',
   fontFamily: 'var(--font-body)',
   fontWeight: 500,
-  fontSize: '10px',
+  fontSize: '12px',
   textTransform: 'uppercase',
   letterSpacing: '0.12em',
   color: 'var(--color-stone)',
@@ -94,7 +94,7 @@ export default function ContactPage() {
         style={{
           backgroundColor: 'var(--color-chalk)',
           minHeight: '100vh',
-          paddingTop: '80px',
+          paddingTop: 'calc(64px + 48px)',
           paddingBottom: '96px',
         }}
       >
@@ -143,7 +143,7 @@ export default function ContactPage() {
                   fontWeight: 300,
                   fontSize: '16px',
                   lineHeight: 1.7,
-                  color: 'var(--color-stone)',
+                  color: 'var(--color-obsidian)',
                   margin: '0 0 36px',
                   maxWidth: '380px',
                 }}

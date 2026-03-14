@@ -32,7 +32,9 @@ export default function AboutPage() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '96px 24px',
+          paddingTop: 'calc(64px + 96px)',
+          paddingBottom: '96px',
+          paddingInline: 'var(--space-md)',
         }}
       >
         <div
@@ -78,7 +80,7 @@ export default function AboutPage() {
               fontWeight: 300,
               fontSize: '18px',
               lineHeight: 1.7,
-              color: 'var(--color-stone)',
+              color: 'var(--color-obsidian)',
               maxWidth: '480px',
               margin: '32px auto 0',
             }}
@@ -188,7 +190,7 @@ export default function AboutPage() {
                     fontWeight: 300,
                     fontSize: '16px',
                     lineHeight: 1.8,
-                    color: 'var(--color-stone)',
+                    color: 'var(--color-obsidian)',
                     margin: 0,
                   }}
                 >
@@ -207,7 +209,7 @@ export default function AboutPage() {
                     fontWeight: 300,
                     fontSize: '16px',
                     lineHeight: 1.8,
-                    color: 'var(--color-stone)',
+                    color: 'var(--color-obsidian)',
                     margin: 0,
                   }}
                 >
@@ -225,7 +227,7 @@ export default function AboutPage() {
                     fontWeight: 300,
                     fontSize: '16px',
                     lineHeight: 1.8,
-                    color: 'var(--color-stone)',
+                    color: 'var(--color-obsidian)',
                     margin: 0,
                   }}
                 >
@@ -243,7 +245,7 @@ export default function AboutPage() {
                     fontWeight: 300,
                     fontSize: '16px',
                     lineHeight: 1.8,
-                    color: 'var(--color-stone)',
+                    color: 'var(--color-obsidian)',
                     margin: 0,
                   }}
                 >
@@ -310,9 +312,9 @@ export default function AboutPage() {
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontWeight: 300,
-                  fontSize: '15px',
+                  fontSize: '16px',
                   lineHeight: 1.75,
-                  color: 'var(--color-stone)',
+                  color: 'var(--color-obsidian)',
                   margin: '0 0 16px',
                   maxWidth: '480px',
                 }}
@@ -331,9 +333,9 @@ export default function AboutPage() {
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontWeight: 300,
-                  fontSize: '15px',
+                  fontSize: '16px',
                   lineHeight: 1.75,
-                  color: 'var(--color-stone)',
+                  color: 'var(--color-obsidian)',
                   margin: '0 0 28px',
                   maxWidth: '480px',
                 }}

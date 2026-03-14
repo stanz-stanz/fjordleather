@@ -36,7 +36,7 @@ export default function CatalogPage() {
         ══════════════════════════════════════ */}
         <Container
           as="div"
-          className="pt-[96px] pb-10"
+          className="pt-[128px] pb-10"
         >
           {/* Breadcrumb */}
           <nav
@@ -82,7 +82,7 @@ export default function CatalogPage() {
               The Collection
             </h1>
             <p
-              className="font-body font-light text-stone"
+              className="font-body font-light text-obsidian"
               style={{ fontSize: '16px', lineHeight: '1.65' }}
             >
               Handmade in limited quantities. Full-grain leather throughout.
@@ -94,7 +94,7 @@ export default function CatalogPage() {
             Sticky filter bar
         ══════════════════════════════════════ */}
         <div
-          className="sticky top-[72px] bg-chalk border-b border-stone/30"
+          className="sticky top-[64px] bg-chalk border-b border-stone/30"
           style={{ zIndex: 'var(--z-sticky)' }}
         >
           <Container as="div">
@@ -213,7 +213,7 @@ export default function CatalogPage() {
                 className="
                   grid
                   grid-cols-1 gap-4
-                  md:grid-cols-2 md:gap-6
+                  sm:grid-cols-2 sm:gap-6
                   lg:grid-cols-3 lg:gap-8
                 "
               >

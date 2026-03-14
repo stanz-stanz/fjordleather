@@ -51,7 +51,7 @@ export default function ProductDetailPage({
       {/* ── Product section ──────────────────────────────────────── */}
       <section
         aria-label={`${product.name} product detail`}
-        style={{ paddingTop: '48px', paddingBottom: '80px' }}
+        style={{ paddingTop: 'calc(64px + 48px)', paddingBottom: '80px' }}
       >
         <div className="container-fiord">
           {/* Two-column layout: 60/40 */}
@@ -164,7 +164,7 @@ export default function ProductDetailPage({
                     fontWeight: 300,
                     fontSize: '16px',
                     lineHeight: 1.6,
-                    color: 'var(--color-stone)',
+                    color: 'var(--color-obsidian)',
                     marginTop: '8px',
                     maxWidth: '420px',
                   }}
@@ -297,9 +297,9 @@ export default function ProductDetailPage({
                   style={{
                     fontFamily: 'var(--font-body)',
                     fontWeight: 300,
-                    fontSize: '15px',
+                    fontSize: '16px',
                     lineHeight: 1.75,
-                    color: 'var(--color-stone)',
+                    color: 'var(--color-obsidian)',
                     marginTop: '24px',
                     maxWidth: '420px',
                   }}

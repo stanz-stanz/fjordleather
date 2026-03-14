@@ -29,12 +29,12 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
 
   if (safeImages.length === 0) {
     return (
-      <div className="relative aspect-product w-full max-w-[600px] bg-linen" aria-label={productName} />
+      <div className="relative aspect-product w-full bg-linen" aria-label={productName} />
     )
   }
 
   return (
-    <div className="w-full max-w-[600px]">
+    <div className="w-full">
       {/* ── Primary image ─────────────────────── */}
       <div
         role="region"
