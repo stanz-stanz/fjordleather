@@ -2,14 +2,25 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { BRAND_NAME, NAV_LINKS } from '@/lib/constants'
+
+const FOCUSABLE = [
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])',
+].join(',')
 
 export default function Navigation() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const drawerRef = useRef<HTMLDivElement>(null)
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 1)
@@ -23,13 +34,45 @@ export default function Navigation() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  // Focus first element in drawer when it opens; return focus to hamburger on close
   useEffect(() => {
+    if (mobileOpen) {
+      const first = drawerRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE)[0]
+      first?.focus()
+    } else {
+      hamburgerRef.current?.focus()
+    }
+  }, [mobileOpen])
+
+  useEffect(() => {
+    if (!mobileOpen) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMobileOpen(false)
+      if (e.key === 'Escape') {
+        setMobileOpen(false)
+        return
+      }
+      if (e.key !== 'Tab') return
+      const drawer = drawerRef.current
+      if (!drawer) return
+      const focusable = Array.from(drawer.querySelectorAll<HTMLElement>(FOCUSABLE))
+      if (focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [])
+  }, [mobileOpen])
 
   useEffect(() => {
     setMobileOpen(false)
@@ -82,6 +125,7 @@ export default function Navigation() {
           </nav>
 
           <button
+            ref={hamburgerRef}
             type="button"
             aria-label="Open navigation menu"
             aria-expanded={mobileOpen}
@@ -105,6 +149,7 @@ export default function Navigation() {
       )}
 
       <div
+        ref={drawerRef}
         id="mobile-drawer"
         role="dialog"
         aria-modal="true"
