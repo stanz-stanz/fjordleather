@@ -36,7 +36,7 @@ export default function CatalogPage() {
         ══════════════════════════════════════ */}
         <Container
           as="div"
-          className="pt-[128px] pb-10"
+          className="pt-[48px] pb-10"
         >
           {/* Breadcrumb */}
           <nav
@@ -94,7 +94,7 @@ export default function CatalogPage() {
             Sticky filter bar
         ══════════════════════════════════════ */}
         <div
-          className="sticky top-[64px] bg-chalk border-b border-stone/30"
+          className="sticky top-[56px] bg-chalk border-b border-stone/30"
           style={{ zIndex: 'var(--z-sticky)' }}
         >
           <Container as="div">

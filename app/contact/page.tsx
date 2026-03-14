@@ -94,7 +94,7 @@ export default function ContactPage() {
         style={{
           backgroundColor: 'var(--color-chalk)',
           minHeight: '100vh',
-          paddingTop: 'calc(64px + 48px)',
+          paddingTop: '48px',
           paddingBottom: '96px',
         }}
       >

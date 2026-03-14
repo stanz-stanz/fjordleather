@@ -51,7 +51,7 @@ export default function ProductDetailPage({
       {/* ── Product section ──────────────────────────────────────── */}
       <section
         aria-label={`${product.name} product detail`}
-        style={{ paddingTop: 'calc(64px + 48px)', paddingBottom: '80px' }}
+        style={{ paddingTop: '48px', paddingBottom: '80px' }}
       >
         <div className="container-fiord">
           {/* Two-column layout: 60/40 */}

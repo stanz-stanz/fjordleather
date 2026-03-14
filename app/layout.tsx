@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { EB_Garamond, Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/nav/Navigation";
+import SiteHeader from "@/components/nav/SiteHeader";
 import Footer from "@/components/footer/Footer";
 
 const cormorant = Cormorant_Garamond({
-  variable: "--font-display",
+  variable: "--font-display-fallback",
   subsets: ["latin"],
   weight: ["300", "400", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const ebGaramond = EB_Garamond({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -36,7 +45,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${jost.variable} antialiased`}>
+      <body className={`${ebGaramond.variable} ${cormorant.variable} ${jost.variable} antialiased`}>
+        <SiteHeader />
         <Navigation />
         {children}
         <Footer />

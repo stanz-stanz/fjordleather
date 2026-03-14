@@ -18,7 +18,7 @@ export default function HomePage() {
         aria-label="Fjordleather"
         style={{
           backgroundColor: 'var(--color-linen)',
-          paddingTop: 'calc(64px + 96px)',
+          paddingTop: '96px',
           paddingBottom: '120px',
         }}
       >

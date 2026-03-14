@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
-import { BRAND_NAME, NAV_LINKS } from '@/lib/constants'
+import { NAV_LINKS } from '@/lib/constants'
 
 const FOCUSABLE = [
   'a[href]',
@@ -89,26 +89,14 @@ export default function Navigation() {
 
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-[30] h-[64px]',
+          'sticky top-0 left-0 right-0 z-[30] h-[56px]',
           'transition-[background-color,border-color,backdrop-filter] duration-300',
           scrolled
             ? 'bg-linen/95 border-b border-stone/20 backdrop-blur-[8px]'
             : 'bg-linen border-b border-transparent',
         )}
       >
-        <div className="container-fiord h-full flex items-center justify-between">
-
-          <Link
-            href="/"
-            aria-label={`${BRAND_NAME} — return to homepage`}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/logo.png"
-              alt="Fjordleather — Crafted by Hand"
-              style={{ height: '44px', width: 'auto', display: 'block' }}
-            />
-          </Link>
+        <div className="container-fiord h-full flex items-center justify-end">
 
           <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-10">
             {NAV_LINKS.map((link) => {
@@ -118,7 +106,7 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'font-body text-[12px] uppercase tracking-[0.12em] transition-colors duration-200',
+                    'font-body text-[14px] uppercase tracking-[0.12em] transition-colors duration-200',
                     isActive ? 'text-obsidian' : 'text-stone hover:text-obsidian',
                   )}
                 >

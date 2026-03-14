@@ -32,7 +32,7 @@ export default function AboutPage() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          paddingTop: 'calc(64px + 96px)',
+          paddingTop: '96px',
           paddingBottom: '96px',
           paddingInline: 'var(--space-md)',
         }}
