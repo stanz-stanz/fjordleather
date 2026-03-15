@@ -60,17 +60,6 @@ export default function AboutPage() {
           }}
           className="animate-fade-up"
         >
-          {/* Overline */}
-          <p
-            className="text-style-overline"
-            style={{
-              color: 'var(--color-stone)',
-              marginBottom: '40px',
-            }}
-          >
-            Est. Vejle, Denmark
-          </p>
-
           {/* Main statement */}
           <h1
             style={{
