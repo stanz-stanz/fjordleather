@@ -2,6 +2,7 @@ export function formatPrice(price: number, currency = 'EUR'): string {
   return new Intl.NumberFormat('en-GB', {
     style: 'currency',
     currency,
+    currencyDisplay: 'narrowSymbol',
     minimumFractionDigits: 0,
   }).format(price);
 }

@@ -131,24 +131,18 @@ export default function ProductCard({ product, priority = false, compact = false
             {categoryLabel}
           </p>
 
-          {/* Row 2 & 3: Name + price in a flex row */}
-          <div className="flex items-baseline justify-between gap-4 mt-1">
-            <h3
-              className={cn(
-                'font-display font-normal text-[22px] leading-tight text-obsidian',
-                'flex-1 min-w-0',
-              )}
-            >
-              {name}
-            </h3>
+          {/* Row 2: Name */}
+          <h3 className="font-display font-normal text-[22px] leading-tight text-obsidian mt-1">
+            {name}
+          </h3>
 
-            <span
-              className="font-body font-light text-[16px] text-obsidian shrink-0 whitespace-nowrap"
-              aria-label={`Price: ${formatPrice(price, currency)}`}
-            >
-              {formatPrice(price, currency)}
-            </span>
-          </div>
+          {/* Row 3: Price */}
+          <p
+            className="font-body font-light text-[15px] text-stone mt-1"
+            aria-label={`Price: ${formatPrice(price, currency)}`}
+          >
+            {formatPrice(price, currency)}
+          </p>
         </div>
       </Link>
     </div>
