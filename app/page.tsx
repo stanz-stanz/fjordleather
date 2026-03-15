@@ -30,7 +30,7 @@ export default function HomePage() {
               color: 'var(--color-cognac)',
               marginBottom: '40px',
             }}>
-              Handmade in Vejle, Denmark
+              Leather goods crafted by hand
             </p>
 
             <HeroHeading />
