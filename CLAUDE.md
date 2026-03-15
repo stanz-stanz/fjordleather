@@ -1,7 +1,7 @@
 
 ## Build Progress & Handoff Notes
 
-> **Last updated:** 2026-03-15 — Session 5 complete.
+> **Last updated:** 2026-03-15 — Session 6 complete.
 > Repository: `https://github.com/stanz-stanz/fjordleather`
 > Git remote name: `fjordleather`
 > Resume: clone the repo, `npm install && npm run dev`.
@@ -21,11 +21,11 @@
 - `app/layout.tsx` — EB Garamond (`--font-display`) + Cormorant Garamond (`--font-display-fallback`) + Jost. Renders `SiteHeader` then `Navigation` then `{children}` then `Footer`. No `<main>` wrapper.
 
 **Data layer**
-- `data/types.ts` — `Product`, `ProductImage`, `ProductDimensions`, `ProductCategory`, `Tannery`. Fields: `id`, `slug`, `name`, `category`, `price`, `currency`, `description`, `material`, `construction`, `dimensions`, `images`, `tannery?`. No `featured`, `isNew`, `patina`, or `shortDescription`.
+- `data/types.ts` — `Product`, `ProductImage`, `ProductDimensions`, `ProductCategory`, `Tannery`. Fields: `id`, `slug`, `name`, `category`, `price`, `currency`, `description`, `material`, `construction`, `dimensions`, `images`, `tannery?`, `sold?`. No `featured`, `isNew`, `patina`, or `shortDescription`.
 - `data/products.ts` — 11 products (2 bags, 2 duffles, 2 wallets, 2 coin pouches, 2 accessories, 1 real wallet). EUR pricing for originals, DKK for Vaskebjornen-1. SVG placeholders for original 10; real PNGs for Vaskebjornen-1. All 10 products with identifiable tanneries have `tannery` field set.
 - `data/tanneries.ts` — `TANNERY_REGISTRY`: map of all 17 Genuine Italian Vegetable-Tanned Leather consortium tanneries → `{ url?, logo }`. Logo files in `public/images/tanneries/`.
 - `data/categories.ts` — Category labels and order
-- `data/utils.ts` — `getProductBySlug`, `getProductSlugs`, `getFeaturedProducts` (returns `slice(0,3)`), `getRelatedProducts`, etc.
+- `data/utils.ts` — `getProductBySlug`, `getProductSlugs`, `getFeaturedProducts` (returns `slice(0,3)`), `getRelatedProducts`, `getAdjacentProducts` (returns prev/next within same category, null at boundaries).
 - `data/product-intake.example.json` — Template for product import script. Fields: `name`, `category`, `price`, `currency`, `description`, `construction`, `dimensions`, `images`.
 - `data/intake/` — 10 wallet JSON files (`wallet-1.json` through `wallet-10.json`) ready for filling and importing via `npm run add-product`
 
@@ -41,13 +41,13 @@
 - `components/common/Button.tsx` — Primary (cognac fill) / Secondary (obsidian outline) / Ghost. Sizes: sm=12px, md=13px, lg=14px. Zero border-radius. Renders as `<Link>` when `href` passed.
 - `components/common/Container.tsx` — Max-width 1440px responsive wrapper
 - `components/common/AnimateOnScroll.tsx` — IntersectionObserver scroll-reveal for `[data-animate="fade-up"]` children
-- `components/product-card/ProductCard.tsx` — `'use client'` (required for mouse event handlers). Default `aspect-[4/5]`. Accepts `compact` prop which switches to `aspect-square` (used in related products strip). Wallet cards: dark brown gradient background (`linear-gradient(to bottom right, #2A1A10, #1A0E08)`). All other cards: `bg-linen`. FJORDLEATHER text overlay (14px, `#C4B5A8`, opacity 0.4) at bottom of wallet cards. Image at `scale(1.0)`, hover `scale(1.03)`, `object-contain`. No New badge. No featured badge.
+- `components/product-card/ProductCard.tsx` — `'use client'` (required for mouse event handlers). Default `aspect-[4/5]`. Accepts `compact` prop which switches to `aspect-square` (used in related products strip). Wallet cards: dark brown gradient background (`linear-gradient(to bottom right, #2A1A10, #1A0E08)`). All other cards: `bg-linen`. FJORDLEATHER text overlay (14px, `#C4B5A8`, opacity 0.4) at bottom of wallet cards. Image at `scale(1.0)`, hover `scale(1.03)`, `object-contain`. When `product.sold` is true: diagonal "Gone" text + dark veil overlay on image. No New badge. No featured badge.
 - `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac. Aspect ratio `3/2.6` (landscape, tuned for wallet photos). Uses `flex items-center justify-center` + plain `<img>` with `max-width/max-height: 100%` for reliable centering (NOT Next.js `<Image fill>` — global CSS reset breaks it). Inner padding `p-6`.
 
 **Pages** (all render statically — `npm run build` passes, 0 TypeScript errors)
 - `app/page.tsx` — Homepage: warm ivory hero (`#F0E6D0`) with 104px EB Garamond heading left-aligned, cognac overline, 17px body copy, stacked CTA. Products section, linen pull quote, materials strip.
 - `app/catalog/page.tsx` — Collection: sticky filter bar (`top-[56px]`), URL-based category filter via `useSearchParams` + `router.replace` (persists on back navigation). Wrapped in `Suspense` for static export. Grid: `grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 lg:gap-8`.
-- `app/products/[slug]/page.tsx` — PDP: async params (`await params` — Next.js 16 requirement). 60/40 gallery + info, sticky detail panel, related products, Inquire CTA via mailto. Right info panel layout: details grid (Material, Construction, Dimensions — no Tannery row) + description in left column; certification badge (`flex: 0 0 300px`, `#F0E6D0` bg) in right column with vertical divider. Badge contains: consortium logo, "Certified Leather", description text + "Learn more" link grouped together, and "Leather sourced from" + tannery logo at bottom. Related products: compact horizontal strip — `grid-template-columns: repeat(3, minmax(0, 200px))`, `compact` cards (square aspect ratio), no scrollbar. All font sizes bumped (labels 20px, values 19px, description 21px, price 27px).
+- `app/products/[slug]/page.tsx` — PDP: async params (`await params` — Next.js 16 requirement). Page top has breadcrumb bar (17px, links to filtered `/catalog?category=...`) then prev/next nav strip (category-scoped, no wrap at boundaries, 15px uppercase labels, no product names). Then 60/40 gallery + info, sticky detail panel, related products, Inquire CTA via mailto. Right info panel layout: details grid (Material, Construction, Dimensions — no Tannery row) + description in left column; certification badge (`flex: 0 0 300px`, `#F0E6D0` bg) in right column with vertical divider. Badge contains: consortium logo, "Certified Leather", description text + "Learn more" link grouped together, and "Leather sourced from" + tannery logo at bottom. Related products: compact horizontal strip — `grid-template-columns: repeat(3, minmax(0, 200px))`, `compact` cards (square aspect ratio), no scrollbar. All font sizes bumped (labels 20px, values 19px, description 21px, price 27px).
 - `app/about/page.tsx` — Craft: 4 sections including full-bleed espresso maker's statement blockquote
 - `app/contact/page.tsx` — Contact: two-column, bottom-border-only form inputs, mailto submit
 
@@ -62,15 +62,16 @@
 
 **Tooling**
 - `scripts/add-product.mjs` — Node ESM product intake CLI. Usage: `npm run add-product -- path/to/product.json`. Validates, generates slug, copies/renames images (extension inferred from source file), appends product entry to `data/products.ts`. `material` field optional (defaults to "Full-grain Italian leather"). Does not require `shortDescription`, `featured`, `isNew`, or `patina`.
-- `tools/admin-server.mjs` — Local-only admin UI (port 3001). Run with `npm run admin`. Single-page app with two tabs: **Add Product** (form with copy-from-existing dropdown, image upload with drag-to-reorder) and **Edit Product** (select existing product → pre-fills all fields + loads existing images, save replaces entry in `data/products.ts`). No extra dependencies — pure Node.js HTTP server with inline multipart parser. Never deploy this.
-- `package.json` — scripts: `"add-product"`, `"admin": "node tools/admin-server.mjs"`
+- `tools/admin-core.mjs` — All pure admin logic exported for testing: `parseMultipart`, `addProduct`, `updateProduct`, `deleteProduct`, `replaceInSource`, `buildProductEntry`, `parseProducts`, `log`, etc. Image upload bug fixed here: `Content-Disposition` regex uses `;\s*name=` (not greedy `name=`) to avoid matching `filename=`.
+- `tools/admin-server.mjs` — Local-only admin UI (port 3001). Run with `npm run admin`. Thin HTTP layer importing from `admin-core.mjs`. Two tabs: **Add Product** (category filter → copy-from dropdown, image upload with drag-to-reorder) and **Edit Product** (category filter → product dropdown, pre-fills all fields + images, Save/Delete buttons, Mark as Sold checkbox). Product lists refresh automatically after every add/edit/delete. `EADDRINUSE` prints kill command; `SIGINT`/`SIGTERM` close cleanly.
+- `tools/admin-server.test.mjs` — 70 unit tests (node:test, zero deps). Run with `npm run test:admin`.
+- `package.json` — scripts: `"add-product"`, `"admin"`, `"test:admin": "node --test tools/admin-server.test.mjs"`
 
 ---
 
 ### Pending — Resume Next Session
 
 **Priority 1 — Product data**
-- [ ] Fill in `data/intake/wallet-2.json` through `wallet-10.json` with real names, descriptions, prices, and construction details. Then run `npm run add-product -- data/intake/wallet-N.json` for each.
 - [ ] Replace SVG placeholders for original 10 products with real photography when available.
 - [ ] Favicon: `app/icon.svg` is a simple "F" mark — replace with a proper Fjordleather mark if one exists.
 - [ ] Stein Key Fob (`id: 09`) has no `tannery` field — description says "workshop offcuts". Add tannery once known.

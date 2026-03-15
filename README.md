@@ -25,12 +25,13 @@ npm run build     # static export to /out
 npm run admin   # opens local admin at http://localhost:3001
 ```
 
-Two tabs: **Add Product** (drag-and-drop images, copy-from-existing dropdown) and **Edit Product** (select any product, update fields and images). Local only — never deployed.
+Two tabs: **Add Product** (category filter → copy-from dropdown, drag-and-drop images) and **Edit Product** (category filter → product dropdown, update fields/images, mark as sold, delete). Product lists refresh automatically after every save. Local only — never deployed.
 
 **CLI (alternative):**
 
 ```bash
 npm run add-product -- path/to/product.json
+npm run test:admin   # run admin unit tests (70 tests, no deps)
 ```
 
 See `data/product-intake.example.json` for the expected format. The script validates fields, copies images to `public/images/products/`, and appends the product entry to `data/products.ts`.
@@ -67,7 +68,9 @@ public/
 scripts/
   add-product.mjs       # Product intake CLI
 tools/
+  admin-core.mjs        # Pure admin logic (exported, testable)
   admin-server.mjs      # Local admin UI (port 3001) — not deployed
+  admin-server.test.mjs # Unit test suite (npm run test:admin)
 ```
 
 ## Design

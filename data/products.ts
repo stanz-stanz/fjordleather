@@ -89,28 +89,7 @@ The grab handles at each end are formed from a single piece of 4mm leather folde
     ],
     tannery: [{ name: 'Conceria Walpier', url: 'http://www.conceriawalpier.com/' }],
   },
-    {
-    id: '06',
-    slug: 'bark-card-sleeve',
-    name: 'Bark Card Sleeve',
-    category: 'wallets',
-    price: 185,
-    currency: 'EUR',
-    description: `The Bark Card Sleeve carries four cards maximum. The fit is intentionally close at first — it loosens exactly as it should over the first weeks of use, conforming to the specific cards you carry and nothing else. Remove a card permanently, and the slot will gradually retighten. The leather has memory.
-
-The hide is Conceria Walpier Dollaro — a bark-tanned calf with a fine, tight grain and almost no surface treatment. It is one of the most honest leathers in European production: what you see is the hide itself, not a finish over an imperfect surface. Bark tannage takes six months minimum; most commercial wallets use chrome-tanned leather processed in six hours. The difference is evident in the hand within a year of use.
-
-The sleeve is cut from a single piece, folded at the base and edge-stitched on three sides with waxed linen. There is no lining. The interior is the flesh side of the same hide, naturally textured and slightly tacky — it holds cards without requiring a tight tolerance at the opening.`,
-    material: 'Full-grain bark-tanned calf leather, Conceria Walpier Dollaro, natural dark',
-    construction: 'Single-piece construction, folded and edge-stitched with waxed linen thread on three sides. No lining. Edges hand-burnished.',
-    dimensions: { height: '9.2', width: '6.8', unit: 'cm' },
-    images: [
-      { src: '/images/products/bark-card-sleeve-1.svg', alt: 'Bark Card Sleeve in natural dark Conceria Walpier Dollaro leather', priority: true },
-      { src: '/images/products/bark-card-sleeve-2.svg', alt: 'Bark Card Sleeve showing card slots and single-piece construction', priority: false },
-    ],
-    tannery: [{ name: 'Conceria Walpier', url: 'http://www.conceriawalpier.com/' }],
-  },
-  {
+      {
     id: '07',
     slug: 'krone-coin-pouch',
     name: 'Krone Coin Pouch',
@@ -194,14 +173,15 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
     ],
     tannery: [{ name: 'Badalassi Carlo' }],
   },
-      {
+        {
     id: '11',
     slug: 'vaskebjornen-1',
     name: 'Vaskebjornen-1',
     category: 'wallets',
     price: 899,
     currency: 'DKK',
-    description: `This handmade bi-fold wallet is crafted entirely from premium Italian leather sourced from the renowned Puccini tannery. The interior features the natural flesh side of the leather, carefully hand-burnished to achieve a smooth, refined finish. Each edge is meticulously skived, hand-sanded, and burnished to create a silky, durable feel. The wallet is hand-stitched using heavy-duty threaded nylon from Crimson Hides, ensuring exceptional strength and longevity. Every detail reflects the care, precision, and character that only true hand craftsmanship can provide.`,
+    description: `Handmade wallet crafted from premium Italian leather by Puccini Attilio, this refined bi-fold pairs a pared-back silhouette with robust, long-lived materials. The interior uses the leather’s natural flesh side, hand-burnished for a silky, protective finish, while every edge is skived, hand-sanded, and burnished to a smooth, durable ridge. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for daily use and designed to develop a rich patina over time. Compact, meticulously finished, and made to last — a timeless accessory where detail and material integrity lead.`,
+    description: `Vaskebjornen-1 — Handmade Bi-Fold Wallet. Crafted from premium Italian leather by Puccini Attilio, this refined bi-fold pairs a pared-back silhouette with robust, long-lived materials. The interior uses the leather's natural flesh side, hand-burnished for a silky, protective finish. Every edge is skived, hand-sanded, and burnished to a smooth, durable ridge. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for daily use and designed to develop a rich patina over time. Compact, meticulously finished, and made to last — a timeless accessory where detail and material integrity lead.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand sitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
@@ -211,14 +191,15 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
-      {
+            {
     id: '12',
     slug: 'vaskebjornen-2',
     name: 'Vaskebjornen-2',
     category: 'wallets',
     price: 899,
     currency: 'DKK',
-    description: `This handmade bi-fold wallet is crafted entirely from premium Italian leather sourced from the renowned Puccini tannery. The interior features the natural flesh side of the leather, carefully hand-burnished to achieve a smooth, refined finish. Each edge is meticulously skived, hand-sanded, and burnished to create a silky, durable feel. The wallet is hand-stitched using heavy-duty threaded nylon from Crimson Hides, ensuring exceptional strength and longevity. Every detail reflects the care, precision, and character that only true hand craftsmanship can provide.`,
+    description: `A refined bi-fold combining a Conceria Walpier Buttero exterior with Puccini Maremma inner pockets for a rich, tactile contrast. The interior shows the leather’s natural flesh side, hand-burnished to a smooth, protective finish. All edges are skived, hand-sanded, and burnished to a satiny, durable ridge. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for everyday use and designed to develop a deep, characterful patina over time. Compact, meticulously finished, and made to last.`,
+    description: `Vaskebjornen-2 — Handmade Bi-Fold Wallet. A refined bi-fold combining a Conceria Walpier Buttero exterior with Puccini Maremma inner pockets for a rich, tactile contrast. The interior shows the leather's natural flesh side, hand-burnished to a smooth, protective finish. All edges are skived, hand-sanded, and burnished to a satiny, durable ridge. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for everyday use and designed to develop a deep, characterful patina over time. Compact, meticulously finished, and made to last.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand sitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
@@ -226,6 +207,61 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
       { src: '/images/products/vaskebjornen-2-1.png', alt: 'vaskebjornen-2-1', priority: true },
       { src: '/images/products/vaskebjornen-2-2.png', alt: 'vaskebjornen-2-2', priority: false }
     ],
+    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
+  },
+        {
+    id: '13',
+    slug: 'vaskebjornen-3',
+    name: 'Vaskebjornen-3',
+    category: 'wallets',
+    price: 899,
+    currency: 'DKK',
+    description: `This elegant bi-fold pairs a Saffiano-printed calfskin exterior with bright Puccini Bisanzio inner pockets for a contemporary, textured look. A smooth sheepskin lining protects contents and adds a silky feel to the interior. Edges are precisely skived, hand-sanded, and burnished for a refined, hard-wearing finish. Hand-stitched using heavy-duty nylon thread from Crimson Hides, the construction prioritises strength and longevity while maintaining a sleeker, more modern aesthetic.`,
+    description: `Vaskebjornen-3 — Handmade Bi-Fold Wallet. This elegant bi-fold pairs a Saffiano-printed calfskin exterior with bright Puccini Bisanzio inner pockets for a contemporary, textured look. A smooth sheepskin lining protects contents and adds a silky feel to the interior. Edges are precisely skived, hand-sanded, and burnished for a refined, hard-wearing finish. Hand-stitched using heavy-duty nylon thread from Crimson Hides, the construction prioritises strength and longevity while maintaining a sleeker, more modern aesthetic.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand sitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-3-1.png', alt: 'vaskebjornen-3-1', priority: true },
+      { src: '/images/products/vaskebjornen-3-2.png', alt: 'vaskebjornen-3-2', priority: false }
+    ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+    {
+    id: '14',
+    slug: 'vaskebjornen-4',
+    name: 'Vaskebjornen-4',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Crafted from aniline box calf with Tempesti "Maine Liscio" pocketing, this bi-fold balances supple hand-feel with refined structure. The interior features a smooth goatskin lining for durability and a luxurious touch. Each edge is skived, hand-sanded, and burnished to a lasting, satiny finish. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built to withstand daily use and age gracefully, becoming more personal with wear.`,
+    description: `Vaskebjornen-4 — Handmade Bi-Fold Wallet. Crafted from aniline box calf with Tempesti "Maine Liscio" pocketing, this bi-fold balances supple hand-feel with refined structure. The interior features a smooth goatskin lining for durability and a luxurious touch. Each edge is skived, hand-sanded, and burnished to a lasting, satiny finish. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built to withstand daily use and age gracefully, becoming more personal with wear.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand sitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-4-1.png', alt: 'vaskebjornen-4-1', priority: true },
+      { src: '/images/products/vaskebjornen-4-2.png', alt: 'vaskebjornen-4-2', priority: false }
+    ],
+    tannery: [{ name: 'Tempesti' , url: 'http://www.tempesti.com'}],
+  },
+    {
+    id: '15',
+    slug: 'vaskebjornen-5',
+    name: 'Vaskebjornen-5',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Vaskebjornen-5 - Handmade Bi-Fold Wallet — Crafted from premium Italian leathers, this refined bi-fold pairs a Walpier “Buttero” exterior with Puccini “Palmelatto” interior pockets for a rich, tactile finish. A smooth goatskin lining protects contents while adding a luxurious, silky feel.
+
+Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. The wallet is hand-stitched with heavy-duty nylon thread from Crimson Hides for exceptional strength and lasting reliability. Thoughtfully finished and built to age beautifully, it’s a timeless accessory where material integrity and meticulous hand craftsmanship are front and center.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand sitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-5-1.png', alt: 'vaskebjornen-5-1', priority: true },
+      { src: '/images/products/vaskebjornen-5-2.png', alt: 'vaskebjornen-5-2', priority: false }
+    ],
+    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
   },
 ];

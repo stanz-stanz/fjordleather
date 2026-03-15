@@ -100,7 +100,7 @@ export default function ProductCard({ product, priority = false, compact = false
                     userSelect: 'none',
                   }}
                 >
-                  Sold
+                  Gone
                 </span>
               </div>
               {/* Subtle dark veil */}

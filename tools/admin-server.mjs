@@ -114,12 +114,21 @@ const HTML = `<!DOCTYPE html>
     <!-- ── Add mode: copy from ─────────────────────────────────────── -->
     <div class="section" id="section-copy-from">
       <div class="section-title">Copy from existing product</div>
-      <div class="field">
-        <label for="copy-from">Select a product to pre-fill all fields</label>
-        <select id="copy-from">
-          <option value="">— Select product —</option>
-        </select>
-        <span class="hint">Images are not copied. Name is cleared so the new product gets its own slug.</span>
+      <div class="row">
+        <div class="field">
+          <label for="add-category-filter">Category</label>
+          <select id="add-category-filter">
+            <option value="">— All categories —</option>
+            ${categoryOptions()}
+          </select>
+        </div>
+        <div class="field" style="flex:2">
+          <label for="copy-from">Product</label>
+          <select id="copy-from">
+            <option value="">— Select product —</option>
+          </select>
+          <span class="hint">Images are not copied. Name is cleared so the new product gets its own slug.</span>
+        </div>
       </div>
     </div>
 
@@ -285,12 +294,19 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 // ── Load product list ────────────────────────────────────────────────────
 function populateProductLists() {
-  const addOpts = document.getElementById('copy-from');
-  addOpts.innerHTML = '<option value="">— Select product —</option>';
-  existingProducts.forEach(p => {
-    addOpts.insertAdjacentHTML('beforeend', \`<option value="\${p.slug}">\${p.name} (\${p.category})</option>\`);
-  });
+  populateCopyFrom();
   populateEditSelect();
+}
+
+function populateCopyFrom() {
+  const filterCat = document.getElementById('add-category-filter').value;
+  const addOpts   = document.getElementById('copy-from');
+  addOpts.innerHTML = '<option value="">— Select product —</option>';
+  existingProducts
+    .filter(p => !filterCat || p.category === filterCat)
+    .forEach(p => {
+      addOpts.insertAdjacentHTML('beforeend', \`<option value="\${p.slug}">\${p.name}</option>\`);
+    });
 }
 
 function populateEditSelect() {
@@ -313,6 +329,11 @@ fetch('/api/products')
   .then(r => r.json())
   .then(products => { existingProducts = products; populateProductLists(); })
   .catch(() => {});
+
+document.getElementById('add-category-filter').addEventListener('change', () => {
+  populateCopyFrom();
+  document.getElementById('copy-from').value = '';
+});
 
 document.getElementById('edit-category-filter').addEventListener('change', () => {
   populateEditSelect();
@@ -479,6 +500,7 @@ document.getElementById('product-form').addEventListener('submit', async e => {
         showToast('success',
           \`✓ Added: "\${json.name}" (\${json.imageCount} image\${json.imageCount !== 1 ? 's' : ''})\`,
           'http://localhost:3000/products/' + json.slug);
+        fetch('/api/products').then(r => r.json()).then(p => { existingProducts = p; populateProductLists(); }).catch(() => {});
         resetForm();
       } else { showToast('error', json.error || 'Unknown error'); }
     } catch (err) { showToast('error', 'Server error: ' + err.message); }
@@ -539,6 +561,8 @@ function resetForm() {
   document.getElementById('section-slug').style.display   = 'none';
   document.getElementById('section-status').style.display = 'none';
   document.getElementById('delete-btn').style.display     = 'none';
+  document.getElementById('add-category-filter').value    = '';
+  populateCopyFrom();
   editSlug = null;
   images.forEach(img => { if (img.type === 'new') URL.revokeObjectURL(img.objectUrl); });
   images.length = 0;
