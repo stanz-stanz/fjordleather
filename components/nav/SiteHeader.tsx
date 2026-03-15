@@ -4,13 +4,13 @@ import { BRAND_NAME } from '@/lib/constants'
 export default function SiteHeader() {
   return (
     <div style={{ backgroundColor: '#FEEBCF', marginBottom: '-48px' }}>
-      <Link href="/" aria-label={`${BRAND_NAME} — return to homepage`} style={{ display: 'block', paddingTop: '12px' }}>
+      <Link href="/" aria-label={`${BRAND_NAME} — return to homepage`} style={{ display: 'flex', justifyContent: 'center', paddingTop: '12px' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/logo.png"
+          src="/images/logo_new.png"
           alt="Fjordleather — Crafted by Hand"
-          width={2176}
-          height={480}
+          width={1220}
+          height={680}
           className="site-header-logo"
         />
       </Link>

@@ -270,14 +270,15 @@ a { color: inherit; text-decoration: none; }
 
 .site-header-logo {
   display: block;
-  margin-left: 1%;
-  width: 96%;
+  width: 90%;
+  max-width: 560px;
   height: auto;
 }
 
 @media (min-width: 768px) {
   .site-header-logo {
-    width: 92%;
+    width: 65%;
+    max-width: 680px;
   }
 }
 
