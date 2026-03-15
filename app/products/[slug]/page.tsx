@@ -287,52 +287,6 @@ export default async function ProductDetailPage({
                         </>
                       )}
 
-                      {product.tannery && product.tannery.length > 0 && (
-                        <>
-                          <dt
-                            style={{
-                              fontFamily: 'var(--font-body)',
-                              fontWeight: 500,
-                              fontSize: '20px',
-                              textTransform: 'uppercase',
-                              letterSpacing: '0.12em',
-                              color: 'var(--color-stone)',
-                              lineHeight: 1.5,
-                              whiteSpace: 'nowrap',
-                            }}
-                          >
-                            Tannery
-                          </dt>
-                          <dd
-                            style={{
-                              fontFamily: 'var(--font-body)',
-                              fontWeight: 300,
-                              fontSize: '19px',
-                              lineHeight: 1.5,
-                              color: 'var(--color-obsidian)',
-                              margin: 0,
-                            }}
-                          >
-                            {product.tannery.map((t, i) => {
-                              const info = TANNERY_REGISTRY[t.name];
-                              const url = t.url ?? info?.url;
-                              return url ? (
-                                <a
-                                  key={i}
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  style={{ color: 'var(--color-cognac)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
-                                >
-                                  {t.name}
-                                </a>
-                              ) : (
-                                <span key={i}>{t.name}</span>
-                              );
-                            })}
-                          </dd>
-                        </>
-                      )}
                     </dl>
 
                     {/* Editorial description */}
@@ -397,35 +351,37 @@ export default async function ProductDetailPage({
                     >
                       Certified Leather
                     </p>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-body)',
-                        fontWeight: 300,
-                        fontSize: '20px',
-                        lineHeight: 1.6,
-                        color: 'var(--color-obsidian)',
-                        margin: 0,
-                        textAlign: 'center',
-                      }}
-                    >
-                      Vegetable-tanned in Tuscany using centuries-old methods. Free of harmful chemicals, aged to perfection.
-                    </p>
-                    <a
-                      href="https://www.pellealvegetale.it/en/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        fontFamily: 'var(--font-body)',
-                        fontWeight: 400,
-                        fontSize: '19px',
-                        letterSpacing: '0.01em',
-                        color: 'var(--color-cognac)',
-                        textDecoration: 'none',
-                        transition: 'opacity var(--duration-swift)',
-                      }}
-                    >
-                      Learn more &#8594;
-                    </a>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', paddingBottom: '16px' }}>
+                      <p
+                        style={{
+                          fontFamily: 'var(--font-body)',
+                          fontWeight: 300,
+                          fontSize: '20px',
+                          lineHeight: 1.6,
+                          color: 'var(--color-obsidian)',
+                          margin: 0,
+                          textAlign: 'center',
+                        }}
+                      >
+                        Vegetable-tanned in Tuscany using centuries-old methods. Free of harmful chemicals, aged to perfection.
+                      </p>
+                      <a
+                        href="https://www.pellealvegetale.it/en/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          fontFamily: 'var(--font-body)',
+                          fontWeight: 400,
+                          fontSize: '19px',
+                          letterSpacing: '0.01em',
+                          color: 'var(--color-cognac)',
+                          textDecoration: 'none',
+                          transition: 'opacity var(--duration-swift)',
+                        }}
+                      >
+                        Learn more &#8594;
+                      </a>
+                    </div>
 
                     {/* Tannery logo inside badge */}
                     {product.tannery && product.tannery.map((t, i) => {
@@ -446,7 +402,7 @@ export default async function ProductDetailPage({
                           }}
                         >
                           <p style={{ fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-stone)', margin: 0, textAlign: 'center' }}>
-                            Sourced from
+                            Leather sourced from
                           </p>
                           {url ? (
                             <a href={url} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
@@ -506,15 +462,15 @@ export default async function ProductDetailPage({
         <section
           aria-label="Related products"
           style={{
-            marginTop: '80px',
-            paddingTop: '64px',
-            paddingBottom: '96px',
+            marginTop: '48px',
+            paddingTop: '40px',
+            paddingBottom: '56px',
             backgroundColor: 'var(--color-linen)',
           }}
         >
           <div className="container-fiord">
             {/* Section heading */}
-            <div style={{ marginBottom: '48px' }}>
+            <div style={{ marginBottom: '32px' }}>
               <p
                 className="text-style-overline"
                 style={{ color: 'var(--color-stone)', marginBottom: '12px' }}
@@ -540,13 +496,12 @@ export default async function ProductDetailPage({
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(1, 1fr)',
-                gap: '32px',
+                gridTemplateColumns: 'repeat(3, minmax(0, 200px))',
+                gap: '16px',
               }}
-              className="sm:grid-cols-2 lg:grid-cols-3"
             >
               {related.map((relatedProduct) => (
-                <ProductCard key={relatedProduct.slug} product={relatedProduct} />
+                <ProductCard key={relatedProduct.slug} product={relatedProduct} compact />
               ))}
             </div>
           </div>

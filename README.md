@@ -17,7 +17,17 @@ npm run dev       # development server at localhost:3000
 npm run build     # static export to /out
 ```
 
-## Adding a product
+## Adding or editing products
+
+**Admin UI (recommended):**
+
+```bash
+npm run admin   # opens local admin at http://localhost:3001
+```
+
+Two tabs: **Add Product** (drag-and-drop images, copy-from-existing dropdown) and **Edit Product** (select any product, update fields and images). Local only — never deployed.
+
+**CLI (alternative):**
 
 ```bash
 npm run add-product -- path/to/product.json
@@ -56,6 +66,8 @@ public/
   sitemap.xml
 scripts/
   add-product.mjs       # Product intake CLI
+tools/
+  admin-server.mjs      # Local admin UI (port 3001) — not deployed
 ```
 
 ## Design

@@ -9,9 +9,10 @@ import type { Product } from '@/data/types'
 interface ProductCardProps {
   product: Product
   priority?: boolean
+  compact?: boolean
 }
 
-export default function ProductCard({ product, priority = false }: ProductCardProps) {
+export default function ProductCard({ product, priority = false, compact = false }: ProductCardProps) {
   const {
     slug,
     name,
@@ -38,7 +39,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       >
         {/* ── Image container ───────────────────── */}
         <div
-          className={cn('relative aspect-[4/5] overflow-hidden', category !== 'wallets' && 'bg-linen')}
+          className={cn('relative overflow-hidden', compact ? 'aspect-square' : 'aspect-[4/5]', category !== 'wallets' && 'bg-linen')}
           style={category === 'wallets' ? { background: 'linear-gradient(to bottom right, #2A1A10, #1A0E08)' } : undefined}
         >
 

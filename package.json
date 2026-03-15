@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "add-product": "node scripts/add-product.mjs"
+    "add-product": "node scripts/add-product.mjs",
+    "admin": "node tools/admin-server.mjs"
   },
   "dependencies": {
     "next": "16.1.6",
