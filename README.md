@@ -14,9 +14,14 @@ Product showcase website for a handmade leather goods brand based in Vejle, Denm
 
 ```bash
 npm install
-cp .env.local.example .env.local   # add your RESEND_API_KEY
-npm run dev                         # development server at localhost:3000
-npm run build                       # production build
+npm run dev     # development server at localhost:3000
+npm run build   # production build
+```
+
+Add a `.env.local` file at the root with your Resend API key for local email testing:
+
+```
+RESEND_API_KEY=re_your_key_here
 ```
 
 ## Environment variables
