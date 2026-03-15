@@ -55,6 +55,8 @@ export default function ContactPage() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
   const [focused, setFocused] = useState<keyof FormState | null>(null);
 
   /* Focus handlers inject obsidian border */
@@ -68,14 +70,26 @@ export default function ContactPage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`${form.name} — Fjordleather Inquiry`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}${form.subject ? `\nSubject: ${form.subject}` : ''}\n\nMessage:\n${form.message}`,
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setSending(true);
+    setSendError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error ?? 'Something went wrong');
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setSendError(err instanceof Error ? err.message : 'Something went wrong');
+    } finally {
+      setSending(false);
+    }
   };
 
   /* Focused border override */
@@ -379,10 +393,18 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {/* Error */}
+                    {sendError && (
+                      <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--color-error)', margin: 0 }}>
+                        {sendError}
+                      </p>
+                    )}
+
                     {/* Submit */}
                     <div>
                       <button
                         type="submit"
+                        disabled={sending}
                         style={{
                           display: 'inline-flex',
                           alignItems: 'center',
@@ -413,7 +435,7 @@ export default function ContactPage() {
                             'var(--color-obsidian)';
                         }}
                       >
-                        Send Message
+                        {sending ? 'Sending…' : 'Send Message'}
                       </button>
                     </div>
                   </div>
