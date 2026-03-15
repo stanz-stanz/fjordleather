@@ -345,7 +345,7 @@ export default async function ProductDetailPage({
                         color: 'var(--color-obsidian)',
                         margin: 0,
                         marginTop: '24px',
-                        maxWidth: '560px',
+                        maxWidth: '650px',
                       }}
                     >
                       {product.description}
@@ -457,9 +457,6 @@ export default async function ProductDetailPage({
                             // eslint-disable-next-line @next/next/no-img-element
                             <img src={info.logo} alt={`${t.name} tannery logo`} style={{ width: '200px', height: 'auto', display: 'block' }} />
                           )}
-                          <p style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: '14px', color: 'var(--color-obsidian)', margin: 0, textAlign: 'center' }}>
-                            {t.name}
-                          </p>
                         </div>
                       );
                     })}
