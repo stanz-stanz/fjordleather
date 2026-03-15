@@ -29,7 +29,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
 
   if (safeImages.length === 0) {
     return (
-      <div className="relative aspect-[4/5] w-full bg-linen" aria-label={productName} />
+      <div className="relative aspect-[3/2.6] w-full bg-linen" aria-label={productName} />
     )
   }
 
@@ -42,18 +42,16 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
         aria-roledescription="carousel"
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        className="relative aspect-[4/5] w-full overflow-hidden bg-linen focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2"
+        className="relative aspect-[3/2.6] w-full overflow-hidden bg-linen focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2"
       >
-        {/* Inner padding so the product photo breathes within the container */}
-        <div className="absolute inset-0 p-[8%]">
-          <Image
+        <div className="absolute inset-0 flex items-center justify-center p-6">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             key={activeIndex}
             src={activeImage.src}
             alt={activeImage.alt}
-            fill
-            sizes="(max-width: 768px) 100vw, 600px"
-            className="object-contain animate-fade-in"
-            priority={activeIndex === 0 && (activeImage.priority ?? false)}
+            className="animate-fade-in"
+            style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
             aria-label={`${productName}, image ${activeIndex + 1} of ${safeImages.length}`}
           />
         </div>

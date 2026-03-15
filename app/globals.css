@@ -156,6 +156,15 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 
+/* Next.js <Image fill> relies on position:absolute + width/height:100%.
+   The global img reset above (height:auto) breaks fill-mode centering.
+   Override it for absolutely-positioned images so object-fit works. */
+img[style*="position: absolute"],
+img[style*="position:absolute"] {
+  max-width: none;
+  height: 100%;
+}
+
 a { color: inherit; text-decoration: none; }
 
 /* ── Typography utilities ──────────────────── */

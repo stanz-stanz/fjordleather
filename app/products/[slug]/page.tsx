@@ -92,7 +92,7 @@ export default async function ProductDetailPage({
                       margin: 0,
                       fontFamily: 'var(--font-body)',
                       fontWeight: 300,
-                      fontSize: '15px',
+                      fontSize: '17px',
                       letterSpacing: '0.03em',
                       color: 'var(--color-stone)',
                     }}
@@ -149,7 +149,7 @@ export default async function ProductDetailPage({
                   style={{
                     fontFamily: 'var(--font-display)',
                     fontWeight: 400,
-                    fontSize: 'clamp(32px, 3vw, 40px)',
+                    fontSize: 'clamp(36px, 3vw, 44px)',
                     lineHeight: 1.1,
                     letterSpacing: '-0.01em',
                     color: 'var(--color-obsidian)',
@@ -165,7 +165,7 @@ export default async function ProductDetailPage({
                   style={{
                     fontFamily: 'var(--font-body)',
                     fontWeight: 400,
-                    fontSize: '24px',
+                    fontSize: '27px',
                     lineHeight: 1.3,
                     color: 'var(--color-obsidian)',
                     marginTop: '24px',
@@ -196,7 +196,7 @@ export default async function ProductDetailPage({
                     style={{
                       fontFamily: 'var(--font-body)',
                       fontWeight: 500,
-                      fontSize: '15px',
+                      fontSize: '20px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.12em',
                       color: 'var(--color-stone)',
@@ -210,7 +210,7 @@ export default async function ProductDetailPage({
                     style={{
                       fontFamily: 'var(--font-body)',
                       fontWeight: 300,
-                      fontSize: '14px',
+                      fontSize: '19px',
                       lineHeight: 1.5,
                       color: 'var(--color-obsidian)',
                       margin: 0,
@@ -223,7 +223,7 @@ export default async function ProductDetailPage({
                     style={{
                       fontFamily: 'var(--font-body)',
                       fontWeight: 500,
-                      fontSize: '15px',
+                      fontSize: '20px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.12em',
                       color: 'var(--color-stone)',
@@ -237,7 +237,7 @@ export default async function ProductDetailPage({
                     style={{
                       fontFamily: 'var(--font-body)',
                       fontWeight: 300,
-                      fontSize: '14px',
+                      fontSize: '19px',
                       lineHeight: 1.5,
                       color: 'var(--color-obsidian)',
                       margin: 0,
@@ -252,7 +252,7 @@ export default async function ProductDetailPage({
                         style={{
                           fontFamily: 'var(--font-body)',
                           fontWeight: 500,
-                          fontSize: '15px',
+                          fontSize: '20px',
                           textTransform: 'uppercase',
                           letterSpacing: '0.12em',
                           color: 'var(--color-stone)',
@@ -266,7 +266,7 @@ export default async function ProductDetailPage({
                         style={{
                           fontFamily: 'var(--font-body)',
                           fontWeight: 300,
-                          fontSize: '14px',
+                          fontSize: '19px',
                           lineHeight: 1.5,
                           color: 'var(--color-obsidian)',
                           margin: 0,
@@ -279,20 +279,110 @@ export default async function ProductDetailPage({
                   )}
                 </dl>
 
-                {/* Editorial description */}
-                <p
+                {/* Editorial description + certification badge */}
+                <div
                   style={{
-                    fontFamily: 'var(--font-body)',
-                    fontWeight: 300,
-                    fontSize: '16px',
-                    lineHeight: 1.75,
-                    color: 'var(--color-obsidian)',
+                    gap: '32px',
                     marginTop: '24px',
-                    maxWidth: '420px',
                   }}
+                  className="flex flex-col lg:flex-row items-stretch"
                 >
-                  {product.description}
-                </p>
+                  {/* Description */}
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontWeight: 300,
+                      fontSize: '21px',
+                      lineHeight: 1.75,
+                      color: 'var(--color-obsidian)',
+                      margin: 0,
+                      flex: '1 1 60%',
+                      maxWidth: '420px',
+                    }}
+                  >
+                    {product.description}
+                  </p>
+
+                  {/* Vertical divider — desktop only */}
+                  <div
+                    aria-hidden="true"
+                    className="hidden lg:block"
+                    style={{
+                      width: '1px',
+                      backgroundColor: 'var(--color-stone)',
+                      flexShrink: 0,
+                    }}
+                  />
+
+                  {/* Certification badge */}
+                  <aside
+                    aria-label="Leather certification"
+                    style={{
+                      flex: '0 0 300px',
+                      border: '1px solid var(--color-stone)',
+                      backgroundColor: '#F0E6D0',
+                      padding: '24px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/pelle-vegetale-logo.jpg"
+                      alt="Pelle Conciata al Vegetale in Toscana — Made in Italy consortium mark"
+                      style={{
+                        width: '200px',
+                        height: 'auto',
+                        display: 'block',
+                      }}
+                    />
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: 500,
+                        fontSize: '17px',
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        color: 'var(--color-obsidian)',
+                        margin: 0,
+                        textAlign: 'center',
+                      }}
+                    >
+                      Certified Leather
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: 300,
+                        fontSize: '20px',
+                        lineHeight: 1.6,
+                        color: 'var(--color-obsidian)',
+                        margin: 0,
+                        textAlign: 'center',
+                      }}
+                    >
+                      Vegetable-tanned in Tuscany using centuries-old methods. Free of harmful chemicals, aged to perfection.
+                    </p>
+                    <a
+                      href="https://www.pellealvegetale.it/en/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: 400,
+                        fontSize: '19px',
+                        letterSpacing: '0.01em',
+                        color: 'var(--color-cognac)',
+                        textDecoration: 'none',
+                        transition: 'opacity var(--duration-swift)',
+                      }}
+                    >
+                      Learn more &#8594;
+                    </a>
+                  </aside>
+                </div>
 
                 {/* CTA */}
                 <div style={{ marginTop: '40px' }}>
@@ -308,7 +398,7 @@ export default async function ProductDetailPage({
                     style={{
                       fontFamily: 'var(--font-body)',
                       fontWeight: 300,
-                      fontSize: '15px',
+                      fontSize: '17px',
                       color: 'var(--color-stone)',
                       marginTop: '16px',
                     }}
