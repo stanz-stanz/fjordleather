@@ -9,11 +9,10 @@ export const HERO_PHRASES: string[] = [
   "Rebel / Against / The Disposable",
   "Leather That / Remembers You",
   "The Experience / Of Handmade",
-  "Made / Slow",
   "One Stitch / At A Time",
   "Made Slow / On Purpose",
   "Feel / The Care",
+  "Enjoy / attention to details",
   "Back / To Artisanal",
-  "Grow Tired / Of Cheap",
   "The Return / Of Craft"
 ]

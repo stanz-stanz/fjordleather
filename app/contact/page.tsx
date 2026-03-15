@@ -162,7 +162,7 @@ export default function ContactPage() {
                 }}
               >
                 Questions about a specific piece, commissions, or materials —
-                we respond to every message personally, usually within 24 hours.
+                we respond to every message personally.
               </p>
 
               {/* Direct email */}
@@ -235,7 +235,7 @@ export default function ContactPage() {
                     <span style={{ color: 'var(--color-obsidian)' }}>
                       {form.email}
                     </span>{' '}
-                    within 24–48 hours.
+                    as soon as possible.
                   </p>
                   <a
                     href="/catalog"
@@ -312,18 +312,7 @@ export default function ContactPage() {
                     <div>
                       <label htmlFor="contact-subject" style={labelStyle}>
                         Subject{' '}
-                        <span
-                          style={{
-                            fontWeight: 300,
-                            fontSize: '13px',
-                            letterSpacing: '0.05em',
-                            textTransform: 'none',
-                            color: 'var(--color-stone)',
-                            opacity: 0.7,
-                          }}
-                        >
-                          (optional)
-                        </span>
+
                       </label>
                       <input
                         id="contact-subject"
