@@ -176,7 +176,7 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
   {
     id: '11',
     slug: 'vaskebjornen-1',
-    name: 'Vaskebjornen-1',
+    name: 'Vaskebjornen #1',
     category: 'wallets',
     price: 899,
     currency: 'DKK',
@@ -193,7 +193,7 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
   {
     id: '12',
     slug: 'vaskebjornen-2',
-    name: 'Vaskebjornen-2',
+    name: 'Vaskebjornen #2',
     category: 'wallets',
     price: 899,
     currency: 'DKK',
@@ -210,7 +210,7 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
   {
     id: '13',
     slug: 'vaskebjornen-3',
-    name: 'Vaskebjornen-3',
+    name: 'Vaskebjornen #3',
     category: 'wallets',
     price: 899,
     currency: 'DKK',
@@ -227,7 +227,7 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
   {
     id: '14',
     slug: 'vaskebjornen-4',
-    name: 'Vaskebjornen-4',
+    name: 'Vaskebjornen #4',
     category: 'wallets',
     price: 999,
     currency: 'DKK',
@@ -244,7 +244,7 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
   {
     id: '15',
     slug: 'vaskebjornen-5',
-    name: 'Vaskebjornen-5',
+    name: 'Vaskebjornen #5',
     category: 'wallets',
     price: 999,
     currency: 'DKK',

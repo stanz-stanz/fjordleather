@@ -34,7 +34,7 @@ export default function HomePage() {
               color: 'var(--color-cognac)',
               marginBottom: '40px',
             }}>
-              Handmade leather goods — Oslo
+              Handmade in Vejle, Denmark
             </p>
 
             <h1 style={{
@@ -166,7 +166,7 @@ export default function HomePage() {
           }}>
             &ldquo;Leather is a living material. It marks time,
             absorbs habit, tells the story of its use. We make
-            objects meant to age &mdash; that look better at forty
+            objects meant to age &mdash; that look better at four
             years than at four days.&rdquo;
           </blockquote>
 
@@ -177,7 +177,7 @@ export default function HomePage() {
             letterSpacing: '0.1em',
             color: 'var(--color-stone)',
           }}>
-            Fjordleather &mdash; Oslo
+            Fjordleather &mdash; Vejle
           </p>
         </Container>
       </section>

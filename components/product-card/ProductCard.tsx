@@ -123,27 +123,6 @@ export default function ProductCard({ product, priority = false, compact = false
           )}
         </div>
 
-        {/* ── Text content ──────────────────────── */}
-        <div className="pt-5">
-
-          {/* Row 1: Category overline */}
-          <p className="text-style-overline text-stone">
-            {categoryLabel}
-          </p>
-
-          {/* Row 2: Name */}
-          <h3 className="font-display font-normal text-[22px] leading-tight text-obsidian mt-1">
-            {name}
-          </h3>
-
-          {/* Row 3: Price */}
-          <p
-            className="font-body font-light text-[15px] text-stone mt-1"
-            aria-label={`Price: ${formatPrice(price, currency)}`}
-          >
-            {formatPrice(price, currency)}
-          </p>
-        </div>
       </Link>
     </div>
   )

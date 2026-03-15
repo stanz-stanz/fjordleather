@@ -1,7 +1,7 @@
 
 ## Build Progress & Handoff Notes
 
-> **Last updated:** 2026-03-15 — Session 6 complete.
+> **Last updated:** 2026-03-15 — Session 7 complete.
 > Repository: `https://github.com/stanz-stanz/fjordleather`
 > Git remote name: `fjordleather`
 > Resume: clone the repo, `npm install && npm run dev`.
@@ -17,7 +17,7 @@
 
 **Foundation**
 - `next.config.ts` — `output: 'export'`, `images.unoptimized: true`, `trailingSlash: true`
-- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `--color-linen: #FEEBCF` (sampled from logo). `.cta-primary` class. `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. `.site-header-logo` responsive class (96% mobile, 80% at 768px+). No Google Fonts `@import`.
+- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `--color-linen: #FEEBCF` (sampled from logo). `.cta-primary` class. `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. `.site-header-logo` responsive class (96% mobile, 92% at 768px+). No Google Fonts `@import`.
 - `app/layout.tsx` — EB Garamond (`--font-display`) + Cormorant Garamond (`--font-display-fallback`) + Jost. Renders `SiteHeader` then `Navigation` then `{children}` then `Footer`. No `<main>` wrapper.
 
 **Data layer**
@@ -35,7 +35,7 @@
 - `lib/seo.ts` — `generateProductMetadata()` — uses `product.description` (not shortDescription)
 
 **Components**
-- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo.png`, 2176x480px) as plain `<img>` with `.site-header-logo` class (96% width mobile, 80% at 768px+, no max-width cap). 1% left margin. Linen background (`#FEEBCF`). 12px top padding on link wrapper. 48px gradient block below fades to transparent. `marginBottom: '-48px'` pulls nav up into gradient zone.
+- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo.png`, 2176x480px) as plain `<img>` with `.site-header-logo` class (96% width mobile, 92% at 768px+, no max-width cap). 1% left margin. Linen background (`#FEEBCF`). 12px top padding on link wrapper. 48px gradient block below fades to transparent. `marginBottom: '-48px'` pulls nav up into gradient zone.
 - `components/nav/Navigation.tsx` — Sticky 56px. Obsidian background always. Chalk nav links via inline styles (Tailwind color classes unreliable). Mobile slide-in drawer (obsidian bg, chalk links via inline styles). Escape key closes. Body scroll lock. Close on route change. Full focus trap: Tab/Shift+Tab cycles within drawer only; focus returns to hamburger on close.
 - `components/footer/Footer.tsx` — 3-column, espresso background
 - `components/common/Button.tsx` — Primary (cognac fill) / Secondary (obsidian outline) / Ghost. Sizes: sm=12px, md=13px, lg=14px. Zero border-radius. Renders as `<Link>` when `href` passed.

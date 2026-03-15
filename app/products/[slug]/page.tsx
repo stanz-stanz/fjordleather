@@ -388,7 +388,7 @@ export default async function ProductDetailPage({
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
                         color: 'var(--color-obsidian)',
-                        margin: 0,
+                        margin: '16px 0 0',
                         textAlign: 'center',
                       }}
                     >
