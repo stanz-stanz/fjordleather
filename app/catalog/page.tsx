@@ -92,13 +92,14 @@ function CatalogContent() {
               Our Catalog
             </p>
             <h1 className="text-style-display text-obsidian mb-4">
-              The Collection
+              The Collections
             </h1>
             <p
               className="font-body font-light text-obsidian"
-              style={{ fontSize: '16px', lineHeight: '1.65' }}
+              style={{ fontSize: '18px', lineHeight: '1.65' }}
             >
-              Handmade in limited quantities. Full-grain leather throughout.
+              Handmade in limited quantities.<br />
+              Exclusive designs, every item is unique.
             </p>
           </div>
         </Container>

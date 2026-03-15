@@ -37,7 +37,7 @@ const labelStyle: React.CSSProperties = {
 }
 
 const DEFAULT_MESSAGE = (name: string) =>
-  `Hello,\n\nI'm interested in the ${name} and would like to know more.\n\nCould you tell me about availability, lead time, and any customisation options?\n\nThank you.`
+  `Hello,\nI'm interested in the ${name} and would like to know:\n\nThank you.`
 
 export default function ProductInquiryForm({ productName, productSlug }: Props) {
   const [open, setOpen] = useState(false)

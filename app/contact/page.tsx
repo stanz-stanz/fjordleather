@@ -153,12 +153,12 @@ export default function ContactPage() {
               <p
                 style={{
                   fontFamily: 'var(--font-body)',
-                  fontWeight: 300,
-                  fontSize: '16px',
+                  fontWeight: 400,
+                  fontSize: '18px',
                   lineHeight: 1.7,
                   color: 'var(--color-obsidian)',
                   margin: '0 0 36px',
-                  maxWidth: '380px',
+                  maxWidth: '500px',
                 }}
               >
                 Questions about a specific piece, commissions, or materials —
@@ -170,8 +170,8 @@ export default function ContactPage() {
                 <p
                   style={{
                     fontFamily: 'var(--font-body)',
-                    fontWeight: 300,
-                    fontSize: '14px',
+                    fontWeight: 400,
+                    fontSize: '16px',
                     lineHeight: 1.6,
                     color: 'var(--color-stone)',
                     margin: 0,
@@ -196,21 +196,6 @@ export default function ContactPage() {
                   </a>
                 </p>
               </div>
-
-              {/* Response time note */}
-              <p
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontWeight: 300,
-                  fontSize: '15px',
-                  lineHeight: 1.5,
-                  color: 'var(--color-stone)',
-                  margin: 0,
-                  letterSpacing: '0.01em',
-                }}
-              >
-                Responses within 24–48 hours, Monday to Friday.
-              </p>
             </div>
 
             {/* ── RIGHT: contact form ──────────────────────────── */}
