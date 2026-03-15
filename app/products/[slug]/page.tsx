@@ -2,11 +2,10 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import ImageGallery from '@/components/image-gallery/ImageGallery';
 import ProductCard from '@/components/product-card/ProductCard';
-import Button from '@/components/common/Button';
 import { getProductBySlug, getProductSlugs, getRelatedProducts, getAdjacentProducts } from '@/data/utils';
 import { TANNERY_REGISTRY } from '@/data/tanneries';
 import { formatPrice } from '@/lib/utils';
-import { CONTACT_EMAIL } from '@/lib/constants';
+import ProductInquiryForm from '@/components/product-inquiry/ProductInquiryForm';
 
 /* ── Static params for export ─────────────────────────────────── */
 
@@ -43,12 +42,6 @@ export default async function ProductDetailPage({
 
   const related  = getRelatedProducts(product, 3);
   const { prev, next } = getAdjacentProducts(product);
-
-  const inquiryHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-    `Inquiry about ${product.name}`,
-  )}&body=${encodeURIComponent(
-    `Hello Fjordleather,\n\nI'm interested in the ${product.name}. Could you provide more information?`,
-  )}`;
 
   return (
     <main id="main-content">
@@ -464,35 +457,7 @@ export default async function ProductDetailPage({
 
                 {/* CTA */}
                 <div style={{ marginTop: '40px' }}>
-                  <Button
-                    variant="primary"
-                    href={inquiryHref}
-                    className="w-full lg:w-auto"
-                  >
-                    Inquire About This Piece →
-                  </Button>
-
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontWeight: 300,
-                      fontSize: '17px',
-                      color: 'var(--color-stone)',
-                      marginTop: '16px',
-                    }}
-                  >
-                    Or contact us directly at{' '}
-                    <a
-                      href={`mailto:${CONTACT_EMAIL}`}
-                      style={{
-                        color: 'var(--color-stone)',
-                        textDecoration: 'underline',
-                        textUnderlineOffset: '3px',
-                      }}
-                    >
-                      {CONTACT_EMAIL}
-                    </a>
-                  </p>
+                  <ProductInquiryForm productName={product.name} productSlug={product.slug} />
                 </div>
               </div>
             </div>
