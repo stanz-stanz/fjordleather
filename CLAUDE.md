@@ -1,7 +1,7 @@
 
 ## Build Progress & Handoff Notes
 
-> **Last updated:** 2026-03-14 — Session 3 complete.
+> **Last updated:** 2026-03-15 — Session 4 complete.
 > Repository: `https://github.com/stanz-stanz/fjordleather`
 > Git remote name: `fjordleather`
 > Resume: clone the repo, `npm install && npm run dev`.
@@ -21,8 +21,9 @@
 - `app/layout.tsx` — EB Garamond (`--font-display`) + Cormorant Garamond (`--font-display-fallback`) + Jost. Renders `SiteHeader` then `Navigation` then `{children}` then `Footer`. No `<main>` wrapper.
 
 **Data layer**
-- `data/types.ts` — `Product`, `ProductImage`, `ProductDimensions`, `ProductCategory`. Fields: `id`, `slug`, `name`, `category`, `price`, `currency`, `description`, `material`, `construction`, `dimensions`, `images`. No `featured`, `isNew`, `patina`, or `shortDescription`.
-- `data/products.ts` — 11 products (2 bags, 2 duffles, 2 wallets, 2 coin pouches, 2 accessories, 1 real wallet). EUR pricing for originals, DKK for Vaskebjornen-1. SVG placeholders for original 10; real PNGs for Vaskebjornen-1.
+- `data/types.ts` — `Product`, `ProductImage`, `ProductDimensions`, `ProductCategory`, `Tannery`. Fields: `id`, `slug`, `name`, `category`, `price`, `currency`, `description`, `material`, `construction`, `dimensions`, `images`, `tannery?`. No `featured`, `isNew`, `patina`, or `shortDescription`.
+- `data/products.ts` — 11 products (2 bags, 2 duffles, 2 wallets, 2 coin pouches, 2 accessories, 1 real wallet). EUR pricing for originals, DKK for Vaskebjornen-1. SVG placeholders for original 10; real PNGs for Vaskebjornen-1. All 10 products with identifiable tanneries have `tannery` field set.
+- `data/tanneries.ts` — `TANNERY_REGISTRY`: map of all 17 Genuine Italian Vegetable-Tanned Leather consortium tanneries → `{ url?, logo }`. Logo files in `public/images/tanneries/`.
 - `data/categories.ts` — Category labels and order
 - `data/utils.ts` — `getProductBySlug`, `getProductSlugs`, `getFeaturedProducts` (returns `slice(0,3)`), `getRelatedProducts`, etc.
 - `data/product-intake.example.json` — Template for product import script. Fields: `name`, `category`, `price`, `currency`, `description`, `construction`, `dimensions`, `images`.
@@ -41,17 +42,19 @@
 - `components/common/Container.tsx` — Max-width 1440px responsive wrapper
 - `components/common/AnimateOnScroll.tsx` — IntersectionObserver scroll-reveal for `[data-animate="fade-up"]` children
 - `components/product-card/ProductCard.tsx` — `'use client'` (required for mouse event handlers). 4:5 aspect ratio. Wallet cards: dark brown gradient background (`linear-gradient(to bottom right, #2A1A10, #1A0E08)`). All other cards: `bg-linen`. FJORDLEATHER text overlay (14px, `#C4B5A8`, opacity 0.4) at bottom of wallet cards, rendered after image div so it sits on top. Image at `scale(1.0)`, hover `scale(1.03)`, `object-contain`. No New badge. No featured badge.
-- `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac. Aspect ratio 4:5, `object-contain`.
+- `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac. Aspect ratio `3/2.6` (landscape, tuned for wallet photos). Uses `flex items-center justify-center` + plain `<img>` with `max-width/max-height: 100%` for reliable centering (NOT Next.js `<Image fill>` — global CSS reset breaks it). Inner padding `p-6`.
 
 **Pages** (all render statically — `npm run build` passes, 0 TypeScript errors)
 - `app/page.tsx` — Homepage: warm ivory hero (`#F0E6D0`) with 104px EB Garamond heading left-aligned, cognac overline, 17px body copy, stacked CTA. Products section, linen pull quote, materials strip.
 - `app/catalog/page.tsx` — Collection: sticky filter bar (`top-[56px]`), URL-based category filter via `useSearchParams` + `router.replace` (persists on back navigation). Wrapped in `Suspense` for static export. Grid: `grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 lg:gap-8`.
-- `app/products/[slug]/page.tsx` — PDP: async params (`await params` — Next.js 16 requirement). 60/40 gallery + info, sticky detail panel, related products, Inquire CTA via mailto.
+- `app/products/[slug]/page.tsx` — PDP: async params (`await params` — Next.js 16 requirement). 60/40 gallery + info, sticky detail panel, related products, Inquire CTA via mailto. Right info panel layout: details grid (Material, Construction, Dimensions, Tannery) + description in left column; certification badge (`flex: 0 0 300px`, `#F0E6D0` bg, aligned with Material row) in right column with vertical divider. Tannery logo + "Sourced from" inside badge. All font sizes bumped (labels 20px, values 19px, description 21px, price 27px). Button `md` size is 16px.
 - `app/about/page.tsx` — Craft: 4 sections including full-bleed espresso maker's statement blockquote
 - `app/contact/page.tsx` — Contact: two-column, bottom-border-only form inputs, mailto submit
 
 **Assets & SEO**
 - `public/images/logo.png` — Brand logo. 2176x480px. Do not crop. Rendered via `.site-header-logo` CSS class.
+- `public/images/pelle-vegetale-logo.jpg` — Pelle Conciata al Vegetale in Toscana consortium mark. 200px wide in badge.
+- `public/images/tanneries/` — 17 tannery logos downloaded from pellealvegetale.it. Filenames match `TANNERY_REGISTRY` entries in `data/tanneries.ts`.
 - `public/images/products/` — SVG placeholders for original 10 products + real PNGs for Vaskebjornen-1 (`vaskebjornen-1-1.png`, `vaskebjornen-1-2.png`). Also `bifold-1-1.svg` and `bifold-1-2.svg` (unused placeholder SVGs).
 - `public/robots.txt` — allow all crawlers
 - `public/sitemap.xml` — static routes (domain placeholder — update when live)
@@ -69,6 +72,7 @@
 - [ ] Fill in `data/intake/wallet-2.json` through `wallet-10.json` with real names, descriptions, prices, and construction details. Then run `npm run add-product -- data/intake/wallet-N.json` for each.
 - [ ] Replace SVG placeholders for original 10 products with real photography when available.
 - [ ] Favicon: `app/icon.svg` is a simple "F" mark — replace with a proper Fjordleather mark if one exists.
+- [ ] Stein Key Fob (`id: 09`) has no `tannery` field — description says "workshop offcuts". Add tannery once known.
 
 **Priority 2 — Awaiting domain**
 - [ ] Update `CONTACT_EMAIL` and `SITE_URL` in `lib/constants.ts` once domain is confirmed.
