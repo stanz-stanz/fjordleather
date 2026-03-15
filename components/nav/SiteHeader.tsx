@@ -7,10 +7,10 @@ export default function SiteHeader() {
       <Link href="/" aria-label={`${BRAND_NAME} — return to homepage`} style={{ display: 'flex', justifyContent: 'center', paddingTop: '12px' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/logo_new.png"
+          src="/images/newest_logo.png"
           alt="Fjordleather — Crafted by Hand"
-          width={1220}
-          height={680}
+          width={1190}
+          height={598}
           className="site-header-logo"
         />
       </Link>
