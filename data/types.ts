@@ -36,4 +36,5 @@ export interface Product {
   dimensions: ProductDimensions;
   images: ProductImage[];
   tannery?: Tannery[];
+  sold?: boolean;
 }

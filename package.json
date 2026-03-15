@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "add-product": "node scripts/add-product.mjs",
-    "admin": "node tools/admin-server.mjs"
+    "admin": "node tools/admin-server.mjs",
+    "test:admin": "node --test tools/admin-server.test.mjs"
   },
   "dependencies": {
     "next": "16.1.6",

@@ -162,7 +162,7 @@ export default async function ProductDetailPage({
 
                 {/* Price */}
                 <p
-                  aria-label={`Price: ${formatPrice(product.price)}`}
+                  aria-label={`Price: ${formatPrice(product.price, product.currency)}`}
                   style={{
                     fontFamily: 'var(--font-body)',
                     fontWeight: 400,
@@ -172,7 +172,7 @@ export default async function ProductDetailPage({
                     marginTop: '24px',
                   }}
                 >
-                  {formatPrice(product.price)}
+                  {formatPrice(product.price, product.currency)}
                 </p>
 
                 {/* Divider */}

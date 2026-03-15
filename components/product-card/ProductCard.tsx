@@ -20,6 +20,7 @@ export default function ProductCard({ product, priority = false, compact = false
     price,
     currency,
     images,
+    sold,
   } = product
 
   const primaryImage = images[0]
@@ -64,6 +65,50 @@ export default function ProductCard({ product, priority = false, compact = false
           ) : (
             // Placeholder when no image is available
             <div className={cn('absolute inset-0', category !== 'wallets' && 'bg-linen')} aria-hidden="true" />
+          )}
+
+          {/* Sold watermark overlay */}
+          {sold && (
+            <div
+              aria-label="Sold"
+              className="absolute inset-0 pointer-events-none"
+              style={{ zIndex: 20 }}
+            >
+              {/* Diagonal band */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transform: 'rotate(-30deg)',
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 400,
+                    fontSize: 'clamp(28px, 8cqw, 48px)',
+                    letterSpacing: '0.18em',
+                    color: '#fff',
+                    textTransform: 'uppercase',
+                    opacity: 0.72,
+                    textShadow: '0 1px 8px rgba(0,0,0,0.35)',
+                    whiteSpace: 'nowrap',
+                    userSelect: 'none',
+                  }}
+                >
+                  Sold
+                </span>
+              </div>
+              {/* Subtle dark veil */}
+              <div
+                aria-hidden="true"
+                style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.28)' }}
+              />
+            </div>
           )}
 
           {/* FJORDLEATHER branding overlay — rendered after image so it sits on top */}

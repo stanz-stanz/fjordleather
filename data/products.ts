@@ -89,29 +89,7 @@ The grab handles at each end are formed from a single piece of 4mm leather folde
     ],
     tannery: [{ name: 'Conceria Walpier', url: 'http://www.conceriawalpier.com/' }],
   },
-  {
-    id: '05',
-    slug: 'fjell-bifold',
-    name: 'Fjell Bifold',
-    category: 'wallets',
-    price: 210,
-    currency: 'EUR',
-    description: `The Fjell Bifold is the wallet we return to when we need to remember why we do this. Three card slots per side, cut to fit the standard card dimension — not stretched from a generic template. A full-width bill compartment that lies flat when empty. No exterior branding, no logo, no embossing. The only mark on the outside is the stitching.
-
-The leather is Badalassi Carlo Minerva Box in dark bark — a firm, structured hide that does not stretch or distort with card load. The edges are hand-bevelled with a French edge tool, then burnished through three progressions of grit and wax before a final application of natural beeswax. The edge is smooth enough to draw a fingernail along without catching.
-
-All stitching is waxed linen, twelve stitches per inch, run through with a hand awl at consistent spacing. The thread is pulled to the same tension throughout — this is harder to achieve than it sounds, and it is the thing most visible when it is wrong. The interior card slots are reinforced at the mouth with a second layer of 0.5mm leather, skived to invisibility at the edge.`,
-    material: 'Full-grain vegetable-tanned leather, Badalassi Carlo Minerva Box, dark bark',
-    construction: 'Hand saddle-stitched with waxed linen thread, twelve stitches per inch. Edges hand-bevelled with French edge tool and burnished with beeswax. Card slot mouths reinforced with skived second layer.',
-    dimensions: { height: '9.5', width: '11', unit: 'cm' },
-    images: [
-      { src: '/images/products/fjell-bifold-1.svg', alt: 'Fjell Bifold wallet in dark bark Badalassi Carlo Minerva Box leather', priority: true },
-      { src: '/images/products/fjell-bifold-2.svg', alt: 'Fjell Bifold open showing three card slots per side', priority: false },
-      { src: '/images/products/fjell-bifold-3.svg', alt: 'Fjell Bifold edge detail showing burnished beeswax finish', priority: false },
-    ],
-    tannery: [{ name: 'Badalassi Carlo' }],
-  },
-  {
+    {
     id: '06',
     slug: 'bark-card-sleeve',
     name: 'Bark Card Sleeve',
@@ -216,21 +194,38 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
     ],
     tannery: [{ name: 'Badalassi Carlo' }],
   },
-  {
+      {
     id: '11',
     slug: 'vaskebjornen-1',
     name: 'Vaskebjornen-1',
     category: 'wallets',
-    price: 699,
+    price: 899,
     currency: 'DKK',
-    description: `This handmade bifold wallet is crafted entirely from premium Italian leather sourced from the renowned Conceria Puccini tannery. The interior features the natural flesh side of the leather, carefully hand-burnished to achieve a smooth, refined finish. Each edge is meticulously skived, hand-sanded, and burnished to create a silky, durable feel. The wallet is hand-stitched using heavy-duty threaded nylon from Crimson Hides, ensuring exceptional strength and longevity. Every detail reflects the care, precision, and character that only true hand craftsmanship can provide.`,
+    description: `This handmade bi-fold wallet is crafted entirely from premium Italian leather sourced from the renowned Puccini tannery. The interior features the natural flesh side of the leather, carefully hand-burnished to achieve a smooth, refined finish. Each edge is meticulously skived, hand-sanded, and burnished to create a silky, durable feel. The wallet is hand-stitched using heavy-duty threaded nylon from Crimson Hides, ensuring exceptional strength and longevity. Every detail reflects the care, precision, and character that only true hand craftsmanship can provide.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand sitched',
+    construction: 'Hand cut, hand sitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-1-1.png', alt: 'Bifold wallet exterior', priority: true },
-      { src: '/images/products/vaskebjornen-1-2.png', alt: 'Bifold wallet interior', priority: false }
+      { src: '/images/products/vaskebjornen-1-2.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-1-1.png', alt: 'Bifold wallet exterior', priority: false }
     ],
-    tannery: [{ name: 'Puccini Attilio', url: 'http://www.conceriapuccini.com' }],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+      {
+    id: '12',
+    slug: 'vaskebjornen-2',
+    name: 'Vaskebjornen-2',
+    category: 'wallets',
+    price: 899,
+    currency: 'DKK',
+    description: `This handmade bi-fold wallet is crafted entirely from premium Italian leather sourced from the renowned Puccini tannery. The interior features the natural flesh side of the leather, carefully hand-burnished to achieve a smooth, refined finish. Each edge is meticulously skived, hand-sanded, and burnished to create a silky, durable feel. The wallet is hand-stitched using heavy-duty threaded nylon from Crimson Hides, ensuring exceptional strength and longevity. Every detail reflects the care, precision, and character that only true hand craftsmanship can provide.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand sitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-2-1.png', alt: 'vaskebjornen-2-1', priority: true },
+      { src: '/images/products/vaskebjornen-2-2.png', alt: 'vaskebjornen-2-2', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
 ];

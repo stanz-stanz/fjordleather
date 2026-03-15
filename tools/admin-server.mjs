@@ -3,368 +3,21 @@
  * Fjordleather — Local Admin Server
  * Usage: npm run admin
  *
+ * Thin HTTP layer — all business logic lives in admin-core.mjs.
  * Serves Add Product + Edit Product at http://localhost:3001
  * NOT for production — local use only.
  */
 
 import http from 'http';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import {
+  log,
+  TANNERIES, TANNERY_URLS, CATEGORIES, CURRENCIES,
+  parseProducts, parseMultipart, addProduct, updateProduct, deleteProduct,
+} from './admin-core.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '..');
 const PORT = 3001;
 
-// ── Tannery list (mirrors data/tanneries.ts) ────────────────────────────────
-const TANNERIES = [
-  'Artigiano Del Cuoio', 'Badalassi Carlo', 'Conceria La Bretagna',
-  'Conceria Walpier', 'Curtiba Ind. Conciaria', 'Il Gabbiano', 'Il Ponte',
-  'Italpel', 'La Perla Azzurra', 'Lo Stivale', 'M.P.G. Industria Conciaria',
-  'Monteverdi', 'Nuova Albora', 'Orice', 'Puccini Attilio', 'Tempesti',
-  'Volpi Concerie', 'WALPIER',
-];
-
-const TANNERY_URLS = {
-  'Artigiano Del Cuoio':        'http://www.artigiano.it',
-  'Conceria La Bretagna':       'http://www.labretagna.com',
-  'Conceria Walpier':           'http://www.conceriawalpier.com/',
-  'Curtiba Ind. Conciaria':     'http://www.curtiba.it',
-  'Il Gabbiano':                'http://conceriailgabbiano.com/',
-  'Il Ponte':                   'http://www.conceriailponte.it',
-  'La Perla Azzurra':           'http://www.laperlaazzurra.com',
-  'Lo Stivale':                 'http://www.lostivale.it',
-  'M.P.G. Industria Conciaria': 'http://www.mpg.it',
-  'Monteverdi':                 'http://www.conceriamonteverdi.it',
-  'Nuova Albora':               'http://gruppoconceriemasini.com/company/nuova-albora/',
-  'Orice':                      'http://www.orice.com',
-  'Puccini Attilio':            'http://www.conceriapuccini.com',
-  'Tempesti':                   'http://www.tempesti.com',
-  'Volpi Concerie':             'http://www.volpi.it',
-  'WALPIER':                    'http://www.conceriawalpier.com/',
-};
-
-const CATEGORIES = ['bags', 'travel-duffles', 'wallets', 'coin-pouches', 'accessories'];
-const CURRENCIES = ['EUR', 'DKK', 'USD', 'GBP', 'NOK', 'SEK'];
-
-// ── Core logic ───────────────────────────────────────────────────────────────
-
-function slugify(name) {
-  return name.toLowerCase().trim()
-    .replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
-}
-
-function nextProductId(productsSource) {
-  const matches = [...productsSource.matchAll(/id:\s*'(\d+)'/g)];
-  if (matches.length === 0) return '01';
-  const max = Math.max(...matches.map((m) => parseInt(m[1], 10)));
-  return String(max + 1).padStart(2, '0');
-}
-
-function formatDimensions(d) {
-  const parts = [`height: '${d.height}'`, `width: '${d.width}'`];
-  if (d.depth) parts.push(`depth: '${d.depth}'`);
-  parts.push(`unit: '${d.unit}'`);
-  return `{ ${parts.join(', ')} }`;
-}
-
-function escapeBacktick(str) {
-  return str.replace(/`/g, '\\`').replace(/\$/g, '\\$');
-}
-
-// images: array of { src, alt } — src may be pre-resolved (edit) or computed from slug+index+ext
-function buildProductEntry(data, slug, id) {
-  const images = data.images
-    .map((img, i) => {
-      const src = img.src || `/images/products/${slug}-${i + 1}${img.ext}`;
-      return `      { src: '${src}', alt: '${img.alt.replace(/'/g, "\\'")}', priority: ${i === 0} }`;
-    })
-    .join(',\n');
-
-  let tanneryField = '';
-  if (data.tannery && data.tannery.length > 0) {
-    const entries = data.tannery
-      .map((t) => {
-        const url = t.url ? `, url: '${t.url}'` : '';
-        return `{ name: '${t.name.replace(/'/g, "\\'")}' ${url}}`;
-      })
-      .join(', ');
-    tanneryField = `\n    tannery: [${entries}],`;
-  }
-
-  return `  {
-    id: '${id}',
-    slug: '${slug}',
-    name: '${data.name.replace(/'/g, "\\'")}',
-    category: '${data.category}',
-    price: ${data.price},
-    currency: '${data.currency}',
-    description: \`${escapeBacktick(data.description)}\`,
-    material: '${(data.material || 'Full-grain Italian leather').replace(/'/g, "\\'")}',
-    construction: '${data.construction.replace(/'/g, "\\'")}',
-    dimensions: ${formatDimensions(data.dimensions)},
-    images: [
-${images}
-    ],${tanneryField}
-  },`;
-}
-
-// ── Product parser (reads data/products.ts at runtime) ──────────────────────
-
-function skipString(src, i) {
-  const q = src[i]; i++;
-  while (i < src.length) {
-    if (src[i] === '\\') { i += 2; continue; }
-    if (src[i] === q) return i + 1;
-    i++;
-  }
-  return i;
-}
-
-function extractBlock(src, start) {
-  let i = start + 1, depth = 1;
-  while (i < src.length && depth > 0) {
-    const ch = src[i];
-    if (ch === '`' || ch === '"' || ch === "'") { i = skipString(src, i); continue; }
-    if (ch === '{') depth++;
-    else if (ch === '}') depth--;
-    i++;
-  }
-  return src.slice(start, i);
-}
-
-function getStr(block, key) {
-  const m = block.match(new RegExp(key + ":\\s*'((?:[^'\\\\]|\\\\.)*)'" ));
-  return m ? m[1].replace(/\\'/g, "'") : null;
-}
-
-function parseProductBlock(block) {
-  const name = getStr(block, 'name');
-  if (!name) return null;
-  const slug         = getStr(block, 'slug');
-  const category     = getStr(block, 'category');
-  const currency     = getStr(block, 'currency');
-  const material     = getStr(block, 'material');
-  const construction = getStr(block, 'construction');
-  const idM          = block.match(/id:\s*'([^']+)'/);
-  const id           = idM ? idM[1] : null;
-
-  const priceM = block.match(/price:\s*(\d+(?:\.\d+)?)/);
-  const price  = priceM ? parseFloat(priceM[1]) : null;
-
-  const descM = block.match(/description:\s*`([\s\S]*?)`(?=\s*,)/);
-  const description = descM ? descM[1].replace(/\\`/g, '`').replace(/\\\$/g, '$') : '';
-
-  const dimM = block.match(/dimensions:\s*\{([^}]+)\}/);
-  const dim  = dimM ? dimM[1] : '';
-  const dimensions = {
-    height: (dim.match(/height:\s*'([^']+)'/) || [])[1] || '',
-    width:  (dim.match(/width:\s*'([^']+)'/)  || [])[1] || '',
-    depth:  (dim.match(/depth:\s*'([^']+)'/)  || [])[1] || '',
-    unit:   (dim.match(/unit:\s*'([^']+)'/)   || [])[1] || 'cm',
-  };
-
-  // Images: extract all { src: '...', alt: '...' } entries
-  const imgRe = /\{\s*src:\s*'([^']+)',\s*alt:\s*'([^']+)'/g;
-  const images = [...block.matchAll(imgRe)].map(m => ({ src: m[1], alt: m[2] }));
-
-  const tanM    = block.match(/tannery:\s*\[[\s\S]*?name:\s*'([^']+)'/);
-  const tannery = tanM ? tanM[1] : '__none__';
-
-  return { id, name, slug, category, price, currency, description, material, construction, dimensions, images, tannery };
-}
-
-function parseProducts() {
-  try {
-    const src = fs.readFileSync(path.resolve(ROOT, 'data/products.ts'), 'utf-8');
-    const arrayStart = src.indexOf('= [');
-    if (arrayStart === -1) return [];
-    const products = [];
-    let i = arrayStart + 3;
-    while (i < src.length) {
-      if (src[i] === ' ' || src[i] === '\n' || src[i] === '\r') { i++; continue; }
-      if (src[i] === '{') {
-        const block = extractBlock(src, i);
-        const p = parseProductBlock(block);
-        if (p) products.push(p);
-        i += block.length;
-      } else if (src[i] === ']') {
-        break;
-      } else { i++; }
-    }
-    return products;
-  } catch { return []; }
-}
-
-// ── Multipart parser ─────────────────────────────────────────────────────────
-
-function parseMultipart(body, boundary) {
-  const fields = {}, files = [];
-  const boundaryBuf = Buffer.from('--' + boundary);
-  const parts = [];
-  let start = 0;
-  while (start < body.length) {
-    const boundaryIdx = indexOf(body, boundaryBuf, start);
-    if (boundaryIdx === -1) break;
-    const after = boundaryIdx + boundaryBuf.length;
-    if (body[after] === 45 && body[after + 1] === 45) break;
-    const headerStart = body[after] === 13 ? after + 2 : after;
-    const headerEnd = indexOf(body, Buffer.from('\r\n\r\n'), headerStart);
-    if (headerEnd === -1) break;
-    const headerStr = body.slice(headerStart, headerEnd).toString('utf-8');
-    const contentStart = headerEnd + 4;
-    const nextBoundary = indexOf(body, boundaryBuf, contentStart);
-    const contentEnd = nextBoundary !== -1 ? nextBoundary - 2 : body.length;
-    parts.push({ headers: headerStr, content: body.slice(contentStart, contentEnd) });
-    start = nextBoundary !== -1 ? nextBoundary : body.length;
-  }
-  for (const part of parts) {
-    const dispMatch = part.headers.match(/Content-Disposition:[^\r\n]*name="([^"]+)"/i);
-    if (!dispMatch) continue;
-    const name = dispMatch[1];
-    const fileMatch = part.headers.match(/filename="([^"]*)"/i);
-    if (fileMatch) {
-      const typeMatch = part.headers.match(/Content-Type:\s*([^\r\n]+)/i);
-      files.push({ fieldName: name, filename: fileMatch[1], mimeType: typeMatch ? typeMatch[1].trim() : 'application/octet-stream', data: part.content });
-    } else {
-      fields[name] = part.content.toString('utf-8');
-    }
-  }
-  return { fields, files };
-}
-
-function indexOf(buf, search, start = 0) {
-  for (let i = start; i <= buf.length - search.length; i++) {
-    let found = true;
-    for (let j = 0; j < search.length; j++) {
-      if (buf[i + j] !== search[j]) { found = false; break; }
-    }
-    if (found) return i;
-  }
-  return -1;
-}
-
-function extFromMime(mime) {
-  if (mime.includes('jpeg') || mime.includes('jpg')) return '.jpg';
-  if (mime.includes('png')) return '.png';
-  if (mime.includes('webp')) return '.webp';
-  if (mime.includes('gif')) return '.gif';
-  return '.jpg';
-}
-
-// ── Shared field extraction ──────────────────────────────────────────────────
-
-function extractFields(fields) {
-  const required = ['name', 'category', 'price', 'currency', 'description', 'construction', 'dim_height', 'dim_width', 'dim_unit'];
-  for (const k of required) {
-    if (!fields[k] || fields[k].trim() === '') throw new Error(`Missing required field: ${k}`);
-  }
-  const tannery = (fields.tannery && fields.tannery !== '__none__')
-    ? [{ name: fields.tannery, url: TANNERY_URLS[fields.tannery] || undefined }]
-    : null;
-  return {
-    name:         fields.name.trim(),
-    category:     fields.category,
-    price:        parseFloat(fields.price),
-    currency:     fields.currency,
-    description:  fields.description.trim(),
-    material:     fields.material?.trim() || 'Full-grain Italian leather',
-    construction: fields.construction.trim(),
-    dimensions: {
-      height: fields.dim_height.trim(),
-      width:  fields.dim_width.trim(),
-      depth:  fields.dim_depth?.trim() || undefined,
-      unit:   fields.dim_unit,
-    },
-    tannery,
-  };
-}
-
-// ── Add product ──────────────────────────────────────────────────────────────
-
-function addProduct(fields, files) {
-  const data = extractFields(fields);
-  const slug = slugify(data.name);
-  const productsFile = path.resolve(ROOT, 'data/products.ts');
-  const productsSource = fs.readFileSync(productsFile, 'utf-8');
-
-  if (productsSource.includes(`slug: '${slug}'`)) {
-    throw new Error(`A product with slug "${slug}" already exists.`);
-  }
-
-  const imageFiles = files.filter(f => f.fieldName.startsWith('image_'));
-  if (imageFiles.length === 0) throw new Error('At least one product image is required.');
-
-  const destDir = path.resolve(ROOT, 'public/images/products');
-  fs.mkdirSync(destDir, { recursive: true });
-
-  data.images = imageFiles.map((f, i) => {
-    const ext = extFromMime(f.mimeType) || path.extname(f.filename).toLowerCase() || '.jpg';
-    fs.writeFileSync(path.join(destDir, `${slug}-${i + 1}${ext}`), f.data);
-    return { ext, alt: fields[`image_alt_${i}`] || data.name };
-  });
-
-  const id    = nextProductId(productsSource);
-  const entry = buildProductEntry(data, slug, id);
-  const updated = productsSource.replace(/(\];\s*$)/, `${entry}\n$1`);
-  if (updated === productsSource) throw new Error('Could not locate end of products array in data/products.ts');
-  fs.writeFileSync(productsFile, updated, 'utf-8');
-
-  return { slug, id, name: data.name, imageCount: data.images.length };
-}
-
-// ── Edit product ─────────────────────────────────────────────────────────────
-
-function replaceProductInFile(slug, newEntry) {
-  const productsFile = path.resolve(ROOT, 'data/products.ts');
-  const src = fs.readFileSync(productsFile, 'utf-8');
-  const slugIdx = src.indexOf(`slug: '${slug}'`);
-  if (slugIdx === -1) throw new Error(`Product "${slug}" not found`);
-  let blockStart = slugIdx;
-  while (blockStart > 0 && src[blockStart] !== '{') blockStart--;
-  const block   = extractBlock(src, blockStart);
-  const updated = src.slice(0, blockStart) + newEntry + src.slice(blockStart + block.length);
-  fs.writeFileSync(productsFile, updated, 'utf-8');
-}
-
-function updateProduct(slug, fields, files) {
-  const data = extractFields(fields);
-
-  // Parse the ordered image list sent by the client
-  let imageOrder;
-  try { imageOrder = JSON.parse(fields.image_order || '[]'); }
-  catch { throw new Error('Invalid image_order data'); }
-  if (imageOrder.length === 0) throw new Error('At least one product image is required.');
-
-  const destDir = path.resolve(ROOT, 'public/images/products');
-  fs.mkdirSync(destDir, { recursive: true });
-
-  const ts = Date.now();
-  let newFileIdx = 0;
-  data.images = imageOrder.map((item) => {
-    if (item.type === 'existing') {
-      return { src: item.src, alt: item.alt };
-    }
-    const file = files.find(f => f.fieldName === 'new_image_' + item.newIdx);
-    if (!file) throw new Error(`Missing uploaded file for new_image_${item.newIdx}`);
-    const ext      = extFromMime(file.mimeType) || '.jpg';
-    const filename = `${slug}-${ts}-${newFileIdx++}${ext}`;
-    fs.writeFileSync(path.join(destDir, filename), file.data);
-    return { src: `/images/products/${filename}`, alt: item.alt };
-  });
-
-  // Preserve the original id
-  const products = parseProducts();
-  const existing = products.find(p => p.slug === slug);
-  const id = existing?.id || '00';
-
-  const entry = buildProductEntry(data, slug, id);
-  replaceProductInFile(slug, entry);
-
-  return { slug, id, name: data.name, imageCount: data.images.length };
-}
-
-// ── HTML helpers ─────────────────────────────────────────────────────────────
+// ── HTML option helpers ───────────────────────────────────────────────────────
 
 function tanneryOptions() {
   return `<option value="__none__">— None —</option>\n` +
@@ -435,6 +88,8 @@ const HTML = `<!DOCTYPE html>
   .submit-btn:disabled { background: #555; cursor: not-allowed; }
   .reset-link { display: inline-block; margin-top: 12px; margin-left: 16px; font-size: 13px; color: #888; cursor: pointer; text-decoration: underline; }
   .reset-link:hover { color: #aaa; }
+  .delete-btn { background: none; color: #c0392b; border: 1px solid #c0392b; padding: 14px 28px; font-size: 14px; font-family: inherit; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, color 0.2s; margin-top: 8px; margin-left: 16px; }
+  .delete-btn:hover { background: #c0392b; color: #fff; }
 
   /* Toast */
   #toast { position: fixed; bottom: 32px; right: 32px; padding: 16px 24px; font-size: 14px; border-radius: 0; display: none; z-index: 9999; max-width: 360px; line-height: 1.5; }
@@ -471,11 +126,20 @@ const HTML = `<!DOCTYPE html>
     <!-- ── Edit mode: select product ──────────────────────────────── -->
     <div class="section" id="section-edit-select" style="display:none">
       <div class="section-title">Select product to edit</div>
-      <div class="field">
-        <label for="edit-select">Product</label>
-        <select id="edit-select">
-          <option value="">— Select product —</option>
-        </select>
+      <div class="row">
+        <div class="field">
+          <label for="edit-category-filter">Category</label>
+          <select id="edit-category-filter">
+            <option value="">— All categories —</option>
+            ${categoryOptions()}
+          </select>
+        </div>
+        <div class="field" style="flex:2">
+          <label for="edit-select">Product</label>
+          <select id="edit-select">
+            <option value="">— Select product —</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -575,9 +239,19 @@ const HTML = `<!DOCTYPE html>
       <div class="image-previews" id="image-previews"></div>
     </div>
 
+    <!-- ── Status (edit mode only) ─────────────────────────────────── -->
+    <div class="section" id="section-status" style="display:none">
+      <div class="section-title">Status</div>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:#e8e0d8;letter-spacing:normal;text-transform:none">
+        <input type="checkbox" id="sold" name="sold" style="width:16px;height:16px;accent-color:#8B5A2B;flex-shrink:0">
+        Mark as Sold — displays a watermark on product images
+      </label>
+    </div>
+
     <!-- ── Actions ─────────────────────────────────────────────────── -->
     <div class="section">
       <button type="submit" class="submit-btn" id="submit-btn">Add Product</button>
+      <button type="button" class="delete-btn" id="delete-btn" style="display:none">Delete Product</button>
       <a class="reset-link" id="reset-link">Reset form</a>
     </div>
 
@@ -602,25 +276,54 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.getElementById('section-copy-from').style.display  = mode === 'add'  ? '' : 'none';
     document.getElementById('section-edit-select').style.display = mode === 'edit' ? '' : 'none';
     document.getElementById('section-slug').style.display        = 'none';
+    document.getElementById('section-status').style.display      = 'none';
+    document.getElementById('delete-btn').style.display          = 'none';
     document.getElementById('submit-btn').textContent = mode === 'add' ? 'Add Product' : 'Save Changes';
     resetForm();
   });
 });
 
 // ── Load product list ────────────────────────────────────────────────────
+function populateProductLists() {
+  const addOpts = document.getElementById('copy-from');
+  addOpts.innerHTML = '<option value="">— Select product —</option>';
+  existingProducts.forEach(p => {
+    addOpts.insertAdjacentHTML('beforeend', \`<option value="\${p.slug}">\${p.name} (\${p.category})</option>\`);
+  });
+  populateEditSelect();
+}
+
+function populateEditSelect() {
+  const filterCat = document.getElementById('edit-category-filter').value;
+  const editOpts  = document.getElementById('edit-select');
+  const prevSlug  = editOpts.value;
+  editOpts.innerHTML = '<option value="">— Select product —</option>';
+  existingProducts
+    .filter(p => !filterCat || p.category === filterCat)
+    .forEach(p => {
+      editOpts.insertAdjacentHTML('beforeend', \`<option value="\${p.slug}">\${p.name}</option>\`);
+    });
+  // Restore selection if still available
+  if (prevSlug && [...editOpts.options].some(o => o.value === prevSlug)) {
+    editOpts.value = prevSlug;
+  }
+}
+
 fetch('/api/products')
   .then(r => r.json())
-  .then(products => {
-    existingProducts = products;
-    const addOpts  = document.getElementById('copy-from');
-    const editOpts = document.getElementById('edit-select');
-    products.forEach(p => {
-      const label = p.name + ' (' + p.category + ')';
-      addOpts.insertAdjacentHTML('beforeend', \`<option value="\${p.slug}">\${label}</option>\`);
-      editOpts.insertAdjacentHTML('beforeend', \`<option value="\${p.slug}">\${label}</option>\`);
-    });
-  })
+  .then(products => { existingProducts = products; populateProductLists(); })
   .catch(() => {});
+
+document.getElementById('edit-category-filter').addEventListener('change', () => {
+  populateEditSelect();
+  // Clear product selection when category changes
+  document.getElementById('edit-select').value = '';
+  editSlug = null;
+  document.getElementById('section-slug').style.display   = 'none';
+  document.getElementById('section-status').style.display = 'none';
+  document.getElementById('delete-btn').style.display     = 'none';
+  resetForm();
+});
 
 // ── Copy-from (Add mode) ─────────────────────────────────────────────────
 document.getElementById('copy-from').addEventListener('change', function () {
@@ -638,7 +341,9 @@ document.getElementById('edit-select').addEventListener('change', function () {
   if (!p) { editSlug = null; return; }
   editSlug = p.slug;
   document.getElementById('slug-display').value = p.slug;
-  document.getElementById('section-slug').style.display = '';
+  document.getElementById('section-slug').style.display   = '';
+  document.getElementById('section-status').style.display = '';
+  document.getElementById('delete-btn').style.display     = '';
   fillFields(p, true);
 });
 
@@ -656,6 +361,7 @@ function fillFields(p, includeImages) {
   document.getElementById('dim_width').value    = p.dimensions?.width  || '';
   document.getElementById('dim_depth').value    = p.dimensions?.depth  || '';
   document.getElementById('dim_unit').value     = p.dimensions?.unit   || 'cm';
+  document.getElementById('sold').checked       = !!p.sold;
 
   images.forEach(img => { if (img.objectUrl && img.type === 'new') URL.revokeObjectURL(img.objectUrl); });
   images.length = 0;
@@ -795,8 +501,8 @@ document.getElementById('product-form').addEventListener('submit', async e => {
         showToast('success',
           \`✓ Updated: "\${json.name}" (\${json.imageCount} image\${json.imageCount !== 1 ? 's' : ''})\`,
           'http://localhost:3000/products/' + json.slug);
-        // Reload product list so copy-from stays current
-        existingProducts = existingProducts.map(p => p.slug === json.slug ? { ...p, ...json } : p);
+        // Re-fetch full product list so copy-from and edit dropdowns reflect latest data
+        fetch('/api/products').then(r => r.json()).then(p => { existingProducts = p; populateProductLists(); }).catch(() => {});
       } else { showToast('error', json.error || 'Unknown error'); }
     } catch (err) { showToast('error', 'Server error: ' + err.message); }
   }
@@ -805,12 +511,34 @@ document.getElementById('product-form').addEventListener('submit', async e => {
   btn.textContent = mode === 'add' ? 'Add Product' : 'Save Changes';
 });
 
+// ── Delete ───────────────────────────────────────────────────────────────
+document.getElementById('delete-btn').addEventListener('click', async () => {
+  if (!editSlug) return;
+  if (!confirm(\`Delete "\${document.getElementById('name').value}"? This cannot be undone.\`)) return;
+  const btn = document.getElementById('delete-btn');
+  btn.disabled = true;
+  try {
+    const res  = await fetch('/delete-product?slug=' + encodeURIComponent(editSlug), { method: 'DELETE' });
+    const json = await res.json();
+    if (res.ok) {
+      showToast('success', \`✓ Deleted: "\${json.slug}"\`);
+      fetch('/api/products').then(r => r.json()).then(p => { existingProducts = p; populateProductLists(); }).catch(() => {});
+      resetForm();
+      document.getElementById('edit-category-filter').value = '';
+      populateEditSelect();
+    } else { showToast('error', json.error || 'Unknown error'); }
+  } catch (err) { showToast('error', 'Server error: ' + err.message); }
+  btn.disabled = false;
+});
+
 // ── Reset ────────────────────────────────────────────────────────────────
 document.getElementById('reset-link').addEventListener('click', resetForm);
 
 function resetForm() {
   document.getElementById('product-form').reset();
-  document.getElementById('section-slug').style.display = 'none';
+  document.getElementById('section-slug').style.display   = 'none';
+  document.getElementById('section-status').style.display = 'none';
+  document.getElementById('delete-btn').style.display     = 'none';
   editSlug = null;
   images.forEach(img => { if (img.type === 'new') URL.revokeObjectURL(img.objectUrl); });
   images.length = 0;
@@ -842,19 +570,28 @@ function readBody(req) {
 
 async function handleMultipart(req, res, handler) {
   try {
-    const contentType  = req.headers['content-type'] || '';
-    const boundaryMatch = contentType.match(/boundary=(.+)$/);
+    const contentType   = req.headers['content-type'] || '';
+    const boundaryMatch = contentType.match(/boundary=(?:"([^"]+)"|([^\s;]+))/);
     if (!boundaryMatch) {
+      log('WARN', 'Missing multipart boundary', { contentType });
       res.writeHead(400, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: 'Expected multipart/form-data' })); return;
     }
-    const body = await readBody(req);
-    const { fields, files } = parseMultipart(body, boundaryMatch[1]);
+    const boundary = boundaryMatch[1] || boundaryMatch[2];
+    log('DEBUG', 'Parsing multipart', { boundary, bodyBytes: req.headers['content-length'] });
+
+    const body              = await readBody(req);
+    const { fields, files } = parseMultipart(body, boundary);
+    log('DEBUG', 'Multipart parsed', {
+      fields: Object.keys(fields),
+      files: files.map(f => `${f.fieldName}(${f.data.length}b)`),
+    });
+
     const result = handler(fields, files);
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(result));
   } catch (err) {
-    console.error('  ✗', err.message);
+    log('ERROR', 'Handler error', { error: err.message });
     res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ error: err.message }));
   }
@@ -862,6 +599,7 @@ async function handleMultipart(req, res, handler) {
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
+  log('DEBUG', `${req.method} ${url.pathname}`);
 
   if (req.method === 'GET' && url.pathname === '/') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
@@ -869,12 +607,34 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'GET' && url.pathname === '/api/products') {
+    const products = parseProducts();
+    log('DEBUG', 'GET /api/products', { count: products.length });
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(parseProducts())); return;
+    res.end(JSON.stringify(products)); return;
   }
 
   if (req.method === 'POST' && url.pathname === '/add-product') {
+    log('INFO', 'POST /add-product');
     await handleMultipart(req, res, (fields, files) => addProduct(fields, files));
+    return;
+  }
+
+  if (req.method === 'DELETE' && url.pathname === '/delete-product') {
+    const slug = url.searchParams.get('slug');
+    if (!slug) {
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Missing slug query parameter' })); return;
+    }
+    try {
+      log('INFO', 'DELETE /delete-product', { slug });
+      const result = deleteProduct(slug);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(result));
+    } catch (err) {
+      log('ERROR', 'Delete failed', { error: err.message });
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: err.message }));
+    }
     return;
   }
 
@@ -884,6 +644,7 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: 'Missing slug query parameter' })); return;
     }
+    log('INFO', 'POST /edit-product', { slug });
     await handleMultipart(req, res, (fields, files) => updateProduct(slug, fields, files));
     return;
   }
@@ -892,8 +653,26 @@ const server = http.createServer(async (req, res) => {
   res.end('Not found');
 });
 
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n  Port ${PORT} is already in use.\n`);
+    console.error(`  Kill the existing process with:\n`);
+    console.error(`    kill -9 $(lsof -t -i:${PORT})\n`);
+    console.error(`  Then run npm run admin again.\n`);
+  } else {
+    console.error(err);
+  }
+  process.exit(1);
+});
+
 server.listen(PORT, '127.0.0.1', () => {
-  console.log('\n🛠  Fjordleather Admin\n');
-  console.log(`   http://localhost:${PORT}\n`);
+  log('INFO', `Fjordleather Admin listening on http://localhost:${PORT}`);
+  console.log(`\n   http://localhost:${PORT}\n`);
   console.log('   Ctrl+C to stop\n');
 });
+
+function shutdown() {
+  server.close(() => process.exit(0));
+}
+process.on('SIGINT',  shutdown);
+process.on('SIGTERM', shutdown);
