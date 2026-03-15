@@ -131,16 +131,6 @@ export default function AboutPage() {
                   paddingBottom: i < processSteps.length - 1 ? '36px' : 0,
                 }}
               >
-                <p style={{
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 300,
-                  fontSize: '13px',
-                  letterSpacing: '0.15em',
-                  color: 'var(--color-stone)',
-                  margin: '0 0 16px',
-                }}>
-                  {step.number}
-                </p>
                 <h2 style={{
                   fontFamily: 'var(--font-display)',
                   fontWeight: 400,
