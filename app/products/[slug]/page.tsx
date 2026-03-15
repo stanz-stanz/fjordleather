@@ -345,7 +345,7 @@ export default async function ProductDetailPage({
                         color: 'var(--color-obsidian)',
                         margin: 0,
                         marginTop: '24px',
-                        maxWidth: '420px',
+                        maxWidth: '560px',
                       }}
                     >
                       {product.description}
