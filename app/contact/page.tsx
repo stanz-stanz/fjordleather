@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { CONTACT_EMAIL } from '@/lib/constants';
 
 /* ── Types ─────────────────────────────────────────────────────── */
 
@@ -10,8 +11,6 @@ interface FormState {
   subject: string;
   message: string;
 }
-
-const CONTACT_EMAIL = 'hello@fjordleather.com';
 
 /* ── Shared input label style ──────────────────────────────────── */
 

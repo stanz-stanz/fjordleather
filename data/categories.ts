@@ -14,6 +14,3 @@ export const categories: CategoryMeta[] = [
   { id: 'accessories',    label: 'Accessories',     description: 'Straps, belts, and more' },
 ];
 
-export const categoryOrder: ProductCategory[] = [
-  'bags', 'travel-duffles', 'wallets', 'coin-pouches', 'accessories'
-];

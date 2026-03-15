@@ -7,7 +7,6 @@ export const TANNERY_REGISTRY: Record<string, TanneryInfo> = {
   'Artigiano Del Cuoio':      { url: 'http://www.artigiano.it',                            logo: '/images/tanneries/artigianodelcuoio.png' },
   'Badalassi Carlo':          {                                                              logo: '/images/tanneries/Badalassi-200x200-72-Grigio-02-02.jpg' },
   'Conceria La Bretagna':     { url: 'http://www.labretagna.com',                           logo: '/images/tanneries/La-Bretagna-200x200-72-Grigio-02-02.jpg' },
-  'Conceria Walpier':         { url: 'http://www.conceriawalpier.com/',                     logo: '/images/tanneries/WALPIER-200x200-72-Grigio-02-02.jpg' },
   'Curtiba Ind. Conciaria':   { url: 'http://www.curtiba.it',                               logo: '/images/tanneries/Curtiba-200x200-72-Grigio-02.jpg' },
   'Il Gabbiano':              { url: 'http://conceriailgabbiano.com/',                      logo: '/images/tanneries/gabbiano.png' },
   'Il Ponte':                 { url: 'http://www.conceriailponte.it',                       logo: '/images/tanneries/IL-PONTE-200x200-72-Grigio-02-02-02.jpg' },

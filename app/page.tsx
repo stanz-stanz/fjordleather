@@ -1,12 +1,8 @@
 import Container from '@/components/common/Container'
-import ProductCard from '@/components/product-card/ProductCard'
-import AnimateOnScroll from '@/components/common/AnimateOnScroll'
+import HeroHeading from '@/components/hero/HeroHeading'
 import Link from 'next/link'
-import { getFeaturedProducts } from '@/data/utils'
 
 export default function HomePage() {
-  const featured = getFeaturedProducts().slice(0, 3)
-
   return (
     <main id="main-content">
 
@@ -17,7 +13,7 @@ export default function HomePage() {
       <section
         aria-label="Fjordleather"
         style={{
-          backgroundColor: '#F0E6D0',
+          backgroundColor: '#DED0B6',
           paddingTop: '64px',
           paddingBottom: '88px',
         }}
@@ -27,7 +23,7 @@ export default function HomePage() {
 
             <p style={{
               fontFamily: 'var(--font-body)',
-              fontWeight: 300,
+              fontWeight: 500,
               fontSize: '13px',
               textTransform: 'uppercase',
               letterSpacing: '0.2em',
@@ -37,19 +33,7 @@ export default function HomePage() {
               Handmade in Vejle, Denmark
             </p>
 
-            <h1 style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 400,
-              fontSize: 'clamp(60px, 9vw, 104px)',
-              lineHeight: '0.95',
-              letterSpacing: '-0.03em',
-              color: 'var(--color-obsidian)',
-              marginBottom: '48px',
-            }}>
-              Objects<br />
-              that <em style={{ fontStyle: 'italic' }}>outlast</em><br />
-              their owners.
-            </h1>
+            <HeroHeading />
 
             <p style={{
               fontFamily: 'var(--font-body)',
@@ -60,8 +44,8 @@ export default function HomePage() {
               maxWidth: '380px',
               marginBottom: '40px',
             }}>
-              Full-grain Italian leather, cut and stitched
-              entirely by hand. No shortcuts.
+              Every cut, every stitch, by hand alone. 
+              No shortcuts. No compromise.
             </p>
 
             <Link href="/catalog" className="cta-primary">
@@ -73,73 +57,8 @@ export default function HomePage() {
       </section>
 
 
-      {/* ── FEATURED PRODUCTS ─────────────────────────────────────────
-          White section — contrast with warm linen above.
-      ────────────────────────────────────────────────────────────── */}
-      <section
-        aria-label="Selected works"
-        style={{
-          backgroundColor: 'var(--color-chalk)',
-          borderTop: '1px solid var(--color-stone)',
-          paddingTop: '80px',
-          paddingBottom: '80px',
-        }}
-      >
-        <Container>
-          <div style={{
-            display: 'flex',
-            alignItems: 'baseline',
-            justifyContent: 'space-between',
-            marginBottom: '48px',
-            gap: '24px',
-            flexWrap: 'wrap',
-          }}>
-            <h2 style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 400,
-              fontSize: 'clamp(28px, 3vw, 40px)',
-              lineHeight: '1.1',
-              letterSpacing: '-0.01em',
-              color: 'var(--color-obsidian)',
-              margin: 0,
-            }}>
-              Selected Works
-            </h2>
 
-            <Link href="/catalog" style={{
-              fontFamily: 'var(--font-body)',
-              fontWeight: 300,
-              fontSize: '13px',
-              color: 'var(--color-stone)',
-              textDecoration: 'none',
-              borderBottom: '1px solid var(--color-stone)',
-              paddingBottom: '2px',
-              whiteSpace: 'nowrap',
-              letterSpacing: '0.04em',
-            }}>
-              View all pieces
-            </Link>
-          </div>
-
-          <AnimateOnScroll>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: '32px' }}>
-              {featured.map((product, i) => (
-                <div
-                  key={product.id}
-                  data-animate="fade-up"
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
-                  <ProductCard product={product} priority={i === 0} />
-                </div>
-              ))}
-            </div>
-          </AnimateOnScroll>
-
-        </Container>
-      </section>
-
-
-      {/* ── PULL QUOTE ────────────────────────────────────────────────
+{/* ── PULL QUOTE ────────────────────────────────────────────────
           Linen again — warm, editorial, large italic type.
       ────────────────────────────────────────────────────────────── */}
       <section
@@ -157,27 +76,34 @@ export default function HomePage() {
             fontFamily: 'var(--font-display)',
             fontWeight: 400,
             fontStyle: 'italic',
-            fontSize: 'clamp(30px, 4vw, 52px)',
+            fontSize: 'clamp(29px, 3.8vw, 50px)',
             lineHeight: '1.35',
             letterSpacing: '-0.015em',
             color: 'var(--color-obsidian)',
             maxWidth: '820px',
             margin: '0 0 28px',
           }}>
-            &ldquo;Leather is a living material. It marks time,
-            absorbs habit, tells the story of its use. We make
-            objects meant to age &mdash; that look better at four
-            years than at four days.&rdquo;
+            &ldquo;Being made <strong style={{ fontWeight: 700 }}>by</strong> human hands, the craft is made <strong style={{ fontWeight: 700 }}>for</strong> human hands &mdash; we can not only see it 
+            but caress it with our fingers&rdquo;
           </blockquote>
 
           <p style={{
             fontFamily: 'var(--font-body)',
+            fontStyle: 'italic',
             fontWeight: 300,
-            fontSize: '13px',
+            fontSize: '14px',
             letterSpacing: '0.1em',
             color: 'var(--color-stone)',
           }}>
-            Fjordleather &mdash; Vejle
+            Malcolm McCollough &mdash;{' '}
+            <a
+              href="https://mitpress.mit.edu/9780262631891/abstracting-craft/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ borderBottom: '1px solid currentColor', paddingBottom: '1px' }}
+            >
+              Abstracting Craft
+            </a>
           </p>
         </Container>
       </section>
@@ -199,11 +125,11 @@ export default function HomePage() {
             {[
               {
                 label: 'Full-Grain Italian Leather',
-                body: 'Vegetable-tanned at Badalassi Carlo and Conceria Walpier. Selected for character, grain, and aging quality.',
+                body: 'Only Vegetable-tanned from Tuscany. Selected for character, grain, and aging quality.',
               },
               {
                 label: 'Hand-Stitched',
-                body: 'Waxed linen thread throughout. Saddle-stitched for strength that outlasts machine sewing by decades.',
+                body: 'Waxed nylon and polyester thread throughout. Saddle-stitched for strength that outlasts machine sewing by decades.',
               },
               {
                 label: 'Brass Hardware',

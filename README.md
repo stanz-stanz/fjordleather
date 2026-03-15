@@ -1,6 +1,6 @@
 # Fjordleather
 
-Static product showcase website for a handmade leather goods brand based in Oslo. Built with Next.js (static export), Tailwind v4, and no external UI libraries.
+Static product showcase website for a handmade leather goods brand based in Vejle, Denmark. Built with Next.js (static export), Tailwind v4, and no external UI libraries.
 
 ## Stack
 
@@ -77,7 +77,7 @@ tools/
 
 Nordic minimalist — warm neutrals, generous whitespace, EB Garamond editorial type, no rounded corners, no drop shadows. Full design system in `docs/design/design-system.md`.
 
-**Color accent**: Cognac `#8B5A2B`. **Logo zone**: Linen `#FEEBCF`. **Hero**: Warm ivory `#F0E6D0`. White backgrounds are forbidden.
+**Color accent**: Cognac `#8B5A2B`. **Logo zone**: Linen `#FEEBCF`. **Hero**: Buckskin \`#DED0B6\`. White backgrounds are forbidden.
 
 The site header (`SiteHeader`) is a static, in-flow component that displays the brand logo at natural scale. The sticky navigation (`Navigation`) sits below it with an obsidian background and chalk text.
 

@@ -1,5 +1,5 @@
 import { products } from './products';
-import type { Product, ProductCategory } from './types';
+import type { Product } from './types';
 
 export function getAllProducts(): Product[] {
   return products;
@@ -13,13 +13,6 @@ export function getProductSlugs(): string[] {
   return products.map(p => p.slug);
 }
 
-export function getProductsByCategory(category: ProductCategory): Product[] {
-  return products.filter(p => p.category === category);
-}
-
-export function getFeaturedProducts(): Product[] {
-  return products.slice(0, 3);
-}
 
 export function getAdjacentProducts(product: Product): { prev: Product | null; next: Product | null } {
   const siblings = products.filter(p => p.category === product.category);

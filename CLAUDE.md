@@ -1,7 +1,7 @@
 
 ## Build Progress & Handoff Notes
 
-> **Last updated:** 2026-03-15 — Session 7 complete.
+> **Last updated:** 2026-03-15 — Session 9 complete.
 > Repository: `https://github.com/stanz-stanz/fjordleather`
 > Git remote name: `fjordleather`
 > Resume: clone the repo, `npm install && npm run dev`.
@@ -13,11 +13,11 @@
 **Design system** (`docs/design/`)
 - `design-system.md` — Brand principles, color, typography, spacing, motion, grid. Accent is Cognac `#8B5A2B`. Display font: EB Garamond. No white/chalk backgrounds ever.
 - `tokens.css` — Full Tailwind v4 `@theme inline` token system, aligned with globals.css
-- `components.md` — Component specs: SiteHeader + Navigation (56px obsidian, chalk links), focus trap implemented, hero background warm ivory
+- `components.md` — Component specs: SiteHeader + Navigation (56px obsidian, chalk links), focus trap implemented, hero background buckskin `#DED0B6`
 
 **Foundation**
 - `next.config.ts` — `output: 'export'`, `images.unoptimized: true`, `trailingSlash: true`
-- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `--color-linen: #FEEBCF` (sampled from logo). `.cta-primary` class. `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. `.site-header-logo` responsive class (96% mobile, 92% at 768px+). No Google Fonts `@import`.
+- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `--color-linen: #FEEBCF` (sampled from logo). `.cta-primary` class. `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. `.site-header-logo` responsive class (90% / max 560px mobile, 65% / max 680px desktop) — logo centered via flexbox on the Link wrapper. No Google Fonts `@import`.
 - `app/layout.tsx` — EB Garamond (`--font-display`) + Cormorant Garamond (`--font-display-fallback`) + Jost. Renders `SiteHeader` then `Navigation` then `{children}` then `Footer`. No `<main>` wrapper.
 
 **Data layer**
@@ -25,17 +25,17 @@
 - `data/products.ts` — 11 products (2 bags, 2 duffles, 2 wallets, 2 coin pouches, 2 accessories, 1 real wallet). EUR pricing for originals, DKK for Vaskebjornen-1. SVG placeholders for original 10; real PNGs for Vaskebjornen-1. All 10 products with identifiable tanneries have `tannery` field set.
 - `data/tanneries.ts` — `TANNERY_REGISTRY`: map of all 17 Genuine Italian Vegetable-Tanned Leather consortium tanneries → `{ url?, logo }`. Logo files in `public/images/tanneries/`.
 - `data/categories.ts` — Category labels and order
-- `data/utils.ts` — `getProductBySlug`, `getProductSlugs`, `getFeaturedProducts` (returns `slice(0,3)`), `getRelatedProducts`, `getAdjacentProducts` (returns prev/next within same category, null at boundaries).
+- `data/utils.ts` — `getAllProducts`, `getProductBySlug`, `getProductSlugs`, `getRelatedProducts`, `getAdjacentProducts` (returns prev/next within same category, null at boundaries).
 - `data/product-intake.example.json` — Template for product import script. Fields: `name`, `category`, `price`, `currency`, `description`, `construction`, `dimensions`, `images`.
 - `data/intake/` — 10 wallet JSON files (`wallet-1.json` through `wallet-10.json`) ready for filling and importing via `npm run add-product`
 
 **Lib**
 - `lib/utils.ts` — `formatPrice()`, `cn()`, `slugify()`
 - `lib/constants.ts` — `BRAND_NAME`, `CONTACT_EMAIL`, `SITE_URL`, `NAV_LINKS`
-- `lib/seo.ts` — `generateProductMetadata()` — uses `product.description` (not shortDescription)
+- `lib/seo.ts` — deleted (unused; product pages define metadata inline)
 
 **Components**
-- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo.png`, 2176x480px) as plain `<img>` with `.site-header-logo` class (96% width mobile, 92% at 768px+, no max-width cap). 1% left margin. Linen background (`#FEEBCF`). 12px top padding on link wrapper. 48px gradient block below fades to transparent. `marginBottom: '-48px'` pulls nav up into gradient zone.
+- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo_new.png`, 1220x680px, cropped tight) as plain `<img>` with `.site-header-logo` class. Logo centered via `display: flex; justifyContent: center` on Link wrapper. Linen background (`#FEEBCF`). 12px top padding on link wrapper. 48px gradient block below fades to transparent. `marginBottom: '-48px'` pulls nav up into gradient zone.
 - `components/nav/Navigation.tsx` — Sticky 56px. Obsidian background always. Chalk nav links via inline styles (Tailwind color classes unreliable). Mobile slide-in drawer (obsidian bg, chalk links via inline styles). Escape key closes. Body scroll lock. Close on route change. Full focus trap: Tab/Shift+Tab cycles within drawer only; focus returns to hamburger on close.
 - `components/footer/Footer.tsx` — 3-column, espresso background
 - `components/common/Button.tsx` — Primary (cognac fill) / Secondary (obsidian outline) / Ghost. Sizes: sm=12px, md=13px, lg=14px. Zero border-radius. Renders as `<Link>` when `href` passed.
@@ -45,14 +45,15 @@
 - `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac. Aspect ratio `3/2.6` (landscape, tuned for wallet photos). Uses `flex items-center justify-center` + plain `<img>` with `max-width/max-height: 100%` for reliable centering (NOT Next.js `<Image fill>` — global CSS reset breaks it). Inner padding `p-6`.
 
 **Pages** (all render statically — `npm run build` passes, 0 TypeScript errors)
-- `app/page.tsx` — Homepage: warm ivory hero (`#F0E6D0`) with 104px EB Garamond heading left-aligned, cognac overline, 17px body copy, stacked CTA. Products section, linen pull quote, materials strip.
+- `app/page.tsx` — Homepage: buckskin hero (`#DED0B6`) with randomised EB Garamond heading (via `HeroHeading` client component), cognac overline, 17px body copy, CTA. Linen pull quote (Malcolm McCollough, linked to MIT Press). Materials strip (3-column). No "Selected Works" product grid.
+- `data/hero-phrases.ts` — Pool of hero heading phrases (11 entries). Each phrase uses ` / ` as a line-break delimiter. Edit freely to add/remove phrases. Rendered by `components/hero/HeroHeading.tsx` (client component, picks randomly on mount).
 - `app/catalog/page.tsx` — Collection: sticky filter bar (`top-[56px]`), URL-based category filter via `useSearchParams` + `router.replace` (persists on back navigation). Wrapped in `Suspense` for static export. Grid: `grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 lg:gap-8`.
 - `app/products/[slug]/page.tsx` — PDP: async params (`await params` — Next.js 16 requirement). Page top has breadcrumb bar (17px, links to filtered `/catalog?category=...`) then prev/next nav strip (category-scoped, no wrap at boundaries, 15px uppercase labels, no product names). Then 60/40 gallery + info, sticky detail panel, related products, Inquire CTA via mailto. Right info panel layout: details grid (Material, Construction, Dimensions — no Tannery row) + description in left column; certification badge (`flex: 0 0 300px`, `#F0E6D0` bg) in right column with vertical divider. Badge contains: consortium logo, "Certified Leather", description text + "Learn more" link grouped together, and "Leather sourced from" + tannery logo at bottom. Related products: compact horizontal strip — `grid-template-columns: repeat(3, minmax(0, 200px))`, `compact` cards (square aspect ratio), no scrollbar. All font sizes bumped (labels 20px, values 19px, description 21px, price 27px).
-- `app/about/page.tsx` — Craft: 4 sections including full-bleed espresso maker's statement blockquote
+- `app/about/page.tsx` — Craft: 3 sections. Section 1: buckskin `#DED0B6`, `minHeight: 40vh`, "Made by hand. Finished by time." heading. Section 2: linen, vertical editorial chapters per process step (number + 32px step name + 18px prose, 36px gap, stone dividers, cognac overline). Section 3: buckskin `#DED0B6`, centered maker's statement blockquote in obsidian.
 - `app/contact/page.tsx` — Contact: two-column, bottom-border-only form inputs, mailto submit
 
 **Assets & SEO**
-- `public/images/logo.png` — Brand logo. 2176x480px. Do not crop. Rendered via `.site-header-logo` CSS class.
+- `public/images/logo_new.png` — Active logo (1220x680px, square-ish, cropped tight). Rendered via `.site-header-logo` CSS class.
 - `public/images/pelle-vegetale-logo.jpg` — Pelle Conciata al Vegetale in Toscana consortium mark. 200px wide in badge.
 - `public/images/tanneries/` — 17 tannery logos downloaded from pellealvegetale.it. Filenames match `TANNERY_REGISTRY` entries in `data/tanneries.ts`.
 - `public/images/products/` — SVG placeholders for original 10 products + real PNGs for Vaskebjornen-1 (`vaskebjornen-1-1.png`, `vaskebjornen-1-2.png`). Also `bifold-1-1.svg` and `bifold-1-2.svg` (unused placeholder SVGs).
@@ -78,9 +79,7 @@
 
 **Priority 2 — Awaiting domain**
 - [ ] Update `CONTACT_EMAIL` and `SITE_URL` in `lib/constants.ts` once domain is confirmed.
-- [ ] `CONTACT_EMAIL` is also hardcoded as a local variable in `contact/page.tsx:14` — replace with the import.
 - [ ] Update `public/sitemap.xml` with real domain.
-- [ ] Connect `https://github.com/stanz-stanz/fjordleather` to Vercel. Framework: Next.js. Output dir: `out`. Auto-deploys on push to `main`.
 
 **Priority 3 — Polish**
 - [ ] Responsive audit: test all pages at 375px, 768px, 1024px, 1440px.
