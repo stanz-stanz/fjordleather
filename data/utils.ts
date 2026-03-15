@@ -21,6 +21,15 @@ export function getFeaturedProducts(): Product[] {
   return products.slice(0, 3);
 }
 
+export function getAdjacentProducts(product: Product): { prev: Product | null; next: Product | null } {
+  const siblings = products.filter(p => p.category === product.category);
+  const idx  = siblings.findIndex(p => p.id === product.id);
+  return {
+    prev: idx > 0 ? siblings[idx - 1] : null,
+    next: idx < siblings.length - 1 ? siblings[idx + 1] : null,
+  };
+}
+
 export function getRelatedProducts(product: Product, limit = 3): Product[] {
   return products
     .filter(p => p.category === product.category && p.id !== product.id)

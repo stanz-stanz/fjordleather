@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import ImageGallery from '@/components/image-gallery/ImageGallery';
 import ProductCard from '@/components/product-card/ProductCard';
 import Button from '@/components/common/Button';
-import { getProductBySlug, getProductSlugs, getRelatedProducts } from '@/data/utils';
+import { getProductBySlug, getProductSlugs, getRelatedProducts, getAdjacentProducts } from '@/data/utils';
 import { TANNERY_REGISTRY } from '@/data/tanneries';
 import { formatPrice } from '@/lib/utils';
 import { CONTACT_EMAIL } from '@/lib/constants';
@@ -41,7 +41,8 @@ export default async function ProductDetailPage({
   const product = getProductBySlug(slug);
   if (!product) notFound();
 
-  const related = getRelatedProducts(product, 3);
+  const related  = getRelatedProducts(product, 3);
+  const { prev, next } = getAdjacentProducts(product);
 
   const inquiryHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
     `Inquiry about ${product.name}`,
@@ -51,6 +52,104 @@ export default async function ProductDetailPage({
 
   return (
     <main id="main-content">
+      {/* ── Breadcrumb ───────────────────────────────────────────────── */}
+      <nav aria-label="Breadcrumb" style={{ borderBottom: '1px solid var(--color-stone)' }}>
+        <div className="container-fiord">
+          <ol
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              listStyle: 'none',
+              padding: '16px 0',
+              margin: 0,
+              fontFamily: 'var(--font-body)',
+              fontWeight: 300,
+              fontSize: '17px',
+              letterSpacing: '0.03em',
+              color: 'var(--color-stone)',
+            }}
+          >
+            <li>
+              <a href="/" style={{ color: 'var(--color-stone)', textDecoration: 'none' }}>
+                Homepage
+              </a>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li>
+              <a
+                href={`/catalog?category=${product.category}`}
+                style={{ color: 'var(--color-stone)', textDecoration: 'none' }}
+              >
+                {product.category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
+              </a>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" style={{ color: 'var(--color-obsidian)', fontWeight: 500 }}>
+              {product.name}
+            </li>
+          </ol>
+        </div>
+      </nav>
+
+      {/* ── Prev / Next navigation ───────────────────────────────────── */}
+      <nav
+        aria-label="Browse products"
+        style={{
+          borderBottom: '1px solid var(--color-stone)',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+        }}
+      >
+        {/* Previous */}
+        {prev ? (
+          <a
+            href={`/products/${prev.slug}`}
+            style={{
+              padding: '16px 32px',
+              textDecoration: 'none',
+              transition: 'background var(--duration-swift)',
+              fontFamily: 'var(--font-body)',
+              fontWeight: 500,
+              fontSize: '15px',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--color-stone)',
+            }}
+            className="hover:bg-linen"
+          >
+            ← Previous
+          </a>
+        ) : (
+          <span />
+        )}
+
+        {/* Next */}
+        {next ? (
+          <a
+            href={`/products/${next.slug}`}
+            style={{
+              padding: '16px 32px',
+              textDecoration: 'none',
+              transition: 'background var(--duration-swift)',
+              fontFamily: 'var(--font-body)',
+              fontWeight: 500,
+              fontSize: '15px',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--color-stone)',
+              textAlign: 'right',
+              display: 'block',
+            }}
+            className="hover:bg-linen"
+          >
+            Next →
+          </a>
+        ) : (
+          <span />
+        )}
+      </nav>
+
       {/* ── Product section ──────────────────────────────────────── */}
       <section
         aria-label={`${product.name} product detail`}
@@ -81,62 +180,6 @@ export default async function ProductDetailPage({
                 className="lg:sticky"
                 style={{ top: '120px' }}
               >
-                {/* Breadcrumb */}
-                <nav aria-label="Breadcrumb" style={{ marginBottom: '28px' }}>
-                  <ol
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      listStyle: 'none',
-                      padding: 0,
-                      margin: 0,
-                      fontFamily: 'var(--font-body)',
-                      fontWeight: 300,
-                      fontSize: '17px',
-                      letterSpacing: '0.03em',
-                      color: 'var(--color-stone)',
-                    }}
-                  >
-                    <li>
-                      <a
-                        href="/"
-                        style={{
-                          color: 'var(--color-stone)',
-                          textDecoration: 'none',
-                          transition: 'color var(--duration-swift)',
-                        }}
-                      >
-                        Homepage
-                      </a>
-                    </li>
-                    <li aria-hidden="true" style={{ color: 'var(--color-stone)' }}>
-                      /
-                    </li>
-                    <li>
-                      <a
-                        href="/catalog"
-                        style={{
-                          color: 'var(--color-stone)',
-                          textDecoration: 'none',
-                          transition: 'color var(--duration-swift)',
-                        }}
-                      >
-                        Collection
-                      </a>
-                    </li>
-                    <li aria-hidden="true" style={{ color: 'var(--color-stone)' }}>
-                      /
-                    </li>
-                    <li
-                      aria-current="page"
-                      style={{ color: 'var(--color-obsidian)', fontWeight: 500 }}
-                    >
-                      {product.name}
-                    </li>
-                  </ol>
-                </nav>
-
                 {/* Category tag */}
                 <p
                   className="text-style-overline"
