@@ -18,6 +18,11 @@ export interface ProductDimensions {
   unit: 'cm' | 'in';
 }
 
+export interface Tannery {
+  name: string;
+  url?: string;
+}
+
 export interface Product {
   id: string;
   slug: string;
@@ -30,4 +35,5 @@ export interface Product {
   construction: string;
   dimensions: ProductDimensions;
   images: ProductImage[];
+  tannery?: Tannery[];
 }

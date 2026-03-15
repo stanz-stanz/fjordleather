@@ -21,6 +21,7 @@ The handles are formed from doubled leather, bonded with contact cement and burn
       { src: '/images/products/nordfjord-tote-2.svg', alt: 'Nordfjord Tote handle detail showing burnished edges and saddle stitching', priority: false },
       { src: '/images/products/nordfjord-tote-3.svg', alt: 'Nordfjord Tote base showing solid brass feet and single-piece construction', priority: false },
     ],
+    tannery: [{ name: 'Badalassi Carlo' }],
   },
   {
     id: '02',
@@ -42,6 +43,7 @@ A single interior organisation pocket in natural canvas sits flat against the re
       { src: '/images/products/stillhet-messenger-2.svg', alt: 'Stillhet Messenger strap and brass slider detail', priority: false },
       { src: '/images/products/stillhet-messenger-3.svg', alt: 'Stillhet Messenger front pocket with brass turn-clasp', priority: false },
     ],
+    tannery: [{ name: 'Conceria Walpier', url: 'http://www.conceriawalpier.com/' }],
   },
   {
     id: '03',
@@ -63,6 +65,7 @@ The handles are hand-stitched from doubled 3.5mm leather with twelve stitches pe
       { src: '/images/products/oslo-weekend-duffle-2.svg', alt: 'Oslo Weekend Duffle showing brass feet and base reinforcement', priority: false },
       { src: '/images/products/oslo-weekend-duffle-3.svg', alt: 'Oslo Weekend Duffle end pocket with solid brass snap hardware', priority: false },
     ],
+    tannery: [{ name: 'Badalassi Carlo' }],
   },
   {
     id: '04',
@@ -84,6 +87,7 @@ The grab handles at each end are formed from a single piece of 4mm leather folde
       { src: '/images/products/arktis-long-duffle-2.svg', alt: 'Arktis Long Duffle top handle detail showing single-piece construction', priority: false },
       { src: '/images/products/arktis-long-duffle-3.svg', alt: 'Arktis Long Duffle open showing canvas lining and internal organisation', priority: false },
     ],
+    tannery: [{ name: 'Conceria Walpier', url: 'http://www.conceriawalpier.com/' }],
   },
   {
     id: '05',
@@ -105,6 +109,7 @@ All stitching is waxed linen, twelve stitches per inch, run through with a hand 
       { src: '/images/products/fjell-bifold-2.svg', alt: 'Fjell Bifold open showing three card slots per side', priority: false },
       { src: '/images/products/fjell-bifold-3.svg', alt: 'Fjell Bifold edge detail showing burnished beeswax finish', priority: false },
     ],
+    tannery: [{ name: 'Badalassi Carlo' }],
   },
   {
     id: '06',
@@ -125,6 +130,7 @@ The sleeve is cut from a single piece, folded at the base and edge-stitched on t
       { src: '/images/products/bark-card-sleeve-1.svg', alt: 'Bark Card Sleeve in natural dark Conceria Walpier Dollaro leather', priority: true },
       { src: '/images/products/bark-card-sleeve-2.svg', alt: 'Bark Card Sleeve showing card slots and single-piece construction', priority: false },
     ],
+    tannery: [{ name: 'Conceria Walpier', url: 'http://www.conceriawalpier.com/' }],
   },
   {
     id: '07',
@@ -145,6 +151,7 @@ The interior is left raw — the flesh side of the hide, slightly textured, hone
       { src: '/images/products/krone-coin-pouch-1.svg', alt: 'Krone Coin Pouch in cognac Badalassi Carlo Pueblo leather with brass snap', priority: true },
       { src: '/images/products/krone-coin-pouch-2.svg', alt: 'Krone Coin Pouch open showing raw interior and coin capacity', priority: false },
     ],
+    tannery: [{ name: 'Badalassi Carlo' }],
   },
   {
     id: '08',
@@ -165,6 +172,7 @@ Every edge is hand-burnished. The stitching on the gusset is the most demanding 
       { src: '/images/products/lyng-coin-pouch-1.svg', alt: 'Lyng Coin Pouch in natural cream Conceria Walpier Vachetta leather', priority: true },
       { src: '/images/products/lyng-coin-pouch-2.svg', alt: 'Lyng Coin Pouch open showing YKK brass zip and gusseted interior', priority: false },
     ],
+    tannery: [{ name: 'Conceria Walpier', url: 'http://www.conceriawalpier.com/' }],
   },
   {
     id: '09',
@@ -206,6 +214,7 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
       { src: '/images/products/vann-watch-strap-2.svg', alt: 'Vann Watch Strap showing tapered profile and hand-burnished edges', priority: false },
       { src: '/images/products/vann-watch-strap-3.svg', alt: 'Vann Watch Strap fitted on a wristwatch, showing natural drape', priority: false },
     ],
+    tannery: [{ name: 'Badalassi Carlo' }],
   },
   {
     id: '11',
@@ -222,5 +231,6 @@ The buckle is solid brass, polished, with a single pin of the same material. It 
       { src: '/images/products/vaskebjornen-1-1.png', alt: 'Bifold wallet exterior', priority: true },
       { src: '/images/products/vaskebjornen-1-2.png', alt: 'Bifold wallet interior', priority: false }
     ],
+    tannery: [{ name: 'Puccini Attilio', url: 'http://www.conceriapuccini.com' }],
   },
 ];

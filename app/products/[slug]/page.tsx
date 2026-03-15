@@ -4,6 +4,7 @@ import ImageGallery from '@/components/image-gallery/ImageGallery';
 import ProductCard from '@/components/product-card/ProductCard';
 import Button from '@/components/common/Button';
 import { getProductBySlug, getProductSlugs, getRelatedProducts } from '@/data/utils';
+import { TANNERY_REGISTRY } from '@/data/tanneries';
 import { formatPrice } from '@/lib/utils';
 import { CONTACT_EMAIL } from '@/lib/constants';
 
@@ -183,71 +184,23 @@ export default async function ProductDetailPage({
                   }}
                 />
 
-                {/* Product details grid */}
-                <dl
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'auto 1fr',
-                    columnGap: '32px',
-                    rowGap: '12px',
-                  }}
+                {/* Details + certification badge side by side */}
+                <div
+                  style={{ gap: '32px' }}
+                  className="flex flex-col lg:flex-row items-stretch"
                 >
-                  <dt
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontWeight: 500,
-                      fontSize: '20px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.12em',
-                      color: 'var(--color-stone)',
-                      lineHeight: 1.5,
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    Material
-                  </dt>
-                  <dd
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontWeight: 300,
-                      fontSize: '19px',
-                      lineHeight: 1.5,
-                      color: 'var(--color-obsidian)',
-                      margin: 0,
-                    }}
-                  >
-                    {product.material}
-                  </dd>
+                  {/* Left: details grid + description */}
+                  <div style={{ flex: '1 1 auto', minWidth: 0 }}>
 
-                  <dt
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontWeight: 500,
-                      fontSize: '20px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.12em',
-                      color: 'var(--color-stone)',
-                      lineHeight: 1.5,
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    Construction
-                  </dt>
-                  <dd
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontWeight: 300,
-                      fontSize: '19px',
-                      lineHeight: 1.5,
-                      color: 'var(--color-obsidian)',
-                      margin: 0,
-                    }}
-                  >
-                    {product.construction}
-                  </dd>
-
-                  {product.dimensions && (
-                    <>
+                    {/* Product details grid */}
+                    <dl
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'auto 1fr',
+                        columnGap: '32px',
+                        rowGap: '12px',
+                      }}
+                    >
                       <dt
                         style={{
                           fontFamily: 'var(--font-body)',
@@ -260,7 +213,7 @@ export default async function ProductDetailPage({
                           whiteSpace: 'nowrap',
                         }}
                       >
-                        Dimensions
+                        Material
                       </dt>
                       <dd
                         style={{
@@ -272,36 +225,132 @@ export default async function ProductDetailPage({
                           margin: 0,
                         }}
                       >
-                        {product.dimensions.height} × {product.dimensions.width} ×{' '}
-                        {product.dimensions.depth} {product.dimensions.unit}
+                        {product.material}
                       </dd>
-                    </>
-                  )}
-                </dl>
 
-                {/* Editorial description + certification badge */}
-                <div
-                  style={{
-                    gap: '32px',
-                    marginTop: '24px',
-                  }}
-                  className="flex flex-col lg:flex-row items-stretch"
-                >
-                  {/* Description */}
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontWeight: 300,
-                      fontSize: '21px',
-                      lineHeight: 1.75,
-                      color: 'var(--color-obsidian)',
-                      margin: 0,
-                      flex: '1 1 60%',
-                      maxWidth: '420px',
-                    }}
-                  >
-                    {product.description}
-                  </p>
+                      <dt
+                        style={{
+                          fontFamily: 'var(--font-body)',
+                          fontWeight: 500,
+                          fontSize: '20px',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.12em',
+                          color: 'var(--color-stone)',
+                          lineHeight: 1.5,
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        Construction
+                      </dt>
+                      <dd
+                        style={{
+                          fontFamily: 'var(--font-body)',
+                          fontWeight: 300,
+                          fontSize: '19px',
+                          lineHeight: 1.5,
+                          color: 'var(--color-obsidian)',
+                          margin: 0,
+                        }}
+                      >
+                        {product.construction}
+                      </dd>
+
+                      {product.dimensions && (
+                        <>
+                          <dt
+                            style={{
+                              fontFamily: 'var(--font-body)',
+                              fontWeight: 500,
+                              fontSize: '20px',
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.12em',
+                              color: 'var(--color-stone)',
+                              lineHeight: 1.5,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            Dimensions
+                          </dt>
+                          <dd
+                            style={{
+                              fontFamily: 'var(--font-body)',
+                              fontWeight: 300,
+                              fontSize: '19px',
+                              lineHeight: 1.5,
+                              color: 'var(--color-obsidian)',
+                              margin: 0,
+                            }}
+                          >
+                            {product.dimensions.height} × {product.dimensions.width} ×{' '}
+                            {product.dimensions.depth} {product.dimensions.unit}
+                          </dd>
+                        </>
+                      )}
+
+                      {product.tannery && product.tannery.length > 0 && (
+                        <>
+                          <dt
+                            style={{
+                              fontFamily: 'var(--font-body)',
+                              fontWeight: 500,
+                              fontSize: '20px',
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.12em',
+                              color: 'var(--color-stone)',
+                              lineHeight: 1.5,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            Tannery
+                          </dt>
+                          <dd
+                            style={{
+                              fontFamily: 'var(--font-body)',
+                              fontWeight: 300,
+                              fontSize: '19px',
+                              lineHeight: 1.5,
+                              color: 'var(--color-obsidian)',
+                              margin: 0,
+                            }}
+                          >
+                            {product.tannery.map((t, i) => {
+                              const info = TANNERY_REGISTRY[t.name];
+                              const url = t.url ?? info?.url;
+                              return url ? (
+                                <a
+                                  key={i}
+                                  href={url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  style={{ color: 'var(--color-cognac)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+                                >
+                                  {t.name}
+                                </a>
+                              ) : (
+                                <span key={i}>{t.name}</span>
+                              );
+                            })}
+                          </dd>
+                        </>
+                      )}
+                    </dl>
+
+                    {/* Editorial description */}
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: 300,
+                        fontSize: '21px',
+                        lineHeight: 1.75,
+                        color: 'var(--color-obsidian)',
+                        margin: 0,
+                        marginTop: '24px',
+                        maxWidth: '420px',
+                      }}
+                    >
+                      {product.description}
+                    </p>
+                  </div>
 
                   {/* Vertical divider — desktop only */}
                   <div
@@ -332,11 +381,7 @@ export default async function ProductDetailPage({
                     <img
                       src="/images/pelle-vegetale-logo.jpg"
                       alt="Pelle Conciata al Vegetale in Toscana — Made in Italy consortium mark"
-                      style={{
-                        width: '200px',
-                        height: 'auto',
-                        display: 'block',
-                      }}
+                      style={{ width: '200px', height: 'auto', display: 'block' }}
                     />
                     <p
                       style={{
@@ -381,6 +426,43 @@ export default async function ProductDetailPage({
                     >
                       Learn more &#8594;
                     </a>
+
+                    {/* Tannery logo inside badge */}
+                    {product.tannery && product.tannery.map((t, i) => {
+                      const info = TANNERY_REGISTRY[t.name];
+                      if (!info?.logo) return null;
+                      const url = t.url ?? info.url;
+                      return (
+                        <div
+                          key={i}
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: '8px',
+                            borderTop: '1px solid var(--color-stone)',
+                            paddingTop: '16px',
+                            width: '100%',
+                          }}
+                        >
+                          <p style={{ fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-stone)', margin: 0, textAlign: 'center' }}>
+                            Sourced from
+                          </p>
+                          {url ? (
+                            <a href={url} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img src={info.logo} alt={`${t.name} tannery logo`} style={{ width: '200px', height: 'auto', display: 'block' }} />
+                            </a>
+                          ) : (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={info.logo} alt={`${t.name} tannery logo`} style={{ width: '200px', height: 'auto', display: 'block' }} />
+                          )}
+                          <p style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: '14px', color: 'var(--color-obsidian)', margin: 0, textAlign: 'center' }}>
+                            {t.name}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </aside>
                 </div>
 
