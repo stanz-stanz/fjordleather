@@ -49,7 +49,7 @@ export default function HomePage() {
             </p>
 
             <Link href="/catalog" className="cta-primary">
-              View the Collection
+              View our Collections
             </Link>
 
           </div>

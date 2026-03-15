@@ -438,7 +438,7 @@ export default async function ProductDetailPage({
                           }}
                         >
                           <p style={{ fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-stone)', margin: 0, textAlign: 'center' }}>
-                            Leather sourced from
+                            Featured tannery:
                           </p>
                           {url ? (
                             <a href={url} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>

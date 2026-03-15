@@ -53,7 +53,7 @@ export const TANNERY_URLS = {
   'WALPIER':                    'http://www.conceriawalpier.com/',
 };
 
-export const CATEGORIES = ['bags', 'travel-duffles', 'wallets', 'coin-pouches', 'accessories'];
+export const CATEGORIES = ['bags', 'wallets'];
 export const CURRENCIES  = ['EUR', 'DKK', 'USD', 'GBP', 'NOK', 'SEK'];
 
 // ── Product entry helpers ─────────────────────────────────────────────────────

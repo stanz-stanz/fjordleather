@@ -67,7 +67,7 @@ ${images}
 
 // ── Validation ─────────────────────────────────────────────────────────────
 
-const VALID_CATEGORIES = ['bags', 'travel-duffles', 'wallets', 'coin-pouches', 'accessories'];
+const VALID_CATEGORIES = ['bags', 'wallets'];
 
 function validate(data, jsonPath) {
   const required = ['name', 'category', 'price', 'currency',

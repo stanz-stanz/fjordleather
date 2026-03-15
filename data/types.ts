@@ -1,9 +1,6 @@
 export type ProductCategory =
   | 'bags'
-  | 'travel-duffles'
-  | 'wallets'
-  | 'coin-pouches'
-  | 'accessories';
+  | 'wallets';
 
 export interface ProductImage {
   src: string;
