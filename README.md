@@ -104,6 +104,8 @@ The site header (`SiteHeader`) is a static, in-flow component that displays the 
 
 Vercel connected to `https://github.com/stanz-stanz/fjordleather`. Auto-deploys on push to `main`.
 
+**Domain & email routing**: `fjordleather.com` is registered on Cloudflare. Inbound email (`hello@fjordleather.com`) is handled via Cloudflare Email Routing — forwarded to the owner's personal inbox. No mail server required. Outbound transactional email (contact/inquiry forms) goes through Resend.
+
 **Environment variables to set in Vercel:**
 - `RESEND_API_KEY` — from resend.com dashboard
 - `CONTACT_EMAIL` — recipient for contact/inquiry emails
