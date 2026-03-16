@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { ProductImage } from '@/data/types'
 
@@ -25,6 +25,12 @@ export default function ImageLightbox({
   const [activeIndex, setActiveIndex] = useState(initialIndex)
   const [isClosing, setIsClosing] = useState(false)
   const [reducedMotion, setReducedMotion] = useState(false)
+  const [imgLoaded, setImgLoaded] = useState(false)
+
+  // Reset loaded state synchronously before paint whenever the active image changes
+  useLayoutEffect(() => {
+    setImgLoaded(false)
+  }, [activeIndex])
   const overlayRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
@@ -155,7 +161,14 @@ export default function ImageLightbox({
           key={activeIndex}
           src={activeImage.src}
           alt={activeImage.alt}
-          className={reducedMotion ? 'lightbox-img' : 'animate-scale-in lightbox-img'}
+          className="lightbox-img"
+          onLoad={() => setImgLoaded(true)}
+          style={{
+            opacity: imgLoaded ? 1 : 0,
+            transition: imgLoaded && !reducedMotion
+              ? `opacity var(--duration-gentle) var(--ease-out)`
+              : 'none',
+          }}
         />
       </div>
 
