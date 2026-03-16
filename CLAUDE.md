@@ -60,7 +60,7 @@
 - `public/images/tanneries/` — 17 tannery logos downloaded from pellealvegetale.it. Filenames match `TANNERY_REGISTRY` entries in `data/tanneries.ts`.
 - `public/images/products/` — SVG placeholders for 2 bag products (Nordfjord Tote, Stillhet Messenger). Real PNGs for all 13 wallets (Vaskebjornen #1–#13), 2 images each.
 - `public/robots.txt` — allow all crawlers
-- `public/sitemap.xml` — static routes (domain placeholder — update when live)
+- `public/sitemap.xml` — static routes for all 19 pages (4 static + 15 product PDPs). Domain: `fjordleather.com`.
 - `app/icon.svg` — "F" lettermark on obsidian background
 
 **Tooling**
@@ -79,11 +79,7 @@
 - [ ] Replace SVG placeholders for the 2 bag products (Nordfjord Tote, Stillhet Messenger) with real photography when available.
 - [ ] Favicon: `app/icon.svg` is a simple "F" mark — replace with a proper Fjordleather mark if one exists.
 
-**Priority 2 — Awaiting domain**
-- [ ] Update `CONTACT_EMAIL` and `SITE_URL` in `lib/constants.ts` once domain is confirmed.
-- [ ] Update `public/sitemap.xml` with real domain.
-
-**Priority 3 — Polish**
+**Priority 2 — Polish**
 - [ ] Responsive audit: test all pages at 375px, 768px, 1024px, 1440px.
 - [ ] Smoke-test contact form and product inquiry form end-to-end in production.
 
