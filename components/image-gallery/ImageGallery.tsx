@@ -44,16 +44,18 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
         onKeyDown={handleKeyDown}
         className="relative aspect-[3/2.6] w-full overflow-hidden bg-linen focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2"
       >
-        <div className="absolute inset-0 flex items-center justify-center p-6">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            key={activeIndex}
-            src={activeImage.src}
-            alt={activeImage.alt}
-            className="animate-fade-in"
-            style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
-            aria-label={`${productName}, image ${activeIndex + 1} of ${safeImages.length}`}
-          />
+        <div className="absolute inset-0 p-6">
+          <div className="relative w-full h-full">
+            <Image
+              key={activeIndex}
+              src={activeImage.src}
+              alt={activeImage.alt}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 60vw, 800px"
+              className="animate-fade-in object-contain"
+              aria-label={`${productName}, image ${activeIndex + 1} of ${safeImages.length}`}
+            />
+          </div>
         </div>
       </div>
 

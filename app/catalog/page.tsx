@@ -1,11 +1,11 @@
 'use client'
 
-import { useMemo, Suspense } from 'react'
+import { useState, useEffect, useRef, useMemo, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Container from '@/components/common/Container'
 import ProductCard from '@/components/product-card/ProductCard'
-import AnimateOnScroll from '@/components/common/AnimateOnScroll'
+import Button from '@/components/common/Button'
 import { getAllProducts } from '@/data/utils'
 import { categories } from '@/data/categories'
 import type { ProductCategory } from '@/data/types'
@@ -13,12 +13,17 @@ import type { ProductCategory } from '@/data/types'
 type FilterValue = 'all' | ProductCategory
 
 const ALL_FILTER: FilterValue = 'all'
+const BATCH_SIZE = 9
 
 function CatalogContent() {
   const allProducts = getAllProducts()
   const router = useRouter()
   const searchParams = useSearchParams()
   const activeCategory = (searchParams.get('category') ?? ALL_FILTER) as FilterValue
+
+  const [visibleCount, setVisibleCount] = useState(BATCH_SIZE)
+  const [revealedCount, setRevealedCount] = useState(0)
+  const gridRef = useRef<HTMLDivElement>(null)
 
   function setActiveCategory(value: FilterValue) {
     const params = new URLSearchParams(searchParams.toString())
@@ -34,6 +39,51 @@ function CatalogContent() {
     if (activeCategory === ALL_FILTER) return allProducts
     return allProducts.filter((p) => p.category === activeCategory)
   }, [allProducts, activeCategory])
+
+  // Reset batch when category changes
+  useEffect(() => {
+    setVisibleCount(BATCH_SIZE)
+    setRevealedCount(0)
+  }, [activeCategory])
+
+  // Attach IntersectionObserver to cards that haven't animated yet
+  useEffect(() => {
+    const grid = gridRef.current
+    if (!grid) return
+
+    const targets = Array.from(
+      grid.querySelectorAll<HTMLElement>('[data-animate="fade-up"]:not(.is-visible)')
+    )
+    if (targets.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    )
+
+    targets.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [visibleCount, activeCategory])
+
+  const visibleProducts = filteredProducts.slice(0, visibleCount)
+  const hasMore = visibleCount < filteredProducts.length
+  const total = filteredProducts.length
+
+  const countLabel = hasMore
+    ? `Showing ${visibleCount} of ${total} pieces`
+    : `${total} ${total === 1 ? 'piece' : 'pieces'}`
+
+  function handleShowMore() {
+    setRevealedCount(visibleCount)
+    setVisibleCount((prev) => Math.min(prev + BATCH_SIZE, total))
+  }
 
   const filterOptions: Array<{ value: FilterValue; label: string }> = [
     { value: ALL_FILTER, label: 'All' },
@@ -183,8 +233,7 @@ function CatalogContent() {
             aria-live="polite"
             aria-atomic="true"
           >
-            {filteredProducts.length}{' '}
-            {filteredProducts.length === 1 ? 'piece' : 'pieces'}
+            {countLabel}
           </p>
 
           {/* Grid or empty state */}
@@ -222,8 +271,9 @@ function CatalogContent() {
               </button>
             </div>
           ) : (
-            <AnimateOnScroll>
+            <>
               <div
+                ref={gridRef}
                 className="
                   grid
                   grid-cols-2 gap-4
@@ -231,17 +281,30 @@ function CatalogContent() {
                   lg:grid-cols-3 lg:gap-8
                 "
               >
-                {filteredProducts.map((product, i) => (
-                  <div
-                    key={product.id}
-                    data-animate="fade-up"
-                    style={{ transitionDelay: `${(i % 9) * 80}ms` }}
-                  >
-                    <ProductCard product={product} priority={i < 3} />
-                  </div>
-                ))}
+                {visibleProducts.map((product, i) => {
+                  const isNew = i >= revealedCount
+                  return (
+                    <div
+                      key={product.id}
+                      data-animate={isNew ? 'fade-up' : undefined}
+                      className={!isNew ? 'is-visible' : undefined}
+                      style={{ transitionDelay: isNew ? `${(i - revealedCount) * 80}ms` : '0ms' }}
+                    >
+                      <ProductCard product={product} priority={i < 3} />
+                    </div>
+                  )
+                })}
               </div>
-            </AnimateOnScroll>
+
+              {/* Show More */}
+              {hasMore && (
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+                  <Button variant="secondary" size="md" onClick={handleShowMore}>
+                    Show More
+                  </Button>
+                </div>
+              )}
+            </>
           )}
 
         </Container>
