@@ -60,6 +60,7 @@ export default function AboutPage() {
           }}
           className="animate-fade-up"
         >
+
           {/* Main statement */}
           <h1
             style={{
@@ -147,66 +148,6 @@ export default function AboutPage() {
 
         </div>
       </section>
-
-
-
-{/* ════════════════════════════════════════════════════════════
-          SECTION 4 — Maker's Statement
-          Espresso background, centered blockquote
-      ════════════════════════════════════════════════════════════ */}
-      <section
-        aria-label="Maker's statement"
-        style={{
-          backgroundColor: '#DED0B6',
-          paddingTop: '100px',
-          paddingBottom: '100px',
-        }}
-      >
-        <div className="container-fiord">
-          <div
-            style={{
-              maxWidth: '700px',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              textAlign: 'center',
-            }}
-          >
-            <blockquote
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontStyle: 'italic',
-                fontWeight: 300,
-                fontSize: '26px',
-                lineHeight: 1.55,
-                color: 'var(--color-obsidian)',
-                margin: '0 0 32px',
-                padding: 0,
-                border: 'none',
-              }}
-            >
-              We don&apos;t make just products. 
-              We make companions — objects that
-              absorb the oils of your hands, that crease in the places you grip
-              them most, that carry the evidence of where you&apos;ve been. A bag
-              shouldn&apos;t look new at thirty years. It should look honest.
-            </blockquote>
-
-            <p
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontWeight: 300,
-                fontSize: '15px',
-                letterSpacing: '0.08em',
-                color: 'var(--color-stone)',
-                margin: 0,
-                textTransform: 'uppercase',
-              }}
-            >
-            </p>
-          </div>
-        </div>
-      </section>
-
     </main>
   );
 }

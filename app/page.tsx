@@ -44,8 +44,8 @@ export default function HomePage() {
               maxWidth: '380px',
               marginBottom: '40px',
             }}>
-              Every cut, every stitch, by hand alone. 
-              No shortcuts. No compromise.
+              Every cut, every stitch, by hand alone.<br />  
+              No shortcuts. No compromises. Come take a look...
             </p>
 
             <Link href="/catalog" className="cta-primary">
@@ -57,56 +57,6 @@ export default function HomePage() {
       </section>
 
 
-
-{/* ── PULL QUOTE ────────────────────────────────────────────────
-          Linen again — warm, editorial, large italic type.
-      ────────────────────────────────────────────────────────────── */}
-      <section
-        aria-label="Brand philosophy"
-        style={{
-          backgroundColor: 'var(--color-linen)',
-          borderTop: '1px solid var(--color-stone)',
-          borderBottom: '1px solid var(--color-stone)',
-          paddingTop: '100px',
-          paddingBottom: '100px',
-        }}
-      >
-        <Container>
-          <blockquote style={{
-            fontFamily: 'var(--font-display)',
-            fontWeight: 400,
-            fontStyle: 'italic',
-            fontSize: 'clamp(29px, 3.8vw, 50px)',
-            lineHeight: '1.35',
-            letterSpacing: '-0.015em',
-            color: 'var(--color-obsidian)',
-            maxWidth: '820px',
-            margin: '0 0 28px',
-          }}>
-            &ldquo;Being made <strong style={{ fontWeight: 700 }}>by</strong> human hands, the craft is made <strong style={{ fontWeight: 700 }}>for</strong> human hands &mdash; we can not only see it 
-            but caress it with our fingers&rdquo;
-          </blockquote>
-
-          <p style={{
-            fontFamily: 'var(--font-body)',
-            fontStyle: 'italic',
-            fontWeight: 300,
-            fontSize: '14px',
-            letterSpacing: '0.1em',
-            color: 'var(--color-stone)',
-          }}>
-            Malcolm McCollough &mdash;{' '}
-            <a
-              href="https://mitpress.mit.edu/9780262631891/abstracting-craft/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ borderBottom: '1px solid currentColor', paddingBottom: '1px' }}
-            >
-              Abstracting Craft
-            </a>
-          </p>
-        </Container>
-      </section>
 
 
       {/* ── MATERIALS ─────────────────────────────────────────────────
@@ -139,8 +89,8 @@ export default function HomePage() {
               <div key={label} style={{ borderTop: '1px solid var(--color-stone)', paddingTop: '24px' }}>
                 <p style={{
                   fontFamily: 'var(--font-body)',
-                  fontWeight: 400,
-                  fontSize: '11px',
+                  fontWeight: 500,
+                  fontSize: '14px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.15em',
                   color: 'var(--color-cognac)',
@@ -151,7 +101,7 @@ export default function HomePage() {
                 <p style={{
                   fontFamily: 'var(--font-body)',
                   fontWeight: 300,
-                  fontSize: '16px',
+                  fontSize: '18px',
                   lineHeight: '1.75',
                   color: 'var(--color-obsidian)',
                 }}>

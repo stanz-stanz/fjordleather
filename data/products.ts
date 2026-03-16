@@ -234,4 +234,41 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
+  {
+    id: '22',
+    slug: 'vaskebjornen-12',
+    name: 'Vaskebjornen #12',
+    category: 'wallets',
+    price: 1199,
+    currency: 'DKK',
+    description: `Handmade bi-fold wallet crafted from premium Italian leathers, this refined bi-fold pairs a Walpier "Buttero" exterior with a crocodile-embossed calfskin inlay for a unique look. A smooth goatskin lining adds a luxurious, silky feel.
+Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. The wallet is hand-stitched with heavy-duty nylon thread from Crimson Hides for exceptional strength and lasting reliability. Thoughtfully finished and built to age beautifully, it’s a timeless accessory where material integrity and meticulous hand craftsmanship are front and center.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand sitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-12-1.png', alt: 'vaskebjornen-12-1', priority: true },
+      { src: '/images/products/vaskebjornen-12-2.png', alt: 'vaskebjornen-12-2', priority: false }
+    ],
+    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
+  },
+  {
+    id: '23',
+    slug: 'vaskebjornen-13',
+    name: 'Vaskebjornen #13',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Handmade bi-fold wallet crafted from premium Italian leathers, this refined bi-fold pairs a Walpier "Buttero" exterior with Puccini "Palmelatto" interior pockets for a rich, tactile finish. A smooth goatskin lining protects contents while adding a luxurious, silky feel.
+
+Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. The wallet is hand-stitched with heavy-duty nylon thread from Crimson Hides for exceptional strength and lasting reliability. Thoughtfully finished and built to age beautifully, it’s a timeless accessory where material integrity and meticulous hand craftsmanship are front and center.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand sitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-13-1.png', alt: 'vaskebjornen-13-1', priority: true },
+      { src: '/images/products/vaskebjornen-13-2.png', alt: 'vaskebjornen-13-2', priority: false }
+    ],
+    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
+  },
 ];
