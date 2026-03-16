@@ -1,7 +1,7 @@
 
 ## Build Progress & Handoff Notes
 
-> **Last updated:** 2026-03-15 — Session 10 complete.
+> **Last updated:** 2026-03-16 — Session 11 complete.
 > Repository: `https://github.com/stanz-stanz/fjordleather`
 > Git remote name: `fjordleather`
 > Resume: clone the repo, `npm install && npm run dev`.
@@ -22,12 +22,11 @@
 
 **Data layer**
 - `data/types.ts` — `Product`, `ProductImage`, `ProductDimensions`, `ProductCategory`, `Tannery`. Fields: `id`, `slug`, `name`, `category`, `price`, `currency`, `description`, `material`, `construction`, `dimensions`, `images`, `tannery?`, `sold?`. No `featured`, `isNew`, `patina`, or `shortDescription`.
-- `data/products.ts` — 11 products (2 bags, 2 duffles, 2 wallets, 2 coin pouches, 2 accessories, 1 real wallet). EUR pricing for originals, DKK for Vaskebjornen-1. SVG placeholders for original 10; real PNGs for Vaskebjornen-1. All 10 products with identifiable tanneries have `tannery` field set.
+- `data/products.ts` — 15 products (2 bags + 13 wallets, Vaskebjornen #1–#13). EUR pricing for bags, DKK for all wallets. SVG placeholders for the 2 bag products; real PNGs for all 13 wallets. All products with identifiable tanneries have `tannery` field set.
 - `data/tanneries.ts` — `TANNERY_REGISTRY`: map of all 17 Genuine Italian Vegetable-Tanned Leather consortium tanneries → `{ url?, logo }`. Logo files in `public/images/tanneries/`.
 - `data/categories.ts` — Category labels and order
 - `data/utils.ts` — `getAllProducts`, `getProductBySlug`, `getProductSlugs`, `getRelatedProducts`, `getAdjacentProducts` (returns prev/next within same category, null at boundaries).
 - `data/product-intake.example.json` — Template for product import script. Fields: `name`, `category`, `price`, `currency`, `description`, `construction`, `dimensions`, `images`.
-- `data/intake/` — 10 wallet JSON files (`wallet-1.json` through `wallet-10.json`) ready for filling and importing via `npm run add-product`
 
 **Lib**
 - `lib/utils.ts` — `formatPrice()`, `cn()`, `slugify()`
@@ -35,7 +34,7 @@
 - `lib/seo.ts` — deleted (unused; product pages define metadata inline)
 
 **Components**
-- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo_new.png`, 1220x680px, cropped tight) as plain `<img>` with `.site-header-logo` class. Logo centered via `display: flex; justifyContent: center` on Link wrapper. Linen background (`#FEEBCF`). 12px top padding on link wrapper. 48px gradient block below fades to transparent. `marginBottom: '-48px'` pulls nav up into gradient zone.
+- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo_modified.png`, 1536x1024px, cropped tight) as plain `<img>` with `.site-header-logo` class. Logo centered via `display: flex; justifyContent: center` on Link wrapper. Linen background (`#FEEBCF`). 12px top padding on link wrapper. 48px gradient block below fades to transparent. `marginBottom: '-48px'` pulls nav up into gradient zone.
 - `components/nav/Navigation.tsx` — Sticky 56px. Obsidian background always. Chalk nav links via inline styles (Tailwind color classes unreliable). Mobile slide-in drawer (obsidian bg, chalk links via inline styles). Escape key closes. Body scroll lock. Close on route change. Full focus trap: Tab/Shift+Tab cycles within drawer only; focus returns to hamburger on close.
 - `components/footer/Footer.tsx` — Espresso background. Brand name (EB Garamond italic) + tagline on one row, copyright on line below.
 - `components/common/Button.tsx` — Primary (cognac fill) / Secondary (obsidian outline) / Ghost. Sizes: sm=12px, md=13px, lg=14px. Zero border-radius. Renders as `<Link>` when `href` passed.
@@ -47,18 +46,19 @@
 - `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac. Aspect ratio `3/2.6` (landscape, tuned for wallet photos). Uses `flex items-center justify-center` + plain `<img>` with `max-width/max-height: 100%` for reliable centering (NOT Next.js `<Image fill>` — global CSS reset breaks it). Inner padding `p-6`.
 
 **Pages** (all render statically — `npm run build` passes, 0 TypeScript errors)
-- `app/page.tsx` — Homepage: buckskin hero (`#DED0B6`) with randomised EB Garamond heading (via `HeroHeading` client component), cognac overline, 17px body copy, CTA. Linen pull quote (Malcolm McCollough, linked to MIT Press). Materials strip (3-column). No "Selected Works" product grid.
-- `data/hero-phrases.ts` — Pool of hero heading phrases (11 entries). Each phrase uses ` / ` as a line-break delimiter. Edit freely to add/remove phrases. Rendered by `components/hero/HeroHeading.tsx` (client component, picks randomly on mount).
+- `app/page.tsx` — Homepage: buckskin hero (`#DED0B6`) with randomised EB Garamond heading (via `HeroHeading` client component), cognac overline, 17px body copy, CTA. Linen materials strip (3-column). No pull quote. No "Selected Works" product grid.
+- `data/hero-phrases.ts` — Pool of hero heading phrases (10 entries). Each phrase uses ` / ` as a line-break delimiter. Edit freely to add/remove phrases. Rendered by `components/hero/HeroHeading.tsx` (client component, picks randomly on mount).
 - `app/catalog/page.tsx` — Collection: sticky filter bar (`top-[56px]`), URL-based category filter via `useSearchParams` + `router.replace` (persists on back navigation). Wrapped in `Suspense` for static export. Grid: `grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 lg:gap-8`.
 - `app/products/[slug]/page.tsx` — PDP: async params (`await params` — Next.js 16 requirement). Page top: breadcrumb bar → prev/next nav strip (category-scoped, no wrap, no product names). 60/40 gallery + info panel. Info panel: category overline, product name, price, divider, details grid (Material, Construction, Dimensions) + description, certification badge (consortium logo, "Certified Leather", tannery logo). CTA: `ProductInquiryForm` inline inquiry form (replaces mailto). Related products: compact 3-column horizontal strip.
-- `app/about/page.tsx` — Craft: 3 sections. Section 1: buckskin `#DED0B6`, `minHeight: 40vh`, "Made by hand. Finished by time." heading (no overline). Section 2: linen, vertical editorial chapters per process step (32px step name + 18px prose, 36px gap, stone dividers, cognac overline "How it's made", no step numbers). Section 3: buckskin `#DED0B6`, centered maker's statement blockquote in obsidian.
+- `app/about/page.tsx` — Craft: 2 sections. Section 1: buckskin `#DED0B6`, `minHeight: 40vh`, "Made by hand. Finished by time." heading + 18px subtext. Section 2: linen, vertical editorial chapters per process step (4 steps: Selection, Cutting, Stitching, Finishing — 32px step name + 18px prose, stone dividers, no step numbers displayed, no overline).
 - `app/contact/page.tsx` — Contact: two-column layout. Left: heading, body copy, direct email link. Right: form (name, email, subject, message) — POSTs to `/api/contact` via Resend. Sending state + error display. `CONTACT_EMAIL` imported from `lib/constants`.
 
 **Assets & SEO**
-- `public/images/logo_new.png` — Active logo (1220x680px, square-ish, cropped tight). Rendered via `.site-header-logo` CSS class.
+- `public/images/logo_modified.png` — Active logo (1536x1024px, cropped tight). Rendered via `.site-header-logo` CSS class.
+- `public/images/logo_old.png` — Previous logo version, kept for reference.
 - `public/images/pelle-vegetale-logo.jpg` — Pelle Conciata al Vegetale in Toscana consortium mark. 200px wide in badge.
 - `public/images/tanneries/` — 17 tannery logos downloaded from pellealvegetale.it. Filenames match `TANNERY_REGISTRY` entries in `data/tanneries.ts`.
-- `public/images/products/` — SVG placeholders for original 10 products + real PNGs for Vaskebjornen-1 (`vaskebjornen-1-1.png`, `vaskebjornen-1-2.png`).
+- `public/images/products/` — SVG placeholders for 2 bag products (Nordfjord Tote, Stillhet Messenger). Real PNGs for all 13 wallets (Vaskebjornen #1–#13), 2 images each.
 - `public/robots.txt` — allow all crawlers
 - `public/sitemap.xml` — static routes (domain placeholder — update when live)
 - `app/icon.svg` — "F" lettermark on obsidian background
@@ -76,9 +76,8 @@
 ### Pending — Resume Next Session
 
 **Priority 1 — Product data**
-- [ ] Replace SVG placeholders for original 10 products with real photography when available.
+- [ ] Replace SVG placeholders for the 2 bag products (Nordfjord Tote, Stillhet Messenger) with real photography when available.
 - [ ] Favicon: `app/icon.svg` is a simple "F" mark — replace with a proper Fjordleather mark if one exists.
-- [ ] Stein Key Fob (`id: 09`) has no `tannery` field — description says "workshop offcuts". Add tannery once known.
 
 **Priority 2 — Awaiting domain**
 - [ ] Update `CONTACT_EMAIL` and `SITE_URL` in `lib/constants.ts` once domain is confirmed.

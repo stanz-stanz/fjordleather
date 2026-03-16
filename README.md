@@ -54,7 +54,7 @@ See `data/product-intake.example.json` for the expected format.
 
 ```
 app/                       # Next.js App Router pages
-  page.tsx                 # Homepage (random hero phrase, pull quote, materials)
+  page.tsx                 # Homepage (random hero phrase, materials strip)
   catalog/                 # Collection / filter page
   products/[slug]/         # Product detail page + inline inquiry form
   about/                   # Craft / brand story
@@ -80,7 +80,7 @@ lib/
   utils.ts                 # formatPrice, cn, slugify
 docs/design/               # Design system documentation
 public/
-  images/products/         # Product images (SVG placeholders until real photography)
+  images/products/         # Product images (SVG placeholders for bags; real PNGs for all wallets)
   images/tanneries/        # Tannery logo files
   robots.txt
   sitemap.xml

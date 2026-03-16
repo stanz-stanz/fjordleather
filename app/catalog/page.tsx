@@ -42,7 +42,7 @@ function CatalogContent() {
 
   return (
     <>
-      <main id="main-content" className="bg-chalk">
+      <main id="main-content" className="bg-linen">
 
         {/* ══════════════════════════════════════
             Page header — above filter bar
@@ -108,7 +108,7 @@ function CatalogContent() {
             Sticky filter bar
         ══════════════════════════════════════ */}
         <div
-          className="sticky top-[56px] bg-chalk border-b border-stone/30"
+          className="sticky top-[56px] bg-linen border-b border-stone/30"
           style={{ zIndex: 'var(--z-sticky)' }}
         >
           <Container as="div">

@@ -54,7 +54,7 @@ A single interior organisation pocket in natural canvas sits flat against the re
     currency: 'DKK',
     description: `Handmade bi-fold wallet crafted from premium Italian leather by Puccini Attilio. The interior uses the leather's natural flesh side, hand-burnished for a silky, protective finish. Every edge is skived, hand-sanded, and burnished to a smooth, durable ridge. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for daily use and designed to develop a rich patina over time. Compact, meticulously finished, and made to last — a timeless accessory where detail and material integrity lead.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-1-2.png', alt: 'Bifold wallet interior', priority: true },
@@ -71,7 +71,7 @@ A single interior organisation pocket in natural canvas sits flat against the re
     currency: 'DKK',
     description: `Handmade bi-fold wallet combining a Conceria Walpier Buttero exterior with Puccini Maremma inner pockets for a rich, tactile contrast. The interior shows the leather's natural flesh side, hand-burnished to a smooth, protective finish. All edges are skived, hand-sanded, and burnished to a satiny, durable ridge. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for everyday use and designed to develop a deep, characterful patina over time. Compact, meticulously finished, and made to last.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-2-1.png', alt: 'vaskebjornen-2-1', priority: true },
@@ -88,7 +88,7 @@ A single interior organisation pocket in natural canvas sits flat against the re
     currency: 'DKK',
     description: `Handmade bi-fold wallet pairing a Saffiano-printed calfskin exterior with bright Puccini Bisanzio inner pockets for a contemporary, textured look. A smooth sheepskin lining protects contents and adds a silky feel to the interior. Edges are precisely skived, hand-sanded, and burnished for a refined, hard-wearing finish. Hand-stitched using heavy-duty nylon thread from Crimson Hides, the construction prioritises strength and longevity while maintaining a sleeker, more modern aesthetic.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-3-1.png', alt: 'vaskebjornen-3-1', priority: true },
@@ -105,7 +105,7 @@ A single interior organisation pocket in natural canvas sits flat against the re
     currency: 'DKK',
     description: `Handmade bi-fold wallet crafted from aniline box calf with Tempesti "Maine Liscio" pocketing, balancing supple hand-feel with refined structure. The interior features a smooth goatskin lining for durability and a luxurious touch. Each edge is skived, hand-sanded, and burnished to a lasting, satiny finish. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built to withstand daily use and age gracefully, becoming more personal with wear.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-4-1.png', alt: 'vaskebjornen-4-1', priority: true },
@@ -124,7 +124,7 @@ A single interior organisation pocket in natural canvas sits flat against the re
 
 Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. The wallet is hand-stitched with heavy-duty nylon thread from Crimson Hides for exceptional strength and lasting reliability. Thoughtfully finished and built to age beautifully, it’s a timeless accessory where material integrity and meticulous hand craftsmanship are front and center.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-5-1.png', alt: 'vaskebjornen-5-1', priority: true },
@@ -141,7 +141,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     currency: 'DKK',
     description: `Handmade bi-fold wallet in beautiful Il Ponte "Mozart" leather. The interior shows the leather's natural flesh side, hand-burnished to a smooth, protective finish. All edges are skived, hand-sanded, and painted. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for everyday use and designed to develop a deep, unique patina over time. Compact, light, yet made to last.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-6-1.png', alt: 'vaskebjornen-6-1', priority: true },
@@ -158,7 +158,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     currency: 'DKK',
     description: `Handmade bi-fold wallet in Puccini Attilio “Maremma” exterior with textured “Palmelatto” inner pockets. The interior is lined in silky sheepskin for a luxurious, protective feel. Edges skived, hand‑sanded, and burnished to a smooth, durable ridge; all seams are hand‑stitched with heavy‑duty nylon thread from Crimson Hides for exceptional strength. Thoughtfully proportioned and precisely finished, it’s built for daily use and designed to develop a rich, characterful patina over time. Compact, refined, and made to last.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-7-1.png', alt: 'vaskebjornen-7-1', priority: true },
@@ -175,7 +175,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     currency: 'DKK',
     description: `Handmade bi-fold wallet crafted from premium Italian leather by Puccini Attilio. The interior uses the leather's natural flesh side, hand-burnished for a silky, protective finish. Every edge is skived, hand-sanded, and burnished to a smooth, durable ridge. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for daily use and designed to develop a rich patina over time. Compact, and ultra light — a timeless accessory where detail and material integrity lead.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-8-1.png', alt: 'vaskebjornen-8-1', priority: true },
@@ -190,9 +190,9 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Handmade bi-fold wallet pairing a Saffiano-printed calfskin exterior with vachetta inner pockets for a contemporary, textured look. A luxurious cognac nubuck lining gives the interior a unique touch. Edges are precisely skived, hand-sanded, and paited for a refined, hard-wearing finish. Hand-stitched using heavy-duty nylon thread from Crimson Hides, the construction prioritises strength and longevity.`,
+    description: `Handmade bi-fold wallet pairing a Saffiano-printed calfskin exterior with vachetta inner pockets for a contemporary, textured look. A luxurious cognac nubuck lining gives the interior a unique touch. Edges are precisely skived, hand-sanded, and painted for a refined, hard-wearing finish. Hand-stitched using heavy-duty nylon thread from Crimson Hides, the construction prioritises strength and longevity.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-9-1.png', alt: 'vaskebjornen-9-1', priority: true },
@@ -209,7 +209,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     currency: 'DKK',
     description: `Handmade bi-fold wallet in Puccini Attilio “Maremma” exterior with textured “Palmelatto” inner pockets. The interior is lined in black sheepskin for a luxurious, protective feel. Edges skived, hand‑sanded, and painted; all seams are hand‑stitched with heavy‑duty nylon thread from Crimson Hides for exceptional strength. Retains its refined surface while softening to a more comfortable hand with everyday use — subtle surface character rather than a traditional patina. One of our most beautiful products, this one is a maker's favorite.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-10-1.png', alt: 'vaskebjornen-10-1', priority: true },
@@ -226,7 +226,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     currency: 'DKK',
     description: `Handmade bi-fold wallet in Puccini Attilio “Maremma” exterior. The interior is lined in black suede (velour) sheepskin for a luxurious, ultra soft feel. Edges skived, hand‑sanded, and burnished; all seams are hand‑stitched with heavy‑duty nylon thread from Crimson Hides for exceptional strength. Retains its refined surface while softening to a more comfortable hand with everyday use — subtle surface character rather than a traditional patina. A maker's favorite.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-11-1.png', alt: 'vaskebjornen-11-1', priority: true },
@@ -244,7 +244,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     description: `Handmade bi-fold wallet crafted from premium Italian leathers, this refined bi-fold pairs a Walpier "Buttero" exterior with a crocodile-embossed calfskin inlay for a unique look. A smooth goatskin lining adds a luxurious, silky feel.
 Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. The wallet is hand-stitched with heavy-duty nylon thread from Crimson Hides for exceptional strength and lasting reliability. Thoughtfully finished and built to age beautifully, it’s a timeless accessory where material integrity and meticulous hand craftsmanship are front and center.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-12-1.png', alt: 'vaskebjornen-12-1', priority: true },
@@ -263,7 +263,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
 
 Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. The wallet is hand-stitched with heavy-duty nylon thread from Crimson Hides for exceptional strength and lasting reliability. Thoughtfully finished and built to age beautifully, it’s a timeless accessory where material integrity and meticulous hand craftsmanship are front and center.`,
     material: 'Full-grain Italian leather',
-    construction: 'Hand cut, hand sitched',
+    construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
       { src: '/images/products/vaskebjornen-13-1.png', alt: 'vaskebjornen-13-1', priority: true },

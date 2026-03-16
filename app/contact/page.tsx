@@ -105,7 +105,7 @@ export default function ContactPage() {
       <section
         aria-label="Contact"
         style={{
-          backgroundColor: 'var(--color-chalk)',
+          backgroundColor: 'var(--color-linen)',
           minHeight: '100vh',
           paddingTop: '48px',
           paddingBottom: '96px',

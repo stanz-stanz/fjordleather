@@ -65,7 +65,7 @@ export default function HomePage() {
       <section
         aria-label="Materials and construction"
         style={{
-          backgroundColor: 'var(--color-chalk)',
+          backgroundColor: 'var(--color-linen)',
           paddingTop: '80px',
           paddingBottom: '80px',
         }}
