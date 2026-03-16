@@ -45,7 +45,7 @@ export default function HomePage() {
               marginBottom: '40px',
             }}>
               Every cut, every stitch, by hand alone.<br />  
-              No shortcuts. No compromises. Come take a look...
+              No shortcuts. No compromises.
             </p>
 
             <Link href="/catalog" className="cta-primary">

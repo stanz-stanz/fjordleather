@@ -1,9 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import type { ProductImage } from '@/data/types'
+import ImageLightbox from './ImageLightbox'
 
 interface ImageGalleryProps {
   images: ProductImage[]
@@ -12,6 +13,8 @@ interface ImageGalleryProps {
 
 export default function ImageGallery({ images, productName }: ImageGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const zoomBtnRef = useRef<HTMLButtonElement>(null)
 
   // Guard against empty array
   const safeImages = images.length > 0 ? images : []
@@ -42,7 +45,8 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
         aria-roledescription="carousel"
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        className="relative aspect-[3/2.6] w-full overflow-hidden bg-linen focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2"
+        onClick={() => setLightboxOpen(true)}
+        className="relative aspect-[3/2.6] w-full overflow-hidden bg-linen focus-visible:outline-2 focus-visible:outline-cognac focus-visible:outline-offset-2 cursor-pointer"
       >
         <div className="absolute inset-0 p-6">
           <div className="relative w-full h-full">
@@ -57,7 +61,61 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
             />
           </div>
         </div>
+        {/* Zoom trigger */}
+        <button
+          ref={zoomBtnRef}
+          type="button"
+          aria-label="View fullscreen image"
+          onClick={() => setLightboxOpen(true)}
+          style={{
+            position: 'absolute',
+            bottom: 12,
+            right: 12,
+            width: 40,
+            height: 40,
+            background: 'rgba(254,235,207,0.85)',
+            border: 'none',
+            borderRadius: 0,
+            cursor: 'pointer',
+            zIndex: 10,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'background var(--duration-gentle) var(--ease-in-out)',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(254,235,207,1)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(254,235,207,0.85)')}
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+            stroke="#0F0D0C"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="13,2 18,2 18,7" />
+            <polyline points="7,18 2,18 2,13" />
+            <line x1="18" y1="2" x2="12" y2="8" />
+            <line x1="2" y1="18" x2="8" y2="12" />
+          </svg>
+        </button>
       </div>
+
+      {lightboxOpen && (
+        <ImageLightbox
+          images={safeImages}
+          productName={productName}
+          initialIndex={activeIndex}
+          onClose={() => {
+            setLightboxOpen(false)
+            zoomBtnRef.current?.focus()
+          }}
+        />
+      )}
 
       {/* ── Thumbnail strip ───────────────────── */}
       {safeImages.length > 1 && (

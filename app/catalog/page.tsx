@@ -290,7 +290,7 @@ function CatalogContent() {
                       className={!isNew ? 'is-visible' : undefined}
                       style={{ transitionDelay: isNew ? `${(i - revealedCount) * 80}ms` : '0ms' }}
                     >
-                      <ProductCard product={product} priority={i < 3} />
+                      <ProductCard product={product} priority={isNew && (i - revealedCount) < 3} />
                     </div>
                   )
                 })}
@@ -298,7 +298,7 @@ function CatalogContent() {
 
               {/* Show More */}
               {hasMore && (
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+                <div className="flex justify-center mt-12">
                   <Button variant="secondary" size="md" onClick={handleShowMore}>
                     Show More
                   </Button>
