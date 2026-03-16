@@ -1,7 +1,7 @@
 
 ## Build Progress & Handoff Notes
 
-> **Last updated:** 2026-03-16 — Session 11 complete.
+> **Last updated:** 2026-03-16 — Session 12 complete.
 > Repository: `https://github.com/stanz-stanz/fjordleather`
 > Git remote name: `fjordleather`
 > Resume: clone the repo, `npm install && npm run dev`.
@@ -17,7 +17,7 @@
 
 **Foundation**
 - `next.config.ts` — `trailingSlash: true` only. `output: 'export'` removed to enable serverless API routes on Vercel.
-- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `--color-linen: #FEEBCF` (sampled from logo). `.cta-primary` class. `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. `.site-header-logo` responsive class (90% / max 560px mobile, 65% / max 680px desktop) — logo centered via flexbox on the Link wrapper. No Google Fonts `@import`.
+- `app/globals.css` — Complete design token system. Accent: Cognac `#8B5A2B`. `--color-linen: #FEEBCF` (sampled from logo). `--z-max: 100` token. `.cta-primary` class. `[data-animate="fade-up"]` + `.is-visible` CSS for AnimateOnScroll. `.site-header-logo` responsive class (90% / max 560px mobile, 65% / max 680px desktop) — logo centered via flexbox on the Link wrapper. `.lightbox-scroll` + `.lightbox-img` responsive classes (desktop: fit in viewport; mobile: `160vw` width, `overflow: auto` for panning). `.lightbox-pan-hint` (mobile only, `pan-hint` keyframe, fades in then out). No Google Fonts `@import`.
 - `app/layout.tsx` — EB Garamond (`--font-display`) + Cormorant Garamond (`--font-display-fallback`) + Jost. Renders `SiteHeader` then `Navigation` then `{children}` then `Footer`. No `<main>` wrapper.
 
 **Data layer**
@@ -43,7 +43,8 @@
 - `components/hero/HeroHeading.tsx` — `'use client'`. Picks a random phrase from `data/hero-phrases.ts` on mount, renders as large EB Garamond h1. Uses ` / ` as line-break delimiter. Returns null until client hydrates (prevents hydration mismatch).
 - `components/product-inquiry/ProductInquiryForm.tsx` — `'use client'`. Inline inquiry form on PDP. Initially renders as a single button; click expands into name/email/message fields. Message pre-filled with product-specific template (editable in `DEFAULT_MESSAGE`). POSTs to `/api/contact`. Shows sending state, success confirmation, cancel button.
 - `components/product-card/ProductCard.tsx` — `'use client'` (required for mouse event handlers). Default `aspect-[4/5]`. Accepts `compact` prop which switches to `aspect-square` (used in related products strip). Wallet cards: dark brown gradient background (`linear-gradient(to bottom right, #2A1A10, #1A0E08)`). All other cards: `bg-linen`. FJORDLEATHER text overlay (14px, `#C4B5A8`, opacity 0.4) at bottom of wallet cards. Image at `scale(1.0)`, hover `scale(1.03)`, `object-contain`. When `product.sold` is true: diagonal "Gone" text + dark veil overlay on image. No New badge. No featured badge.
-- `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac. Aspect ratio `3/2.6` (landscape, tuned for wallet photos). Uses `flex items-center justify-center` + plain `<img>` with `max-width/max-height: 100%` for reliable centering (NOT Next.js `<Image fill>` — global CSS reset breaks it). Inner padding `p-6`.
+- `components/image-gallery/ImageGallery.tsx` — Active thumbnail, keyboard nav scoped to gallery region. `aria-roledescription="carousel"`. Focus ring: cognac. Aspect ratio `3/2.6` (landscape, tuned for wallet photos). Uses `flex items-center justify-center` + plain `<img>` with `max-width/max-height: 100%` for reliable centering (NOT Next.js `<Image fill>` — global CSS reset breaks it). Inner padding `p-6`. Entire image area is `cursor-pointer` + `onClick` to open lightbox. Zoom icon button (40×40px linen, expand SVG, bottom-right corner) provides a secondary visual affordance on desktop. Renders `ImageLightbox` when open; focus returns to zoom button on close.
+- `components/image-gallery/ImageLightbox.tsx` — `'use client'`. Fullscreen portal overlay (`--z-modal`). Two-layer structure: `.lightbox-scroll` (image container, scrollable on mobile) + controls layer (`position: absolute`, never scrolls). Desktop: image at `max 90vw × 85vh`, `object-contain`. Mobile: image at `160vw`, `overflow: auto`, scroll auto-centered to image midpoint on change. Image held at `opacity: 0` until `onLoad` fires (prevents PNG row-by-row curtain effect); `useLayoutEffect` resets loaded flag synchronously on image change to prevent flash. `prefers-reduced-motion`: detected via `matchMedia`; close is instant (no setTimeout), animations suppressed. Arrows always rendered — disabled state at boundaries uses `aria-disabled` + `opacity: 0.2` + `pointer-events: none` (no sudden disappearance). "drag to explore" pan hint on mobile (CSS-only, `pan-hint` keyframe, fades out after ~4s). Focus trap, Escape key, body scroll lock, `aria-live` counter.
 
 **Pages** (all render statically — `npm run build` passes, 0 TypeScript errors)
 - `app/page.tsx` — Homepage: buckskin hero (`#DED0B6`) with randomised EB Garamond heading (via `HeroHeading` client component), cognac overline, 17px body copy, CTA. Linen materials strip (3-column). No pull quote. No "Selected Works" product grid.
