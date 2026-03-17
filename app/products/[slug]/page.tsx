@@ -325,21 +325,29 @@ export default async function ProductDetailPage({
 
                     </dl>
 
-                    {/* Editorial description */}
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-body)',
-                        fontWeight: 300,
-                        fontSize: '21px',
-                        lineHeight: 1.75,
-                        color: 'var(--color-obsidian)',
-                        margin: 0,
-                        marginTop: '24px',
-                        maxWidth: '650px',
-                      }}
-                    >
-                      {product.description}
-                    </p>
+                    {/* Editorial description — double newline = paragraph, single newline = line break */}
+                    <div style={{ marginTop: '24px', maxWidth: '650px', display: 'flex', flexDirection: 'column', gap: '1em' }}>
+                      {product.description.split(/\n\n+/).map((para, i) => (
+                        <p
+                          key={i}
+                          style={{
+                            fontFamily: 'var(--font-body)',
+                            fontWeight: 300,
+                            fontSize: '21px',
+                            lineHeight: 1.75,
+                            color: 'var(--color-obsidian)',
+                            margin: 0,
+                          }}
+                        >
+                          {para.trim().split('\n').map((line, j, arr) => (
+                            <span key={j}>
+                              {line}
+                              {j < arr.length - 1 && <br />}
+                            </span>
+                          ))}
+                        </p>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Vertical divider — desktop only */}

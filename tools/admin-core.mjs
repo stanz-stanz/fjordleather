@@ -28,7 +28,7 @@ export function log(level, message, data) {
 
 export const TANNERIES = [
   'Artigiano Del Cuoio', 'Badalassi Carlo', 'Conceria La Bretagna',
-  'Conceria Walpier', 'Curtiba Ind. Conciaria', 'Il Gabbiano', 'Il Ponte',
+  'Curtiba Ind. Conciaria', 'Il Gabbiano', 'Il Ponte',
   'Italpel', 'La Perla Azzurra', 'Lo Stivale', 'M.P.G. Industria Conciaria',
   'Monteverdi', 'Nuova Albora', 'Orice', 'Puccini Attilio', 'Tempesti',
   'Volpi Concerie', 'WALPIER',

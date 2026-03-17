@@ -62,7 +62,7 @@ const HTML = `<!DOCTYPE html>
     border-radius: 0; outline: none; width: 100%; transition: border-color 0.2s;
   }
   input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus { border-color: #C4956A; }
-  textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+  textarea { resize: vertical; min-height: 160px; line-height: 1.6; }
   select option { background: #2a2a2a; }
   .hint { font-size: 11px; color: #666; }
   input[readonly] { opacity: 0.5; cursor: default; }
@@ -196,7 +196,7 @@ const HTML = `<!DOCTYPE html>
       <div class="section-title">Copy</div>
       <div class="field" style="margin-bottom:16px">
         <label for="description">Description *</label>
-        <textarea id="description" name="description" required placeholder="A long-form product description. No HTML."></textarea>
+        <textarea id="description" name="description" required placeholder="A long-form product description. Press Enter twice for a new paragraph, once for a line break."></textarea>
       </div>
       <div class="row">
         <div class="field">
