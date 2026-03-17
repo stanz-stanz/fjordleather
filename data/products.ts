@@ -417,4 +417,55 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
+  {
+    id: '32',
+    slug: 'vaskebjornen-41',
+    name: 'Vaskebjornen #41',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Ancient and contemporary at once. The shell is Puccini "Bisanzio" in metallic copper — a leather that doesn't reflect light so much as hold it, shifting tone with every movement, every angle. It is the kind of surface that makes people reach out and touch. Inside, Maremma and Koala (both Puccini leathers as well) in warm amber and cognac, ivory goatskin lining throughout, copper Crimson Hides thread hand-stitched from edge to edge. An exterior this remarkable deserved an interior to match. It got one.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-41-1.png', alt: 'vaskebjornen-41-1', priority: true },
+      { src: '/images/products/vaskebjornen-41-2.png', alt: 'vaskebjornen-41-2', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+  {
+    id: '33',
+    slug: 'vaskebjornen-42',
+    name: 'Vaskebjornen #42',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Puccini "Maremma", inside and out. The exterior in deep chestnut — composed, unhurried, a leather that has nothing to prove. Inside, the same hide in three tones: amber, chocolate, natural tan. A study in what a single tannery can do when given room to breathe. Orange Crimson Hides thread throughout, hand-stitched, edge to edge. No exotic skins. No flourishes. Every tone drawn from the same family. Every element of the same mind. Just Maremma, at its best.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-42-1.png', alt: 'vaskebjornen-42-1', priority: true },
+      { src: '/images/products/vaskebjornen-42-2.png', alt: 'vaskebjornen-42-2', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+  {
+    id: '34',
+    slug: 'vaskebjornen-43',
+    name: 'Vaskebjornen #43',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Puccini "Bisanzio" on the outside — that unmistakable metallic copper, mottled and alive, different in every light. Inside, the mood shifts: cool taupe calfskin lines the shell, ivory goatskin lining runs beneath the fingers, and Bisanzio returns at the centre pocket, a warm pulse between two cool tones. Copper Crimson Hides thread throughout, hand-stitched. Two temperatures, one object, no compromises. The kind of wallet that looks better every time you look at it.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-43-1.png', alt: 'vaskebjornen-43-1', priority: true },
+      { src: '/images/products/vaskebjornen-43-2.png', alt: 'vaskebjornen-43-2', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
 ];
