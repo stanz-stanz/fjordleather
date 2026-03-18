@@ -30,8 +30,8 @@ export const TANNERIES = [
   'Artigiano Del Cuoio', 'Badalassi Carlo', 'Conceria La Bretagna',
   'Curtiba Ind. Conciaria', 'Il Gabbiano', 'Il Ponte',
   'Italpel', 'La Perla Azzurra', 'Lo Stivale', 'M.P.G. Industria Conciaria',
-  'Monteverdi', 'Nuova Albora', 'Orice', 'Puccini Attilio', 'Tempesti',
-  'Volpi Concerie', 'WALPIER',
+  'Monteverdi', 'Nuova Albora', 'Orice', 'Puccini Attilio', 'Rocado', 'Tempesti',
+  'Volpi Concerie', 'Walpier',
 ];
 
 export const TANNERY_URLS = {
@@ -50,7 +50,7 @@ export const TANNERY_URLS = {
   'Puccini Attilio':            'http://www.conceriapuccini.com',
   'Tempesti':                   'http://www.tempesti.com',
   'Volpi Concerie':             'http://www.volpi.it',
-  'WALPIER':                    'http://www.conceriawalpier.com/',
+  'Walpier':                    'http://www.conceriawalpier.com/',
 };
 
 export const CATEGORIES = ['bags', 'wallets'];

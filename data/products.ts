@@ -43,7 +43,7 @@ A single interior organisation pocket in natural canvas sits flat against the re
       { src: '/images/products/stillhet-messenger-2.svg', alt: 'Stillhet Messenger strap and brass slider detail', priority: false },
       { src: '/images/products/stillhet-messenger-3.svg', alt: 'Stillhet Messenger front pocket with brass turn-clasp', priority: false },
     ],
-    tannery: [{ name: 'WALPIER', url: 'http://www.conceriawalpier.com/' }],
+    tannery: [{ name: 'Walpier', url: 'http://www.conceriawalpier.com/' }],
   },
   {
     id: '11',
@@ -77,7 +77,7 @@ A single interior organisation pocket in natural canvas sits flat against the re
       { src: '/images/products/vaskebjornen-2-1.png', alt: 'vaskebjornen-2-1', priority: true },
       { src: '/images/products/vaskebjornen-2-2.png', alt: 'vaskebjornen-2-2', priority: false }
     ],
-    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
+    tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
     {
     id: '13',
@@ -130,7 +130,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
       { src: '/images/products/vaskebjornen-5-1.png', alt: 'vaskebjornen-5-1', priority: true },
       { src: '/images/products/vaskebjornen-5-2.png', alt: 'vaskebjornen-5-2', priority: false }
     ],
-    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
+    tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
   {
     id: '16',
@@ -250,7 +250,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
       { src: '/images/products/vaskebjornen-12-1.png', alt: 'vaskebjornen-12-1', priority: true },
       { src: '/images/products/vaskebjornen-12-2.png', alt: 'vaskebjornen-12-2', priority: false }
     ],
-    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
+    tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
   {
     id: '23',
@@ -269,7 +269,7 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
       { src: '/images/products/vaskebjornen-13-1.png', alt: 'vaskebjornen-13-1', priority: true },
       { src: '/images/products/vaskebjornen-13-2.png', alt: 'vaskebjornen-13-2', priority: false }
     ],
-    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
+    tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
   {
     id: '24',
@@ -288,7 +288,7 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
       { src: '/images/products/vaskebjornen-14-1.png', alt: 'vaskebjornen-14-1', priority: true },
       { src: '/images/products/vaskebjornen-14-2.png', alt: 'vaskebjornen-14-2', priority: false }
     ],
-    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
+    tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
   {
     id: '25',
@@ -396,7 +396,7 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
       { src: '/images/products/vaskebjornen-20-1.png', alt: 'vaskebjornen-20-1', priority: true },
       { src: '/images/products/vaskebjornen-20-2.png', alt: 'vaskebjornen-20-2', priority: false }
     ],
-    tannery: [{ name: 'WALPIER' , url: 'http://www.conceriawalpier.com/'}],
+    tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
   {
     id: '31',
@@ -467,5 +467,22 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
       { src: '/images/products/vaskebjornen-43-2.png', alt: 'vaskebjornen-43-2', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+    {
+    id: '35',
+    slug: 'vaskebjornen-44',
+    name: 'Vaskebjornen #44',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Horse leather is not a common choice. It is a deliberate one. Avancorpo — the front of the horse hide, tanned by Rocado of Italy — brings a grain so tight and resilient it feels almost architectural. Here in natural honey tan, glazed to a quiet sheen, it forms both the exterior shell and the soul of the interior. Caramel pockets, natural tan center panel, ivory goatskin lining. Dark brown Crimson Hides thread throughout, hand-stitched. A wallet that will outlast most things you own — and look better for every year it does.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-44-1.png', alt: 'vaskebjornen-44-1', priority: true },
+      { src: '/images/products/vaskebjornen-44-2.png', alt: 'vaskebjornen-44-2', priority: false }
+    ],
+    tannery: [{ name: 'Rocado' }],
   },
 ];

@@ -21,4 +21,5 @@ export const TANNERY_REGISTRY: Record<string, TanneryInfo> = {
   'Tempesti':                 { url: 'http://www.tempesti.com',                             logo: '/images/tanneries/Tempesti-200x200-72-Grigio-02.jpg' },
   'Volpi Concerie':           { url: 'http://www.volpi.it',                                 logo: '/images/tanneries/Volpi-Concerie-200x200-72-Grigio-02.jpg' },
   'WALPIER':                  { url: 'http://www.conceriawalpier.com/',                     logo: '/images/tanneries/WALPIER-200x200-72-Grigio-02-02.jpg' },
+  'Rocado':                   { url: 'https://www.rocado.it/',                              logo: '/images/tanneries/Rocado_logo.jpg' }
 };
