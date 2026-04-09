@@ -14,5 +14,5 @@ export const HERO_PHRASES: string[] = [
   "Feel / The Care",
   "Enjoy / attention to details",
   "Back / To Artisanal",
-  "The Return / Of Craft"
+  "The Return / Of Crafted"
 ]

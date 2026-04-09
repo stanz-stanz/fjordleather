@@ -485,4 +485,109 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     ],
     tannery: [{ name: 'Rocado' }],
   },
+  {
+    id: '36',
+    slug: 'vaskebjornen-45',
+    name: 'Vaskebjornen #45',
+    category: 'wallets',
+    price: 899,
+    currency: 'DKK',
+    description: `One leather, two faces. The exterior is Puccini Attilio's "Mozart" — warm cognac, vegetable-tanned, the kind of surface that responds to use rather than resisting it. Inside, the same hide reversed: natural flesh side burnished smooth, running alongside the finished grain in each card slot, shifting from golden to tan as you move across. Edges skived, sanded, painted. Stitched by hand with Crimson Hides thread. Simple construction, good material, nothing wasted.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-45-1.png', alt: 'vaskebjornen-45-1', priority: true },
+      { src: '/images/products/vaskebjornen-45-2.png', alt: 'vaskebjornen-45-2', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+    {
+    id: '37',
+    slug: 'vaskebjornen-46',
+    name: 'Vaskebjornen #46',
+    category: 'wallets',
+    price: 1399,
+    currency: 'DKK',
+    description: `The exterior is authentic cobra — black broad-scaled, with a texture that has no equivalent in cowhide or anywhere else. Open it and the mood shifts entirely: Puccini Attilio "Maremma" pockets in warm brown, cognac nubuck lining, and brown Crimson Hides thread stitching it all together. Two completely different materials that make sense only because someone decided they should. Every edge finished by hand, painted in dark brown.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '2', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-46-1.png', alt: 'vaskebjornen-46-1', priority: true },
+      { src: '/images/products/vaskebjornen-46-2.png', alt: 'vaskebjornen-46-2', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+    {
+    id: '38',
+    slug: 'vaskebjornen-47',
+    name: 'Vaskebjornen #47',
+    category: 'wallets',
+    price: 1099,
+    currency: 'DKK',
+    description: `Maremma leather ages the way good things age — it doesn't fade, it resolves. The exterior here is Puccini Attilio's, in a cognac that will be darker and richer six months from now. Inside, ivory goatskin lines the pockets, cool and smooth against the warmer shell. Brown Crimson Hides thread, hand-stitched. Every edge finished by hand. Built around two leathers that know how to share a space.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-47-1.png', alt: 'vaskebjornen-47-1', priority: true },
+      { src: '/images/products/vaskebjornen-47-2.png', alt: 'vaskebjornen-47-2', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+  {
+    id: '39',
+    slug: 'vaskebjornen-48',
+    name: 'Vaskebjornen #48',
+    category: 'wallets',
+    price: 1499,
+    currency: 'DKK',
+    description: `Puccini Attilio "Maremma" in deep charcoal, split down the centre by an inlay of authentic shark skin — two textures side by side, one smooth, one raw. The shark skin returns inside across the card pockets, set against an ultra-soft goatskin lining. Cream Crimson Hides thread runs the full perimeter, the only bright line on an otherwise dark object. Edges skived, sanded, finished by hand. A wallet that does one thing well: make you look twice.
+
+
+Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, and acquired exclusively through vendors operating within EU regulations.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand sitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '2', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-48-1.png', alt: 'vaskebjornen-48-1', priority: true },
+      { src: '/images/products/vaskebjornen-48-2.png', alt: 'vaskebjornen-48-2', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+    {
+    id: '40',
+    slug: 'vaskebjornen-49',
+    name: 'Vaskebjornen #49',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Four Tuscan tanneries in one wallet. The exterior is Badalassi Carlo's "Ecbatana Lux" — a leather with a surface that looks like it's already lived a life, scratched and cross-hatched in a way no machine could replicate. Inside, the card pockets alternate between Tempesti Minerva Liscio in burnt orange, Il Ponte Mozart in light brown, and Puccini Koala in a deeper shade. Orange Crimson Hides thread throughout. Every hide vegetable-tanned, every stitch placed by hand. A consortium sampler that happens to fit in your back pocket.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-49-1.png', alt: 'vaskebjornen-49-1', priority: true },
+      { src: '/images/products/vaskebjornen-49-2.png', alt: 'vaskebjornen-49-2', priority: false }
+    ],
+    tannery: [{ name: 'Badalassi Carlo' }],
+  },
+  {
+    id: '41',
+    slug: 'vaskebjornen-50',
+    name: 'Vaskebjornen #50',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Red on the outside, and not the kind that fades into the background. Walpier's Epi-printed leather carries those fine vertical grooves that give the surface a rhythm you can feel under your thumb. Open it and everything calms down — Rocado Avantcorpo in natural, pale as raw canvas, with the red returning only at the centre pocket. Cream Crimson Hides thread throughout. A wallet with a strong opinion and the craftsmanship to back it up.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-50-1.png', alt: 'vaskebjornen-50-1', priority: true },
+      { src: '/images/products/vaskebjornen-50-2.png', alt: 'vaskebjornen-50-2', priority: false }
+    ],
+    tannery: [{ name: 'Walpier', url: 'http://www.conceriawalpier.com/' }, { name: 'Rocado' }],
+  },
 ];
