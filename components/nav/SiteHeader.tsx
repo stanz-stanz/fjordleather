@@ -3,33 +3,25 @@ import { BRAND_NAME } from '@/lib/constants'
 
 export default function SiteHeader() {
   return (
-    <div style={{ backgroundColor: '#FFEFD9', marginBottom: '-48px' }}>
-      <Link href="/" aria-label={`${BRAND_NAME} — return to homepage`} style={{ display: 'flex', justifyContent: 'center', paddingTop: '12px', position: 'relative' }}>
+    <div style={{ backgroundColor: '#FFFFFF', marginBottom: '-48px' }}>
+      <Link href="/" aria-label={`${BRAND_NAME} — return to homepage`} style={{ display: 'flex', justifyContent: 'center', paddingTop: '12px' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/logo_modified.png"
+          src="/images/logo_white.png"
           alt="Fjordleather — Crafted by Hand"
           width={1536}
           height={1024}
           className="site-header-logo"
+          style={{
+            maskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+          }}
         />
-        {/* Four-edge fade overlay — blends logo into background colour */}
-        <div aria-hidden="true" style={{
-          position: 'absolute',
-          inset: 0,
-          background: [
-            'linear-gradient(to right,  #FFEFD9 0%, transparent 14%)',
-            'linear-gradient(to left,   #FFEFD9 0%, transparent 14%)',
-            'linear-gradient(to bottom, #FFEFD9 0%, transparent 22%)',
-            'linear-gradient(to top,    #FFEFD9 0%, transparent 14%)',
-          ].join(', '),
-          pointerEvents: 'none',
-        }} />
       </Link>
-      {/* Gradient below the image — blends into nav without covering the logo */}
+      {/* Gradient below the image — blends into nav */}
       <div aria-hidden="true" style={{
         height: '48px',
-        background: 'linear-gradient(to bottom, #FFEFD9, rgba(255,239,217,0.6) 60%, transparent)',
+        background: 'linear-gradient(to bottom, #FFFFFF, rgba(255,255,255,0.6) 60%, transparent)',
         pointerEvents: 'none',
       }} />
     </div>

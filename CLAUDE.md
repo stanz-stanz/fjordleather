@@ -34,7 +34,7 @@
 - `lib/seo.ts` — deleted (unused; product pages define metadata inline)
 
 **Components**
-- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo_modified.png`, 1536x1024px, cropped tight) as plain `<img>` with `.site-header-logo` class. Logo centered via `display: flex; justifyContent: center` on Link wrapper. Linen background (`#FEEBCF`). 12px top padding on link wrapper. 48px gradient block below fades to transparent. `marginBottom: '-48px'` pulls nav up into gradient zone.
+- `components/nav/SiteHeader.tsx` — Static server component. Brand logo (`public/images/logo_white.png`, 1536x1024px) as plain `<img>` with `.site-header-logo` class. Logo centered via `display: flex; justifyContent: center` on Link wrapper. White background (`#FFFFFF`) to match logo. 4% side-fade via CSS `mask-image`. 12px top padding on link wrapper. 48px gradient block below fades to transparent. `marginBottom: '-48px'` pulls nav up into gradient zone.
 - `components/nav/Navigation.tsx` — Sticky 56px. Obsidian background always. Chalk nav links via inline styles (Tailwind color classes unreliable). Mobile slide-in drawer (obsidian bg, chalk links via inline styles). Escape key closes. Body scroll lock. Close on route change. Full focus trap: Tab/Shift+Tab cycles within drawer only; focus returns to hamburger on close.
 - `components/footer/Footer.tsx` — Espresso background. Brand name (EB Garamond italic) + tagline on one row, copyright on line below.
 - `components/common/Button.tsx` — Primary (cognac fill) / Secondary (obsidian outline) / Ghost. Sizes: sm=12px, md=13px, lg=14px. Zero border-radius. Renders as `<Link>` when `href` passed.
@@ -55,7 +55,7 @@
 - `app/contact/page.tsx` — Contact: two-column layout. Left: heading, body copy, direct email link. Right: form (name, email, subject, message) — POSTs to `/api/contact` via Resend. Sending state + error display. `CONTACT_EMAIL` imported from `lib/constants`.
 
 **Assets & SEO**
-- `public/images/logo_modified.png` — Active logo (1536x1024px, cropped tight). Rendered via `.site-header-logo` CSS class.
+- `public/images/logo_white.png` — Active logo (1536x1024px, white background). Rendered via `.site-header-logo` CSS class.
 - `public/images/logo_old.png` — Previous logo version, kept for reference.
 - `public/images/pelle-vegetale-logo.jpg` — Pelle Conciata al Vegetale in Toscana consortium mark. 200px wide in badge.
 - `public/images/tanneries/` — 17 tannery logos downloaded from pellealvegetale.it. Filenames match `TANNERY_REGISTRY` entries in `data/tanneries.ts`.
