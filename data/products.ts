@@ -30,7 +30,7 @@ The handles are formed from doubled leather, bonded with contact cement and burn
     category: 'bags',
     price: 520,
     currency: 'EUR',
-    description: `The Stillhet Messenger was designed for daily carry over many years, not seasons. The body is structured — it holds its form empty as well as full — using a 3mm Conceria Walpier Buttero insert between the outer shell and the interior lining. Buttero is a dense, close-fibre vegetable tan from the Walpier tannery in Pontassieve; it does not stretch, it does not sag, and it improves visibly with use.
+    description: `The Stillhet Messenger was designed for daily carry over many years, not seasons. The body is structured — it holds its form empty as well as full — using a 3mm Conceria Walpier "Buttero" insert between the outer shell and the interior lining. "Buttero" is a dense, close-fibre vegetable tan from the Walpier tannery in Pontassieve; it does not stretch, it does not sag, and it improves visibly with use.
 
 The shoulder strap is adjustable via a solid brass slider with no moving parts that can fail. The strap leather is the same thickness as the bag body — 3mm — skived at the ends only where it meets the brass hardware. The front pocket closes with a solid brass turn-clasp, not a snap or a zip. The clasp can be operated with one hand, through a winter glove.
 
@@ -69,13 +69,13 @@ A single interior organisation pocket in natural canvas sits flat against the re
     category: 'wallets',
     price: 899,
     currency: 'DKK',
-    description: `Handmade bi-fold wallet combining a Conceria Walpier Buttero exterior with Puccini Maremma inner pockets for a rich, tactile contrast. The interior shows the leather's natural flesh side, hand-burnished to a smooth, protective finish. All edges are skived, hand-sanded, and burnished to a satiny, durable ridge. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for everyday use and designed to develop a deep, characterful patina over time. Compact, meticulously finished, and made to last.`,
+    description: `Handmade bi-fold wallet combining a Conceria Walpier "Buttero" exterior with Puccini "Maremma" inner pockets for a rich, tactile contrast. The interior shows the leather's natural flesh side, hand-burnished to a smooth, protective finish. All edges are skived, hand-sanded, and burnished to a satiny, durable ridge. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built for everyday use and designed to develop a deep, characterful patina over time. Compact, meticulously finished, and made to last.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-2-1.png', alt: 'vaskebjornen-2-1', priority: true },
-      { src: '/images/products/vaskebjornen-2-2.png', alt: 'vaskebjornen-2-2', priority: false }
+      { src: '/images/products/vaskebjornen-2-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-2-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -86,13 +86,13 @@ A single interior organisation pocket in natural canvas sits flat against the re
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Handmade bi-fold wallet pairing a Saffiano-printed calfskin exterior with bright Puccini Bisanzio inner pockets for a contemporary, textured look. A smooth sheepskin lining protects contents and adds a silky feel to the interior. Edges are precisely skived, hand-sanded, and burnished for a refined, hard-wearing finish. Hand-stitched using heavy-duty nylon thread from Crimson Hides, the construction prioritises strength and longevity while maintaining a sleeker, more modern aesthetic.`,
+    description: `Handmade bi-fold wallet pairing a Saffiano-printed calfskin exterior with bright Puccini "Bisanzio" inner pockets for a contemporary, textured look. A smooth sheepskin lining protects contents and adds a silky feel to the interior. Edges are precisely skived, hand-sanded, and burnished for a refined, hard-wearing finish. Hand-stitched using heavy-duty nylon thread from Crimson Hides, the construction prioritises strength and longevity while maintaining a sleeker, more modern aesthetic.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-3-1.png', alt: 'vaskebjornen-3-1', priority: true },
-      { src: '/images/products/vaskebjornen-3-2.png', alt: 'vaskebjornen-3-2', priority: false }
+      { src: '/images/products/vaskebjornen-3-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-3-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -103,13 +103,13 @@ A single interior organisation pocket in natural canvas sits flat against the re
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Handmade bi-fold wallet crafted from aniline box calf with Tempesti "Maine Liscio" pocketing, balancing supple hand-feel with refined structure. The interior features a smooth goatskin lining for durability and a luxurious touch. Each edge is skived, hand-sanded, and burnished to a lasting, satiny finish. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built to withstand daily use and age gracefully, becoming more personal with wear.`,
+    description: `A beauty from aniline box calf with Tempesti "Maine Liscio" pocketing, balancing supple hand-feel with refined structure. The interior features a smooth goatskin lining for durability and a luxurious touch. Each edge is skived, hand-sanded, and burnished to a lasting, satiny finish. Hand-stitched with heavy-duty nylon thread from Crimson Hides, the wallet is built to withstand daily use and age gracefully, becoming more personal with wear.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-4-1.png', alt: 'vaskebjornen-4-1', priority: true },
-      { src: '/images/products/vaskebjornen-4-2.png', alt: 'vaskebjornen-4-2', priority: false }
+      { src: '/images/products/vaskebjornen-4-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-4-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Tempesti' , url: 'http://www.tempesti.com'}],
   },
@@ -120,15 +120,15 @@ A single interior organisation pocket in natural canvas sits flat against the re
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Handmade bi-fold wallet crafted from premium Italian leathers, this refined bi-fold pairs a Walpier "Buttero" exterior with Puccini "Palmelatto" interior pockets for a rich, tactile finish. A smooth goatskin lining protects contents while adding a luxurious, silky feel.
+    description: `This refined bi-fold pairs a Walpier "Buttero" exterior with Puccini "Palmelatto" interior pockets for a rich, tactile finish. A smooth goatskin lining protects contents while adding a luxurious, silky feel.
 
 Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. The wallet is hand-stitched with heavy-duty nylon thread from Crimson Hides for exceptional strength and lasting reliability. Thoughtfully finished and built to age beautifully, it’s a timeless accessory where material integrity and meticulous hand craftsmanship are front and center.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-5-1.png', alt: 'vaskebjornen-5-1', priority: true },
-      { src: '/images/products/vaskebjornen-5-2.png', alt: 'vaskebjornen-5-2', priority: false }
+      { src: '/images/products/vaskebjornen-5-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-5-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -144,8 +144,8 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-6-1.png', alt: 'vaskebjornen-6-1', priority: true },
-      { src: '/images/products/vaskebjornen-6-2.png', alt: 'vaskebjornen-6-2', priority: false }
+      { src: '/images/products/vaskebjornen-6-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-6-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Il Ponte' , url: 'http://www.conceriailponte.it'}],
   },
@@ -161,8 +161,8 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-7-1.png', alt: 'vaskebjornen-7-1', priority: true },
-      { src: '/images/products/vaskebjornen-7-2.png', alt: 'vaskebjornen-7-2', priority: false }
+      { src: '/images/products/vaskebjornen-7-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-7-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -178,8 +178,8 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-8-1.png', alt: 'vaskebjornen-8-1', priority: true },
-      { src: '/images/products/vaskebjornen-8-2.png', alt: 'vaskebjornen-8-2', priority: false }
+      { src: '/images/products/vaskebjornen-8-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-8-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -195,8 +195,8 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-9-1.png', alt: 'vaskebjornen-9-1', priority: true },
-      { src: '/images/products/vaskebjornen-9-2.png', alt: 'vaskebjornen-9-2', priority: false }
+      { src: '/images/products/vaskebjornen-9-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-9-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'M.P.G. Industria Conciaria' , url: 'http://www.mpg.it'}],
   },
@@ -212,8 +212,8 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-10-1.png', alt: 'vaskebjornen-10-1', priority: true },
-      { src: '/images/products/vaskebjornen-10-2.png', alt: 'vaskebjornen-10-2', priority: false }
+      { src: '/images/products/vaskebjornen-10-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-10-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -229,8 +229,8 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-11-1.png', alt: 'vaskebjornen-11-1', priority: true },
-      { src: '/images/products/vaskebjornen-11-2.png', alt: 'vaskebjornen-11-2', priority: false }
+      { src: '/images/products/vaskebjornen-11-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-11-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -247,8 +247,8 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-12-1.png', alt: 'vaskebjornen-12-1', priority: true },
-      { src: '/images/products/vaskebjornen-12-2.png', alt: 'vaskebjornen-12-2', priority: false }
+      { src: '/images/products/vaskebjornen-12-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-12-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -266,8 +266,8 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-13-1.png', alt: 'vaskebjornen-13-1', priority: true },
-      { src: '/images/products/vaskebjornen-13-2.png', alt: 'vaskebjornen-13-2', priority: false }
+      { src: '/images/products/vaskebjornen-13-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-13-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -278,15 +278,15 @@ Every edge is skived, hand-sanded, and burnished to a satiny, durable finish. Th
     category: 'wallets',
     price: 1399,
     currency: 'DKK',
-    description: `A bi-fold wallet that opens like a small cabinet of wonders. Navy blue Tegu lizard skin on the outside — rare, tactile, impossible to ignore. Inside, Walpier Buttero leather lines the pockets with quiet elegance, while Kangaroo hide — one of the most resilient skins in the world — forms the backbone of the interior. Every edge skived, hand-sanded, and sealed with three coats of Giardini paint. Every stitch placed by hand, with heavy-duty thread from Crimson Hides. This is not a wallet you replace. It's one you keep for decades and pass on, a jewel in the Fjordleather catalog.
+    description: `A bi-fold wallet that opens like a small cabinet of wonders. Navy blue Tegu lizard skin on the outside — rare, tactile, impossible to ignore. Inside, Walpier "Buttero" leather lines the pockets with quiet elegance, while Kangaroo hide — one of the most resilient skins in the world — forms the backbone of the interior. Every edge skived, hand-sanded, and sealed with three coats of Giardini paint. Every stitch placed by hand, with heavy-duty thread from Crimson Hides. This is not a wallet you replace. It's one you keep for decades and pass on, a jewel in the Fjordleather catalog.
 
 Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, and acquired exclusively through vendors operating within EU regulations.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand sitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-14-1.png', alt: 'vaskebjornen-14-1', priority: true },
-      { src: '/images/products/vaskebjornen-14-2.png', alt: 'vaskebjornen-14-2', priority: false }
+      { src: '/images/products/vaskebjornen-14-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-14-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -297,13 +297,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 899,
     currency: 'DKK',
-    description: `A bi-fold wallet stripped to its essentials. The exterior wears Puccini Attilio's Bisanzio leather in a warm copper tone — rich, alive, unmistakably Italian. Turn it over and the inside reveals the hide's natural flesh side: soft, unfinished, honest. Every edge skived and hand-sanded. Every stitch placed by hand with Crimson Hides thread. Compact enough to forget it's there. Built well enough that you never will.`,
+    description: `A bi-fold wallet stripped to its essentials. The exterior wears Puccini Attilio's "Bisanzio" leather in a warm copper tone — rich, alive, unmistakably Italian. Turn it over and the inside reveals the hide's natural flesh side: soft, unfinished, honest. Every edge skived and hand-sanded. Every stitch placed by hand with Crimson Hides thread. Compact enough to forget it's there. Built well enough that you never will.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-15-1.png', alt: 'vaskebjornen-15-1', priority: true },
-      { src: '/images/products/vaskebjornen-15-2.png', alt: 'vaskebjornen-15-2', priority: false }
+      { src: '/images/products/vaskebjornen-15-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-15-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -314,13 +314,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Badalassi Pueblo leather in sun-warmed amber — the kind of hide that only gets better with age. Inside, petrol-blue Pueblo pockets flank an ivory goatskin centre: structured where it needs to be, silk-smooth where your fingers land. Every edge skived, sanded, and painted by hand. Every stitch laid with Crimson Hides thread in a matching steel blue. Open it once and you'll understand why it took time to make.`,
+    description: `Badalassi "Pueblo" leather in sun-warmed amber — the kind of hide that only gets better with age. Inside, petrol-blue "Pueblo" pockets flank an ivory goatskin centre: structured where it needs to be, silk-smooth where your fingers land. Every edge skived, sanded, and painted by hand. Every stitch laid with Crimson Hides thread in a matching steel blue. Open it once and you'll understand why it took time to make.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-16-1.png', alt: 'vaskebjornen-16-1', priority: true },
-      { src: '/images/products/vaskebjornen-16-2.png', alt: 'vaskebjornen-16-2', priority: false }
+      { src: '/images/products/vaskebjornen-16-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-16-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Badalassi Carlo' }],
   },
@@ -339,8 +339,8 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     construction: 'Hand cut, hand sitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-17-1.png', alt: 'vaskebjornen-17-1', priority: true },
-      { src: '/images/products/vaskebjornen-17-2.png', alt: 'vaskebjornen-17-2', priority: false }
+      { src: '/images/products/vaskebjornen-17-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-17-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
   },
   {
@@ -358,8 +358,8 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     construction: 'Hand cut, hand sitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-18-1.png', alt: 'vaskebjornen-18-1', priority: true },
-      { src: '/images/products/vaskebjornen-18-2.png', alt: 'vaskebjornen-18-2', priority: false }
+      { src: '/images/products/vaskebjornen-18-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-18-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Tempesti' , url: 'http://www.tempesti.com'}],
   },
@@ -377,8 +377,8 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     construction: 'Hand cut, hand sitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-19-1.png', alt: 'vaskebjornen-19-1', priority: true },
-      { src: '/images/products/vaskebjornen-19-2.png', alt: 'vaskebjornen-19-2', priority: false }
+      { src: '/images/products/vaskebjornen-19-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-19-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
   },
     {
@@ -393,8 +393,8 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     construction: 'Hand cut, hand sitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-20-1.png', alt: 'vaskebjornen-20-1', priority: true },
-      { src: '/images/products/vaskebjornen-20-2.png', alt: 'vaskebjornen-20-2', priority: false }
+      { src: '/images/products/vaskebjornen-20-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-20-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -412,8 +412,8 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-40-1.png', alt: 'vaskebjornen-40-1', priority: true },
-      { src: '/images/products/vaskebjornen-40-2.png', alt: 'vaskebjornen-40-2', priority: false }
+      { src: '/images/products/vaskebjornen-40-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-40-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -424,13 +424,13 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Ancient and contemporary at once. The shell is Puccini "Bisanzio" in metallic copper — a leather that doesn't reflect light so much as hold it, shifting tone with every movement, every angle. It is the kind of surface that makes people reach out and touch. Inside, Maremma and Koala (both Puccini leathers as well) in warm amber and cognac, ivory goatskin lining throughout, copper Crimson Hides thread hand-stitched from edge to edge. An exterior this remarkable deserved an interior to match. It got one.`,
+    description: `Ancient and contemporary at once. The shell is Puccini "Bisanzio" in metallic copper — a leather that doesn't reflect light so much as hold it, shifting tone with every movement, every angle. It is the kind of surface that makes people reach out and touch. Inside, "Maremma" and "Koala" (both Puccini leathers as well) in warm amber and cognac, ivory goatskin lining throughout, copper Crimson Hides thread hand-stitched from edge to edge. An exterior this remarkable deserved an interior to match. It got one.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-41-1.png', alt: 'vaskebjornen-41-1', priority: true },
-      { src: '/images/products/vaskebjornen-41-2.png', alt: 'vaskebjornen-41-2', priority: false }
+      { src: '/images/products/vaskebjornen-41-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-41-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -441,13 +441,13 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Puccini "Maremma", inside and out. The exterior in deep chestnut — composed, unhurried, a leather that has nothing to prove. Inside, the same hide in three tones: amber, chocolate, natural tan. A study in what a single tannery can do when given room to breathe. Orange Crimson Hides thread throughout, hand-stitched, edge to edge. No exotic skins. No flourishes. Every tone drawn from the same family. Every element of the same mind. Just Maremma, at its best.`,
+    description: `Puccini "Maremma", inside and out. The exterior in deep chestnut — composed, unhurried, a leather that has nothing to prove. Inside, the same hide in three tones: amber, chocolate, natural tan. A study in what a single tannery can do when given room to breathe. Orange Crimson Hides thread throughout, hand-stitched, edge to edge. No exotic skins. No flourishes. Every tone drawn from the same family. Every element of the same mind. Just "Maremma", at its best.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-42-1.png', alt: 'vaskebjornen-42-1', priority: true },
-      { src: '/images/products/vaskebjornen-42-2.png', alt: 'vaskebjornen-42-2', priority: false }
+      { src: '/images/products/vaskebjornen-42-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-42-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -458,13 +458,13 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Puccini "Bisanzio" on the outside — that unmistakable metallic copper, mottled and alive, different in every light. Inside, the mood shifts: cool taupe calfskin lines the shell, ivory goatskin lining runs beneath the fingers, and Bisanzio returns at the centre pocket, a warm pulse between two cool tones. Copper Crimson Hides thread throughout, hand-stitched. Two temperatures, one object, no compromises. The kind of wallet that looks better every time you look at it.`,
+    description: `Puccini "Bisanzio" on the outside — that unmistakable metallic copper, mottled and alive, different in every light. Inside, the mood shifts: cool taupe calfskin lines the shell, ivory goatskin lining runs beneath the fingers, and "Bisanzio" returns at the centre pocket, a warm pulse between two cool tones. Copper Crimson Hides thread throughout, hand-stitched. Two temperatures, one object, no compromises. The kind of wallet that looks better every time you look at it.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-43-1.png', alt: 'vaskebjornen-43-1', priority: true },
-      { src: '/images/products/vaskebjornen-43-2.png', alt: 'vaskebjornen-43-2', priority: false }
+      { src: '/images/products/vaskebjornen-43-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-43-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -475,13 +475,13 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Horse leather is not a common choice. It is a deliberate one. Avancorpo — the front of the horse hide, tanned by Rocado of Italy — brings a grain so tight and resilient it feels almost architectural. Here in natural honey tan, glazed to a quiet sheen, it forms both the exterior shell and the soul of the interior. Caramel pockets, natural tan center panel, ivory goatskin lining. Dark brown Crimson Hides thread throughout, hand-stitched. A wallet that will outlast most things you own — and look better for every year it does.`,
+    description: `Horse leather is not a common choice. It is a deliberate one. "Avancorpo" — the front of the horse hide, tanned by Rocado of Italy — brings a grain so tight and resilient it feels almost architectural. Here in natural honey tan, glazed to a quiet sheen, it forms both the exterior shell and the soul of the interior. Caramel pockets, natural tan center panel, ivory goatskin lining. Dark brown Crimson Hides thread throughout, hand-stitched. A wallet that will outlast most things you own — and look better for every year it does.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-44-1.png', alt: 'vaskebjornen-44-1', priority: true },
-      { src: '/images/products/vaskebjornen-44-2.png', alt: 'vaskebjornen-44-2', priority: false }
+      { src: '/images/products/vaskebjornen-44-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-44-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Rocado' }],
   },
@@ -497,8 +497,8 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-45-1.png', alt: 'vaskebjornen-45-1', priority: true },
-      { src: '/images/products/vaskebjornen-45-2.png', alt: 'vaskebjornen-45-2', priority: false }
+      { src: '/images/products/vaskebjornen-45-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-45-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -514,8 +514,8 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '2', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-46-1.png', alt: 'vaskebjornen-46-1', priority: true },
-      { src: '/images/products/vaskebjornen-46-2.png', alt: 'vaskebjornen-46-2', priority: false }
+      { src: '/images/products/vaskebjornen-46-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-46-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -526,13 +526,13 @@ Inside, caramel Puccini "Koala" leather pockets against the blue flesh lining, a
     category: 'wallets',
     price: 1099,
     currency: 'DKK',
-    description: `Maremma leather ages the way good things age — it doesn't fade, it resolves. The exterior here is Puccini Attilio's, in a cognac that will be darker and richer six months from now. Inside, ivory goatskin lines the pockets, cool and smooth against the warmer shell. Brown Crimson Hides thread, hand-stitched. Every edge finished by hand. Built around two leathers that know how to share a space.`,
+    description: `"Maremma" leather ages the way good things age — it doesn't fade, it resolves. The exterior here is Puccini Attilio's, in a cognac that will be darker and richer six months from now. Inside, ivory goatskin lines the pockets, cool and smooth against the warmer shell. Brown Crimson Hides thread, hand-stitched. Every edge finished by hand. Built around two leathers that know how to share a space.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-47-1.png', alt: 'vaskebjornen-47-1', priority: true },
-      { src: '/images/products/vaskebjornen-47-2.png', alt: 'vaskebjornen-47-2', priority: false }
+      { src: '/images/products/vaskebjornen-47-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-47-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -551,8 +551,8 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     construction: 'Hand cut, hand sitched',
     dimensions: { height: '10.5', width: '8.5', depth: '2', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-48-1.png', alt: 'vaskebjornen-48-1', priority: true },
-      { src: '/images/products/vaskebjornen-48-2.png', alt: 'vaskebjornen-48-2', priority: false }
+      { src: '/images/products/vaskebjornen-48-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-48-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -563,13 +563,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Four Tuscan tanneries in one wallet. The exterior is Badalassi Carlo's "Ecbatana Lux" — a leather with a surface that looks like it's already lived a life, scratched and cross-hatched in a way no machine could replicate. Inside, the card pockets alternate between Tempesti Maine Liscio in burnt orange, Il Ponte Mozart in light brown, and Puccini Koala in a deeper shade. Orange Crimson Hides thread throughout. Every hide vegetable-tanned, every stitch placed by hand. A consortium sampler that happens to fit in your back pocket.`,
+    description: `Four Tuscan tanneries in one wallet. The exterior is Badalassi Carlo's "Ecbatana Lux" — a leather with a surface that looks like it's already lived a life, scratched and cross-hatched in a way no machine could replicate. Inside, the card pockets alternate between Tempesti "Maine Liscio" in burnt orange, Il Ponte "Mozart" in light brown, and Puccini "Koala" in a deeper shade. Orange Crimson Hides thread throughout. Every hide vegetable-tanned, every stitch placed by hand. A consortium sampler that happens to fit in your back pocket.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-49-1.png', alt: 'vaskebjornen-49-1', priority: true },
-      { src: '/images/products/vaskebjornen-49-2.png', alt: 'vaskebjornen-49-2', priority: false }
+      { src: '/images/products/vaskebjornen-49-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-49-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Badalassi Carlo' }],
   },
@@ -580,13 +580,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Red on the outside, and not the kind that fades into the background. Walpier's Epi-printed leather carries those fine vertical grooves that give the surface a rhythm you can feel under your thumb. Open it and everything calms down — Rocado Avantcorpo in natural, pale as raw canvas, with the red returning only at the centre pocket. Cream Crimson Hides thread throughout. A wallet with a strong opinion and the craftsmanship to back it up.`,
+    description: `Red on the outside, and not the kind that fades into the background. Walpier's Epi-printed leather carries those fine vertical grooves that give the surface a rhythm you can feel under your thumb. Open it and everything calms down — Rocado "Avantcorpo" in natural, pale as raw canvas, with the red returning only at the centre pocket. Cream Crimson Hides thread throughout. A wallet with a strong opinion and the craftsmanship to back it up.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-50-1.png', alt: 'vaskebjornen-50-1', priority: true },
-      { src: '/images/products/vaskebjornen-50-2.png', alt: 'vaskebjornen-50-2', priority: false }
+      { src: '/images/products/vaskebjornen-50-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-50-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -597,13 +597,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Red and unapologetic. The exterior is Walpier's Epi print — that ribbed, linear texture in an intense red that doesn't ask permission. Open it and the inside answers in earth tones: Walpier Buttero in warm tan, Rocado Avantcorpo in pale natural, with the red returning once at the centre pocket to hold the whole composition together. Red Crimson Hides thread, hand-stitched edge to edge. Two tanneries, three leathers, one clear point of view.`,
+    description: `Red and unapologetic. The exterior is Walpier's Epi print — that ribbed, linear texture in an intense red that doesn't ask permission. Open it and the inside answers in earth tones: Walpier "Buttero" in warm tan, Rocado "Avantcorpo" in pale natural, with the red returning once at the centre pocket to hold the whole composition together. Red Crimson Hides thread, hand-stitched edge to edge. Two tanneries, three leathers, one clear point of view.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-21-1.png', alt: 'vaskebjornen-21-1', priority: true },
-      { src: '/images/products/vaskebjornen-21-2.png', alt: 'vaskebjornen-21-2', priority: false }
+      { src: '/images/products/vaskebjornen-21-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-21-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier', url: 'http://www.conceriawalpier.com/' }],
   },
@@ -619,8 +619,8 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-22-1.png', alt: 'vaskebjornen-22-1', priority: true },
-      { src: '/images/products/vaskebjornen-22-2.png', alt: 'vaskebjornen-22-2', priority: false }
+      { src: '/images/products/vaskebjornen-22-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-22-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Il Ponte' , url: 'http://www.conceriailponte.it'}],
   },
@@ -631,13 +631,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 899,
     currency: 'DKK',
-    description: `Walpier Buttero in navy blue — dense, smooth, the kind of leather that barely creases. Open it and the temperature changes completely: Tempesti Maine Liscio in bright orange lines the interior, with teal Puccini Maremma pockets set against it. Blue Crimson Hides thread throughout. Three leathers, three tanneries, and a colour combination that has no business working this well.`,
+    description: `Walpier "Buttero" in navy blue — dense, smooth, the kind of leather that barely creases. Open it and the temperature changes completely: Tempesti "Maine Liscio" in bright orange lines the interior, with teal Puccini "Maremma" pockets set against it. Blue Crimson Hides thread throughout. Three leathers, three tanneries, and a colour combination that has no business working this well.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-23-1.png', alt: 'vaskebjornen-23-1', priority: true },
-      { src: '/images/products/vaskebjornen-23-2.png', alt: 'vaskebjornen-23-2', priority: false }
+      { src: '/images/products/vaskebjornen-23-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-23-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -648,13 +648,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 899,
     currency: 'DKK',
-    description: `Walpier Buttero in cognac — smooth, firm, the benchmark vegetable tan that every other Italian leather gets measured against. Inside, more Buttero for the shell, with Rocado Avantcorpo pockets in pale natural breaking up the warmth. Olive Crimson Hides thread, hand-stitched. Two consortium leathers, one colour family, no need for anything else.`,
+    description: `Walpier "Buttero" in cognac — smooth, firm, the benchmark vegetable tan that every other Italian leather gets measured against. Inside, more "Buttero" for the shell, with Rocado "Avantcorpo" pockets in pale natural breaking up the warmth. Olive Crimson Hides thread, hand-stitched. Two consortium leathers, one colour family, no need for anything else.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-24-1.png', alt: 'vaskebjornen-24-1', priority: true },
-      { src: '/images/products/vaskebjornen-24-2.png', alt: 'vaskebjornen-24-2', priority: false }
+      { src: '/images/products/vaskebjornen-24-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-24-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -665,13 +665,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Tempesti Maine Liscio in orange — saturated, direct, a leather that means what it says. Inside, Walpier Buttero pockets in warm tan sit alongside pale Rocado Avantcorpo, backed by a soft goatskin lining you feel every time you reach for a card. Orange Crimson Hides thread throughout, hand-stitched. Three Tuscan hides working in the same warm register, each pulling its weight.`,
+    description: `Tempesti "Maine Liscio" in orange — saturated, direct, a leather that means what it says. Inside, Walpier "Buttero" pockets in warm tan sit alongside pale Rocado "Avantcorpo", backed by a soft goatskin lining you feel every time you reach for a card. Orange Crimson Hides thread throughout, hand-stitched. Three Tuscan hides working in the same warm register, each pulling its weight.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-25-1.png', alt: 'vaskebjornen-25-1', priority: true },
-      { src: '/images/products/vaskebjornen-25-2.png', alt: 'vaskebjornen-25-2', priority: false }
+      { src: '/images/products/vaskebjornen-25-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-25-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Tempesti' , url: 'http://www.tempesti.com'}],
   },
@@ -682,13 +682,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 899,
     currency: 'DKK',
-    description: `Margotta leather on the outside — a deep, petrol-toned teal with the kind of surface character that comes from the tanning, not from wear. Orange Crimson Hides thread at the edge gives the only clue of what's coming. Inside, Walpier Buttero in warm tan lines the shell, with Tempesti Maine Liscio pockets in orange set against it. Three tanneries, three leathers, and a cold-to-warm shift that hits the moment you open it.`,
+    description: `Margotta leather on the outside — a deep, petrol-toned teal with the kind of surface character that comes from the tanning, not from wear. Orange Crimson Hides thread at the edge gives the only clue of what's coming. Inside, Walpier "Buttero" in warm tan lines the shell, with Tempesti "Maine Liscio" pockets in orange set against it. Three tanneries, three leathers, and a cold-to-warm shift that hits the moment you open it.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-26-1.png', alt: 'vaskebjornen-26-1', priority: true },
-      { src: '/images/products/vaskebjornen-26-2.png', alt: 'vaskebjornen-26-2', priority: false }
+      { src: '/images/products/vaskebjornen-26-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-26-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
   },
@@ -699,13 +699,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Start with the palest leather in the Tuscan consortium — Rocado Avantcorpo, natural, barely touched by colour. It covers the exterior and returns inside for the shell and pockets. The only interruption: a dark brown Puccini Maremma panel at the centre, quiet but definite. Goatskin lining, cream Crimson Hides thread throughout. Every mark this wallet picks up from here will be yours.`,
+    description: `Start with the palest leather in the Tuscan consortium — Rocado "Avantcorpo", natural, barely touched by colour. It covers the exterior and returns inside for the shell and pockets. The only interruption: a dark brown Puccini "Maremma" panel at the centre, quiet but definite. Goatskin lining, cream Crimson Hides thread throughout. Every mark this wallet picks up from here will be yours.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-27-1.png', alt: 'vaskebjornen-27-1', priority: true },
-      { src: '/images/products/vaskebjornen-27-2.png', alt: 'vaskebjornen-27-2', priority: false }
+      { src: '/images/products/vaskebjornen-27-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-27-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Rocado' }],
   },
@@ -716,13 +716,13 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `The exterior is Puccini "Palmelatto" — cross-hatched, warm, with a printed surface that gives the vegetable tan underneath a second layer of texture. Open it and the interior runs darker: Puccini Maremma in rich brown, interrupted by Tempesti Maine Liscio pockets in orange. Cognac nubuck lining underneath, soft where it counts. Red Crimson Hides thread throughout, hand-stitched. A wallet where every layer has something different to say.`,
+    description: `The exterior is Puccini "Palmelatto" — cross-hatched, warm, with a printed surface that gives the vegetable tan underneath a second layer of texture. Open it and the interior runs darker: Puccini "Maremma" in rich brown, interrupted by Tempesti "Maine Liscio" pockets in orange. Cognac nubuck lining underneath, soft where it counts. Red Crimson Hides thread throughout, hand-stitched. A wallet where every layer has something different to say.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-28-1.png', alt: 'vaskebjornen-28-1', priority: true },
-      { src: '/images/products/vaskebjornen-28-2.png', alt: 'vaskebjornen-28-2', priority: false }
+      { src: '/images/products/vaskebjornen-28-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-28-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
@@ -733,13 +733,185 @@ Note: Every exotic skin used at Fjordleather is traceable, responsibly sourced, 
     category: 'wallets',
     price: 999,
     currency: 'DKK',
-    description: `Puccini "Palmelatto" on the outside — cross-hatched cognac with red Crimson Hides thread stitching a clean line around the edge. Inside, pigskin pockets in pale cream pair with Tempesti Maine Liscio in orange, the two textures distinct under the fingers. Sheepskin lining underneath, barely there but impossible to miss once you notice it. Red thread, hand-stitched. Built to feel as good as it looks.`,
+    description: `Puccini "Palmelatto" on the outside — cross-hatched cognac with red Crimson Hides thread stitching a clean line around the edge. Inside, pigskin pockets in pale cream pair with Tempesti "Maine Liscio" in orange, the two textures distinct under the fingers. Sheepskin lining underneath, barely there but impossible to miss once you notice it. Red thread, hand-stitched. Built to feel as good as it looks.`,
     material: 'Full-grain Italian leather',
     construction: 'Hand cut, hand stitched',
     dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
     images: [
-      { src: '/images/products/vaskebjornen-29-1.png', alt: 'vaskebjornen-29-1', priority: true },
-      { src: '/images/products/vaskebjornen-29-2.png', alt: 'vaskebjornen-29-2', priority: false }
+      { src: '/images/products/vaskebjornen-29-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-29-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+    {
+    id: '51',
+    slug: 'vaskebjornen-30',
+    name: 'Vaskebjornen #30',
+    category: 'wallets',
+    price: 1199,
+    currency: 'DKK',
+    description: `Some objects are made to blend in; this one is made to be recognised. The navy "Buttero" exterior carries the composed authority of a well-cut coat, and then the ostrich leg band arrives at the lower half — scaled, warm, slightly wild — the kind of detail that takes more confidence to include than to leave out. Open it and the interior is all calm: caramel hide, hand-stitched slots, a whisper of sheepskin at your fingertips. Walpier's Tuscan leather will deepen with use, and the ostrich will soften, and in five years you will have something that looks nothing like anyone else's wallet. Another maker's favorite.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '2', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-30-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-30-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
+  },
+  {
+    id: '52',
+    slug: 'vaskebjornen-31',
+    name: 'Vaskebjornen #31',
+    category: 'wallets',
+    price: 1099,
+    currency: 'DKK',
+    description: `The navy "Buttero" from Walpier's Tuscan tannery has a particular quality to it: smooth under the fingers, dense with structure, the kind of blue that deepens rather than fades as the leather settles into its life. Inside, warm "Palmelato" card pockets — cross-hatched, almost tactile to look at — open against a panel of natural sheepskin, soft enough to feel like something kept close for years. Cut and stitched entirely by hand, #31 carries no decoration beyond its own making. It asks nothing of you except to be used.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '2', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-31-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-31-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
+  },
+  {
+    id: '53',
+    slug: 'vaskebjornen-32',
+    name: 'Vaskebjornen #32',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Il Ponte "Mozart" in warm honey — a vegetable tan with a distinctive cross-hatched grain that carries through from the exterior to the interior shell and card slots. Rich burgundy Puccini "Koala" pockets break the warmth with a deeper, quieter tone. Lined in soft goatskin throughout. Every edge skived, hand-sanded, and finished. Hand-stitched with brown Crimson Hides thread. Warm, cohesive, and built to age beautifully.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-32-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-32-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Il Ponte' , url: 'http://www.conceriailponte.it'}],
+  },
+  {
+    id: '54',
+    slug: 'vaskebjornen-33',
+    name: 'Vaskebjornen #33',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Rocado "Avantcorpo" in natural — barely touched by colour, smooth and pale, the kind of leather that arrives as a blank page and writes itself over time. The same hide lines the interior, shifting from warm tan at the outer pockets to cream at the centre. Goatskin lining underneath, soft and clean. Brown Crimson Hides thread throughout, hand-stitched. Nothing here is hiding behind texture or contrast — just one leather, well chosen, with room to become whatever you make of it.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-33-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-33-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Rocado' }],
+  },
+  {
+    id: '55',
+    slug: 'vaskebjornen-34',
+    name: 'Vaskebjornen #34',
+    category: 'wallets',
+    price: 799,
+    currency: 'DKK',
+    description: `Rocado "Avantcorpo" in natural — pale, smooth, and dense in the way only horse leather can be. Inside, "Avantcorpo" pockets in warm tan alternate with Puccini "Koala" in sandy caramel, a subtle shift in texture more than colour. No lining, nothing between you and the leather. Green Crimson Hides thread throughout, hand-stitched — the only cool note in an otherwise warm palette. Stripped back, lightweight, and honest about what it is.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-34-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-34-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Rocado' }],
+  },
+  {
+    id: '56',
+    slug: 'vaskebjornen-35',
+    name: 'Vaskebjornen #35',
+    category: 'wallets',
+    price: 899,
+    currency: 'DKK',
+    description: `Walpier Epi-printed leather in deep red — fine vertical grooves running the full surface, a texture you register under your fingers before you even look down. Inside, Tempesti "Maine Liscio" pockets in orange sit alongside pale Rocado "Avantcorpo", the red returning at the centre panel. All leather, no lining — direct and tactile. Cream Crimson Hides thread throughout, hand-stitched. Bold exterior, warm interior, and a colour range that runs from fire to sand without losing its nerve.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-35-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-35-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Walpier' , url: 'http://www.conceriawalpier.com/'}],
+  },
+  {
+    id: '57',
+    slug: 'vaskebjornen-36',
+    name: 'Vaskebjornen #36',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Puccini "Maremma" in emerald green — deep, matte, the kind of colour that reads as black in low light and comes alive the moment it catches the sun. Inside, Il Ponte "Mozart" pockets in warm honey bring the cross-hatched grain and all the warmth the exterior holds back. Goatskin lining at the centre, pale and smooth. Dark teal Crimson Hides thread throughout, hand-stitched, nearly invisible against the shell. A cool exterior with a warm interior — open it and the whole mood changes.
+
+Note: Faint edge-paint lines are visible on the goatskin lining — a trace of the hand-finishing process, not a defect. Every wallet is made individually, and small marks like these are part of the character.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-36-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-36-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+  {
+    id: '58',
+    slug: 'vaskebjornen-37',
+    name: 'Vaskebjornen #37',
+    category: 'wallets',
+    price: 999,
+    currency: 'DKK',
+    description: `Puccini "Maremma" in emerald green with burgundy Crimson Hides thread tracing the perimeter — a pairing that lands the moment you see it. Open it and the burgundy follows you inside: Il Ponte "Koala" pockets in the same deep wine tone, flanking a pale goatskin centre. Two colours, two tanneries, one conversation running from the outside stitch line all the way through. The green will darken with use. The burgundy won't. In a year, this wallet will look even better than it does now — and right now, it looks very good.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-37-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-37-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+  {
+    id: '59',
+    slug: 'vaskebjornen-38',
+    name: 'Vaskebjornen #38',
+    category: 'wallets',
+    price: 899,
+    currency: 'DKK',
+    description: `Puccini "Maremma" in deep navy — smooth, composed, with a surface that holds a quiet sheen under any light. The same "Maremma" forms the interior shell and centre panel, keeping the dark tone running through. Rocado "Avantcorpo" pockets in warm natural break the depth with something lighter, softer, almost golden against the blue. No lining — all leather, all the way through. Dark teal Crimson Hides thread, tone-on-tone with the exterior. A wallet that keeps its voice low and rewards a closer look.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-38-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-38-2.png', alt: 'Bifold wallet exterior', priority: false }
+    ],
+    tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
+  },
+  {
+    id: '60',
+    slug: 'vaskebjornen-39',
+    name: 'Vaskebjornen #39',
+    category: 'wallets',
+    price: 899,
+    currency: 'DKK',
+    description: `Puccini "Maremma" in deep navy, with that same still, sheened surface that settles rather than shouts. Inside, Puccini "Koala" pockets in warm caramel sit against the "Maremma" shell, the two Puccini leathers speaking the same language in different tones. The centre panel shows the hide's own flesh side — soft grey, a quiet pause between the warmth on either side. No lining, all leather. Dark teal Crimson Hides thread throughout. Dark on the outside, warm on the inside, and nothing in between that doesn't earn its place.`,
+    material: 'Full-grain Italian leather',
+    construction: 'Hand cut, hand stitched',
+    dimensions: { height: '10.5', width: '8.5', depth: '1', unit: 'cm' },
+    images: [
+      { src: '/images/products/vaskebjornen-39-1.png', alt: 'Bifold wallet interior', priority: true },
+      { src: '/images/products/vaskebjornen-39-2.png', alt: 'Bifold wallet exterior', priority: false }
     ],
     tannery: [{ name: 'Puccini Attilio' , url: 'http://www.conceriapuccini.com'}],
   },
